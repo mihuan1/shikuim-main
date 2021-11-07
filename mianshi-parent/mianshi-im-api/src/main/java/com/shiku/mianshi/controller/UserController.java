@@ -654,8 +654,8 @@ public class UserController extends AbstractController {
                 user.buildNoSelfUserVo();
             } else {
                 //查找出该用户的推广型邀请码(一码多用)
-                InviteCode myInviteCode = SKBeanUtils.getAdminManager().findUserPopulInviteCode(user.getUserId());
-                user.setMyInviteCode((myInviteCode == null ? "" : myInviteCode.getInviteCode()));
+//                InviteCode myInviteCode = SKBeanUtils.getAdminManager().findUserPopulInviteCode(user.getUserId());
+//                user.setMyInviteCode((myInviteCode == null ? "" : myInviteCode.getInviteCode()));
             }
             user.setBalance(null);
             //user.setPhone(null);
@@ -721,8 +721,8 @@ public class UserController extends AbstractController {
                 user.setTelephone(null);
             } else {
                 //查找出该用户的推广型邀请码(一码多用)
-                InviteCode myInviteCode = SKBeanUtils.getAdminManager().findUserPopulInviteCode(user.getUserId());
-                user.setMyInviteCode((myInviteCode == null ? "" : myInviteCode.getInviteCode()));
+//                InviteCode myInviteCode = SKBeanUtils.getAdminManager().findUserPopulInviteCode(user.getUserId());
+//                user.setMyInviteCode((myInviteCode == null ? "" : myInviteCode.getInviteCode()));
             }
 
 

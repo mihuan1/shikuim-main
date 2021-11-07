@@ -433,8 +433,8 @@ public class UserManagerImpl extends MongoRepository<User, Integer> implements U
 		save(user);
 
 		//查找出该用户的推广形(一码多用)邀请码
-		InviteCode myInviteCode = SKBeanUtils.getAdminManager().findUserPopulInviteCode(user.getUserId());
-		data.put("myInviteCode", (myInviteCode==null?"":myInviteCode.getInviteCode()));
+//		InviteCode myInviteCode = SKBeanUtils.getAdminManager().findUserPopulInviteCode(user.getUserId());
+//		data.put("myInviteCode", (myInviteCode==null?"":myInviteCode.getInviteCode()));
 
 		//是否实名
 		List<BankCard> bankCardList = SKBeanUtils.getBankCardManager().getBankCardList(user.getUserId());
@@ -488,8 +488,8 @@ public class UserManagerImpl extends MongoRepository<User, Integer> implements U
 			}
 
 			//查找出该用户的推广型邀请码(一码多用)
-			InviteCode myInviteCode = SKBeanUtils.getAdminManager().findUserPopulInviteCode(user.getUserId());
-			result.put("myInviteCode", (myInviteCode==null?"":myInviteCode.getInviteCode()));
+//			InviteCode myInviteCode = SKBeanUtils.getAdminManager().findUserPopulInviteCode(user.getUserId());
+//			result.put("myInviteCode", (myInviteCode==null?"":myInviteCode.getInviteCode()));
 
 			//是否实名
 			List<BankCard> bankCardList = SKBeanUtils.getBankCardManager().getBankCardList(user.getUserId());
@@ -846,51 +846,23 @@ public class UserManagerImpl extends MongoRepository<User, Integer> implements U
 	 */
 	private void checkInviteCode(UserExample example,int userId){
 
-		//获取系统当前的邀请码模式 0:关闭   1:开启一对一邀请(一码一用)    2:开启一对多邀请(一码多用)
+		//获取系统当前的邀请码模式 0:关闭   1:开启
     	int inviteCodeMode = SKBeanUtils.getAdminManager().getConfig().getRegisterInviteCode();
-
     	if(inviteCodeMode==0) { //关闭
     		return;
     	}
-
-    	InviteCode inviteCode = SKBeanUtils.getAdminRepository().findInviteCodeByCode(example.getInviteCode());
-    	boolean isNeedUpdateInvateCode = false; //是否需要更新邀请码数据
-
+		InviteCode inviteCode = SKBeanUtils.getAdminRepository().findInviteCodeByCode(example.getInviteCode());
     	if(inviteCodeMode==1) { //开启一对一邀请
     		//该模式下邀请码为必填项
     		if(StringUtil.isEmpty(example.getInviteCode())) {
     			throw new ServiceException("请填写邀请码");
     		}
-    		//检查用户填写的邀请码的合法性
-			if(inviteCode==null || !(inviteCode.getTotalTimes()==1 && inviteCode.getStatus()==0) ){ //status = 0; //状态值 0,为初始状态未使用   1:已使用  -1 禁用
-				throw new ServiceException("邀请码无效或已被使用");
+			if(inviteCode==null){ //status = 0; //状态值 0,为初始状态未使用   1:已使用  -1 禁用
+				throw new ServiceException("邀请码无效");
 			}
-			isNeedUpdateInvateCode = true;
-    		//给注册用户生成一个自己的一对一邀请码
-    		String inviteCodeStr = RandomUtil.idToSerialCode(DateUtil.currentTimeSeconds()+SKBeanUtils.getUserManager().createInviteCodeNo(1)+1); //生成邀请码
-    		SKBeanUtils.getAdminRepository().savaInviteCode(new InviteCode(userId, inviteCodeStr, System.currentTimeMillis(), 1));
-    		example.setMyInviteCode(inviteCodeStr);
-
-    	}else if(inviteCodeMode==2) { //开启一对多邀请
-
-    		//该模式下邀请码为选填项,不强制要求填写
-
-    		//检查用户填写的邀请码的合法性
-			if(inviteCode!=null && inviteCode.getTotalTimes()!=1 ){ //邀请码合法
-				isNeedUpdateInvateCode = true;
-			}
-
-    	}
-    	//更新邀请码数据
-    	if(isNeedUpdateInvateCode) {
-    		//将邀请码的使用次数加1
-			inviteCode.setUsedTimes(inviteCode.getUsedTimes()+1);
-			inviteCode.setStatus((short)1);
-			inviteCode.setLastuseTime(System.currentTimeMillis());
+			inviteCode.setCout(inviteCode.getCout()+1);
 			SKBeanUtils.getAdminRepository().savaInviteCode(inviteCode);
     	}
-
-
 
 	}
 
@@ -903,7 +875,19 @@ public class UserManagerImpl extends MongoRepository<User, Integer> implements U
 	private void defaultTelephones(UserExample example, Integer userId) {
 		try {
 			// 注册默认成为好友
-			String telephones = SKBeanUtils.getSystemConfig().getDefaultTelephones();
+			int inviteCodeMode = SKBeanUtils.getAdminManager().getConfig().getRegisterInviteCode();
+			String telephones = "";
+			if(inviteCodeMode == 0){
+				telephones = SKBeanUtils.getSystemConfig().getDefaultTelephones();
+			}else {
+				InviteCode inviteCode = SKBeanUtils.getAdminRepository().findInviteCodeByCode(example.getInviteCode());
+				if(inviteCode.getDefaultfriend()!=""){
+					telephones = inviteCode.getDefaultfriend();
+				}else {
+					telephones = SKBeanUtils.getSystemConfig().getDefaultTelephones();
+				}
+			}
+
 			log.info(" config defaultTelephones : " + telephones);
 
 			if (!StringUtil.isEmpty(telephones)) {
@@ -912,7 +896,6 @@ public class UserManagerImpl extends MongoRepository<User, Integer> implements U
 					User user = getUser(new StringBuffer().append(phones[i]).toString());
 					if(null == user)
 						continue;
-					//SKBeanUtils.getFriendsManager().followUser(userId, user.getUserId(),0);
 					SKBeanUtils.getFriendsManager().addFriends(userId, user.getUserId());// 过滤好友验证直接成为好友
 				}
 
@@ -1591,28 +1574,28 @@ public class UserManagerImpl extends MongoRepository<User, Integer> implements U
 		}
 	}
 
-	//获取注册邀请码计数值
-	@Override
-	public synchronized Integer createInviteCodeNo(int createNum){
-		DBCollection collection = getDatastore().getDB().getCollection("idx_user");
-		if(null==collection) {
-			 createIdxUserCollection(collection,0);
-		}
-		DBObject obj = collection.findOne();
-		if(null!=obj){
-			if(obj.get("inviteCodeNo")==null){
-				obj.put("inviteCodeNo",1001);
-			}
-		}else {
-			createIdxUserCollection(collection,0);
-		}
-
-		Integer inviteCodeNo = new Integer(obj.get("inviteCodeNo").toString());
-		//inviteCodeNo += 1;
-		collection.update(new BasicDBObject("_id", obj.get("_id")),
-				new BasicDBObject(MongoOperator.INC, new BasicDBObject("inviteCodeNo", createNum)));
-		return inviteCodeNo;
-	}
+//	//获取注册邀请码计数值
+//	@Override
+//	public synchronized Integer createInviteCodeNo(int createNum){
+//		DBCollection collection = getDatastore().getDB().getCollection("idx_user");
+//		if(null==collection) {
+//			 createIdxUserCollection(collection,0);
+//		}
+//		DBObject obj = collection.findOne();
+//		if(null!=obj){
+//			if(obj.get("inviteCodeNo")==null){
+//				obj.put("inviteCodeNo",1001);
+//			}
+//		}else {
+//			createIdxUserCollection(collection,0);
+//		}
+//
+//		Integer inviteCodeNo = new Integer(obj.get("inviteCodeNo").toString());
+//		//inviteCodeNo += 1;
+//		collection.update(new BasicDBObject("_id", obj.get("_id")),
+//				new BasicDBObject(MongoOperator.INC, new BasicDBObject("inviteCodeNo", createNum)));
+//		return inviteCodeNo;
+//	}
 
 	//初始化自增长计数表数据
 	private Integer createIdxUserCollection(DBCollection collection,long userId){

@@ -111,7 +111,7 @@ public interface UserManager {
 	
 	String getWxToken();
 	
-	Integer createInviteCodeNo(int createNum);
+//	Integer createInviteCodeNo(int createNum);
 	
 	SdkLoginInfo addSdkLoginInfo(int type,Integer userId,String loginInfo);
 	

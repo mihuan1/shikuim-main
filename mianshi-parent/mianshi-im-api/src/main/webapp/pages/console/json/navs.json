@@ -40,6 +40,11 @@
 					"icon":"&#xe66f;",
 					"href": "/pages/console/userList.html",
 					"spread": false
+				},{
+					"title": "邀请码",
+					"icon":"&#xe674;",
+					"href": "/pages/console/InvitaCode.html",
+					"spread": false
 				}
 			]
 		},

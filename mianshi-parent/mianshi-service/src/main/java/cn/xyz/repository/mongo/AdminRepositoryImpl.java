@@ -58,8 +58,8 @@ public class AdminRepositoryImpl implements AdminRepository {
 	 * 删除邀请码
 	 */
 	@Override
-	public boolean delInviteCode(int userId,ObjectId inviteCodeId) {
-		Query<InviteCode> q = getDatastore().createQuery(InviteCode.class).field("userId").equal(userId).field("_id").equal(inviteCodeId);
+	public boolean delInviteCode(ObjectId inviteCodeId) {
+		Query<InviteCode> q = getDatastore().createQuery(InviteCode.class).field("_id").equal(inviteCodeId);
 		WriteResult inviteCode =  getDatastore().delete(q);
 		return !(inviteCode==null);
 	}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>邀请码</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet" media="all">
+<body>
+<div class="layui-row">
+    <div class="layui-col-md1">&nbsp;</div>
+    <div class="layui-col-md10 list">
+        <div class="layui-form" style="margin-top: 3%;">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <input  type="text"  class="layui-input invite_code_name"  placeholder="邀请码" style="width:150px;">
+                </div>
+                <div class="layui-inline">
+                    <input  type="text"  class="layui-input default_friend"  placeholder="默认好友ID" style="width:150px;">
+                </div>
+                <div class="layui-inline">
+                    <button  class="layui-btn search_inviteCode">搜索</button>
+                </div>
+
+                <div class="layui-inline" style="margin-left: 20px; ">
+                    <button  class="layui-btn btn_create_register_InviteCode">生成邀请码</button>
+                </div>
+            </div>
+        </div>
+        <div id="code_table" class="layui-card" style="margin-top: 1%">
+            <div class="layui-card-header"><p>邀请码列表</p></div>
+            <div class="layui-card-body">
+                <table id="invita_code_list" lay-filter="invita_code_list"  style="table-layout:fixed;word-break:break-all;" >
+                </table>
+            </div>
+        </div>
+    </div >
+    <!-- 创建邀请码 -->
+    <div id="add_code" class="layui-col-md10" style="display: none">
+        <form  id="add_invita_code_form" class="layui-form" action="" style="margin-top: 60px; ">
+            <div class="layui-form-item">
+                <label class="layui-form-label">邀请码</label>
+                <div class="layui-input-block">
+                    <input type="text" required  lay-verify="required" placeholder="请输入邀请码" autocomplete="off" class="layui-input  inviteCode">
+                </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">默认好友ID</label>
+              <div class="layui-input-block">
+                <input type="text" required  lay-verify="required" placeholder="注册后默认成为好友ID" autocomplete="off" class="layui-input defaultfriend">
+              </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+                    <input type="text" required  lay-verify="required" placeholder="备注" autocomplete="off" class="layui-input desc">
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--邀请码相关操作-->
+    <script type="text/html" id="invitaBar">
+<!--        <a class="layui-btn layui-btn-normal layui-btn-xs edit" lay-event="edit_inviteCode">编辑</a>-->
+        <a class="layui-btn layui-btn-danger layui-btn-xs delete" lay-event="del_inviteCode">删除</a>
+    </script>
+</div>
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/console/js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="/pages/console/js/inviteCode.js"></script>
+</body>
+</html>

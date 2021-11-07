@@ -12,7 +12,7 @@ public interface AdminRepository {
 	InviteCode findInviteCodeByCode(String inviteCode);
 
 
-	boolean delInviteCode(int userId, ObjectId inviteCodeId);
+	boolean delInviteCode( ObjectId inviteCodeId);
 
 
 	void savaInviteCode(InviteCode inviteCode);

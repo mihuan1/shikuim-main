@@ -16,19 +16,11 @@ public class InviteCode {
 	@Id
 	private ObjectId id;
 	
-	private int userId; //邀请码所属的用户
-	
 	private String inviteCode; //邀请码
-	
-	private short status = 0; //状态值 0,为初始状态未使用   1:已使用    -1: 禁用，一码多用时可以禁用邀请码
-	
+	private String defaultfriend;//默认成为好友的人
+	private String desc; //备注
 	private long  createTime; //生成时间,单位 ms
-	
-	private long  lastuseTime = 0; //用户最后一次使用该邀请码的时间, 单位 ms
-	
-	private int totalTimes = -1; //总次数 -1 : 不限次数      1:一次（同时也表示该邀请码属于一码一用类型） 其他 >0 的值:表示对应的使用次数 
-	
-	private int usedTimes = 0; //已使用次数
+	private long  cout; //数量
 	
 	
 	
@@ -36,24 +28,33 @@ public class InviteCode {
 		super();
 	}
 
-	public InviteCode(int userId, String inviteCode, long createTime, int totalTimes) {
+	public InviteCode(String inviteCode, String defaultfriend,String desc,long createTime) {
 		super();
-		this.userId = userId;
 		this.inviteCode = inviteCode;
 		this.createTime = createTime;
-		this.totalTimes = totalTimes;
+		this.defaultfriend = defaultfriend;
+		this.desc = desc;
+		this.cout = 0;
 	}
 
-	
-	
-	public int getUserId() {
-		return userId;
+	public long getCout() {
+		return cout;
 	}
-	
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setCout(long cout) {
+		this.cout = cout;
 	}
-	
+	public String  getDefaultfriend() {
+		return defaultfriend;
+	}
+	public void setDefaultfriend(String defaultfriend) {
+		this.defaultfriend = defaultfriend;
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
 	public ObjectId getId() {
 		return id;
 	}
@@ -77,46 +78,5 @@ public class InviteCode {
 	public void setCreateTime(long createTime) {
 		this.createTime = createTime;
 	}
-
-	
-
-	public short getStatus() {
-		return status;
-	}
-
-	public void setStatus(short status) {
-		this.status = status;
-	}
-
-	public long getLastuseTime() {
-		return lastuseTime;
-	}
-
-	public void setLastuseTime(long lastuseTime) {
-		this.lastuseTime = lastuseTime;
-	}
-
-	public int getTotalTimes() {
-		return totalTimes;
-	}
-
-	public void setTotalTimes(int totalTimes) {
-		this.totalTimes = totalTimes;
-	}
-
-	public int getUsedTimes() {
-		return usedTimes;
-	}
-
-	public void setUsedTimes(int usedTimes) {
-		this.usedTimes = usedTimes;
-	}
-	
-	
-	
-	
-	
-	
-	
 	
 }

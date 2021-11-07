@@ -211,97 +211,74 @@ public class AdminManagerImpl extends MongoRepository<Config, ObjectId> implemen
 	
 	/**
 	 * 生成邀请码
-	 * num 需要生成的邀请码数量
 	 * @return
 	 * 
 	 */
 	@Override
-    public  void  createInviteCode (int num,int userId){
-		
-		int totalTimes = 0;
-		
-    	//当前邀请码标识号
-    	long curInviteCodeNo = getUserManager().createInviteCodeNo(num);
-    	
-    	//获取系统当前的邀请码模式 0:关闭   1:开启一对一邀请(一码一用,注册型邀请码)    2:开启一对多邀请(一码多用,推广型邀请码)
+    public  void  createInviteCode (String inviteCode,String defaultfriend,String desc){
+    	//获取系统当前的邀请码模式 0:关闭   1:开启
     	int inviteCodeMode = SKBeanUtils.getAdminManager().getConfig().getRegisterInviteCode();
     	if(inviteCodeMode==0) {
     		throw new ServiceException("系统当前没有开启邀请码");
-    	}else if(inviteCodeMode==1) { //一次
-    		totalTimes = 1;
-    	}else if(inviteCodeMode==2){ //不限次数
-    		
-    		//不限次数类型的邀请码，一个用户只能有一个
-    		//检查该用户是否存在该类型的邀请码,存在则不再生成
-    		if(getAdminRepository().findUserInviteCode(userId)!=null) {
-    			return;
-    		}
-    		totalTimes = -1;
-    		num = 1; //将生成个数设置为1
+    	}else if(inviteCodeMode==1) { //开启
+			InviteCode inviteCodeObj = new InviteCode(inviteCode, defaultfriend, desc, System.currentTimeMillis());
+			getDatastore().save(inviteCodeObj);
     	}else {
     		throw new ServiceException("系统邀请码模式异常");
     	}
     	
-    	String inviteCodeStr = ""; //邀请码
-    	for (int i = 1; i <= num; i++) {
-    		inviteCodeStr = RandomUtil.idToSerialCode(DateUtil.currentTimeSeconds()+curInviteCodeNo+i+RandomUtil.getRandomNum(100,1000)); //生成邀请码
-    		InviteCode inviteCodeObj = new InviteCode(userId, inviteCodeStr, System.currentTimeMillis(), totalTimes);
-    		getDatastore().save(inviteCodeObj);
-		}
-    	
     }
 	
-	//查找用户的一码多用,推广型邀请码
+//	//查找用户的一码多用,推广型邀请码
+//	@Override
+//	public InviteCode findUserPopulInviteCode(int userId) {
+//
+//		//获取系统当前的邀请码模式 0:关闭   1:开启一对一邀请(一码一用)    2:开启一对多邀请(一码多用,推广型)
+//    	int inviteCodeMode = SKBeanUtils.getAdminManager().getConfig().getRegisterInviteCode();
+//    	if(inviteCodeMode!=2) { //如果当前系统不是推广型邀请码模式,则不返回数据
+//    		return null;
+//    	}
+//
+//    	InviteCode inviteCode = SKBeanUtils.getAdminRepository().findUserInviteCode(userId);
+//    	if(inviteCode==null) { //如果用户没有一对多，推广型邀请码则生成一个
+//    		//当前邀请码标识号
+//        	long curInviteCodeNo = getUserManager().createInviteCodeNo(1);
+//    		String inviteCodeStr = RandomUtil.idToSerialCode(DateUtil.currentTimeSeconds()+curInviteCodeNo+1+RandomUtil.getRandomNum(100,1000)); //生成邀请码
+//    		inviteCode = new InviteCode(userId, inviteCodeStr, System.currentTimeMillis(), -1);
+//    		SKBeanUtils.getAdminRepository().savaInviteCode(inviteCode);
+//    	}
+//		return inviteCode;
+//
+//	}
+	
+	
+	
+	//查询邀请码列表
 	@Override
-	public InviteCode findUserPopulInviteCode(int userId) {
-		
-		//获取系统当前的邀请码模式 0:关闭   1:开启一对一邀请(一码一用)    2:开启一对多邀请(一码多用,推广型)
-    	int inviteCodeMode = SKBeanUtils.getAdminManager().getConfig().getRegisterInviteCode();
-    	if(inviteCodeMode!=2) { //如果当前系统不是推广型邀请码模式,则不返回数据
-    		return null;
-    	}
-		
-    	InviteCode inviteCode = SKBeanUtils.getAdminRepository().findUserInviteCode(userId);
-    	if(inviteCode==null) { //如果用户没有一对多，推广型邀请码则生成一个
-    		//当前邀请码标识号
-        	long curInviteCodeNo = getUserManager().createInviteCodeNo(1);
-    		String inviteCodeStr = RandomUtil.idToSerialCode(DateUtil.currentTimeSeconds()+curInviteCodeNo+1+RandomUtil.getRandomNum(100,1000)); //生成邀请码
-    		inviteCode = new InviteCode(userId, inviteCodeStr, System.currentTimeMillis(), -1);
-    		SKBeanUtils.getAdminRepository().savaInviteCode(inviteCode);
-    	}
-		return inviteCode;
-		
-	}
-	
-	
-	
-	//查询某个邀请码列表
-	@Override
-	public PageResult<InviteCode> inviteCodeList(int userId, String keyworld,short status,int page,int limit){
+	public PageResult<InviteCode> inviteCodeList(String keyworld,String defaultfriend,int page,int limit){
 			
 		    PageResult<InviteCode> result = new PageResult<InviteCode>();
-			Query<InviteCode> query = getDatastore().createQuery(InviteCode.class).filter("userId", userId);
-			
+			Query<InviteCode> query = getDatastore().createQuery(InviteCode.class);
+
 			if(keyworld!="" && keyworld!=null){
 				query.or(query.criteria("inviteCode").containsIgnoreCase(keyworld));
 			}
-			if(status>=0 && status<=1){
-				query.filter("status", status);
+			if(defaultfriend!="" && defaultfriend!=null ){
+				query.or(query.criteria("inviteCode").containsIgnoreCase(defaultfriend));
 			}
-			query.order("status");
 			result.setCount(query.count());
-			result.setData(query.asList( pageFindOption(page, limit, 1)) );
+			result.setData(query.asList( pageFindOption(page, limit, 1)));
 			return result;
 	}
 	
 	//删除邀请码
 	@Override
-	public boolean delInviteCode(int userId, String inviteCodeId){
-		    if(StringUtil.isEmpty(inviteCodeId)||userId==0) {
+	public boolean delInviteCode(String inviteCodeId){
+		    if(StringUtil.isEmpty(inviteCodeId)) {
 		    	throw new ServiceException("请求参数错误或无效");
 		    }
 		    ObjectId inviteCode_obId = new ObjectId(inviteCodeId); 
-		    return SKBeanUtils.getAdminRepository().delInviteCode(userId, inviteCode_obId);
+		    return SKBeanUtils.getAdminRepository().delInviteCode(inviteCode_obId);
 	}
 	
 	@Override

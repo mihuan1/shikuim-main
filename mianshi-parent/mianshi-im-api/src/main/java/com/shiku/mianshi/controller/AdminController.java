@@ -3260,11 +3260,11 @@ public class AdminController extends AbstractController {
         }
     }
 
-    //生成邀请码
+    //添加邀请码
     @RequestMapping(value = "/create/inviteCode")
-    public JSONMessage createInviteCode(@RequestParam(defaultValue = "20") int nums, @RequestParam int userId, @RequestParam short type) {
+    public JSONMessage createInviteCode(@RequestParam String inviteCode, @RequestParam String defaultfriend, @RequestParam String desc) {
         try {
-            SKBeanUtils.getAdminManager().createInviteCode(nums, userId);
+            SKBeanUtils.getAdminManager().createInviteCode(inviteCode, defaultfriend,desc);
             return JSONMessage.success();
         } catch (Exception e) {
             return JSONMessage.failure(e.getMessage());
@@ -3274,11 +3274,12 @@ public class AdminController extends AbstractController {
 
     // 邀请码列表
     @RequestMapping(value = "/inviteCodeList")
-    public JSONMessage inviteCodeList(@RequestParam(defaultValue = "0") int userId,
-                                      @RequestParam(defaultValue = "") String keyworld, @RequestParam(defaultValue = "-1") short state,
-                                      @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int limit) {
+    public JSONMessage inviteCodeList(@RequestParam(defaultValue = "") String keyworld,
+                                      @RequestParam(defaultValue = "") String defaultfriend,
+                                      @RequestParam(defaultValue = "0") int page,
+                                      @RequestParam(defaultValue = "10") int limit) {
         try {
-            PageResult<InviteCode> data = SKBeanUtils.getAdminManager().inviteCodeList(userId, keyworld, state, page,
+            PageResult<InviteCode> data = SKBeanUtils.getAdminManager().inviteCodeList(keyworld, defaultfriend,page,
                     limit);
             return JSONMessage.success(data);
         } catch (Exception e) {
@@ -3288,16 +3289,10 @@ public class AdminController extends AbstractController {
 
     // 删除邀请码
     @RequestMapping(value = "/delInviteCode")
-    public JSONMessage delInviteCode(@RequestParam(defaultValue = "") int userId,
-                                     @RequestParam(defaultValue = "") String inviteCodeId) {
+    public JSONMessage delInviteCode(@RequestParam(defaultValue = "") String inviteCodeId) {
 
         try {
-            // 权限校验
-            byte role = (byte) SKBeanUtils.getRoleManager().getUserRoleByUserId(ReqUtil.getUserId());
-            if (role != KConstants.Admin_Role.SUPER_ADMIN && role != KConstants.Admin_Role.ADMIN) {
-                return JSONMessage.failure("权限不足");
-            }
-            boolean data = SKBeanUtils.getAdminManager().delInviteCode(userId, inviteCodeId);
+            boolean data = SKBeanUtils.getAdminManager().delInviteCode(inviteCodeId);
             return JSONMessage.success(data);
         } catch (Exception e) {
             return JSONMessage.failure(e.getMessage());

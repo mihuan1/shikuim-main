@@ -88,13 +88,13 @@ public interface AdminManager {
 	
 	PageResult<SkOpenApp> openAppList(int status,int type,int pageIndex,int limit,String keyworld);
 	
-	void createInviteCode(int num,int userId);
+	void createInviteCode(String inviteCode,String defaultfriend,String desc);
 
-	PageResult<InviteCode> inviteCodeList(int userId, String keyworld, short status, int page, int limit);
+	PageResult<InviteCode> inviteCodeList(String keyworld, String defaultfriend,int page, int limit);
 
-	boolean delInviteCode(int userId, String inviteCodeId);
+	boolean delInviteCode( String inviteCodeId);
 
-	InviteCode findUserPopulInviteCode(int userId);
+//	InviteCode findUserPopulInviteCode(int userId);
 	
 	
 }
