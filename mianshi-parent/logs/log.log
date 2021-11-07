@@ -1,0 +1,39 @@
+02-20 02:00 - com.shiku.mianshi.Application  50    Starting Application on DESKTOP-11O6NAU with PID 12988 (F:\kehuziliao\catch\java\mianshi-parent\mianshi-parent\mianshi-im-api\target\classes started by czw in F:\kehuziliao\catch\java\mianshi-parent\mianshi-parent)
+02-20 02:00 - com.shiku.mianshi.Application  662   No active profile set, falling back to default profiles: default
+02-20 02:01 - org.apache.coyote.http11.Http11NioProtocol  179   Initializing ProtocolHandler ["http-nio-8092"]
+02-20 02:01 - org.apache.catalina.core.StandardService  179   Starting service Tomcat
+02-20 02:01 - org.apache.catalina.core.StandardEngine  179   Starting Servlet Engine: Apache Tomcat/8.5.13
+02-20 02:01 - org.apache.catalina.core.AprLifecycleListener  179   The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: E:\ruanjian\jdk1.8\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;E:\ruanjian\xftp\;E:\ruanjian\xshell\;C:\Windows\System64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;E:\ruanjian\jdk1.8\bin;E:\ruanjian\node\;E:\ruanjian\Git\cmd;E:\ruanjian\erl9.2\bin;E:\ruanjian\rabbitmq\rabbitmq_server-3.7.5\sbin;C:\WINDOWS\System32\OpenSSH\;E:\ruanjian\android-sdk_r24.4.1-windows\android-sdk-windows\platform-tools;E:\ruanjian\Appium\node_modules\.bin;E:\ruanjian\android-sdk_r24.4.1-windows\android-sdk-windows\tools;E:\ruanjian\QuickTime\QTSystem\;C:/Program Files/JetBrains/IntelliJ IDEA 2019.3.3/plugins/maven/lib/maven3\bin;C:\Users\czw\AppData\Roaming\npm;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;;E:\ruanjian\Fiddler;.
+02-20 02:01 - org.apache.jasper.servlet.TldScanner  179   At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02-20 02:01 - o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]  179   Initializing Spring embedded WebApplicationContext
+02-20 02:01 - org.apache.catalina.core.StandardService  179   Stopping service Tomcat
+02-20 02:02 - com.shiku.mianshi.Application  50    Starting Application on DESKTOP-11O6NAU with PID 7784 (F:\kehuziliao\catch\java\mianshi-parent\mianshi-parent\mianshi-im-api\target\classes started by czw in F:\kehuziliao\catch\java\mianshi-parent\mianshi-parent)
+02-20 02:02 - com.shiku.mianshi.Application  662   No active profile set, falling back to default profiles: default
+02-20 02:02 - org.apache.coyote.http11.Http11NioProtocol  179   Initializing ProtocolHandler ["http-nio-8092"]
+02-20 02:02 - org.apache.catalina.core.StandardService  179   Starting service Tomcat
+02-20 02:02 - org.apache.catalina.core.StandardEngine  179   Starting Servlet Engine: Apache Tomcat/8.5.13
+02-20 02:02 - org.apache.catalina.core.AprLifecycleListener  179   The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: E:\ruanjian\jdk1.8\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;E:\ruanjian\xftp\;E:\ruanjian\xshell\;C:\Windows\System64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;E:\ruanjian\jdk1.8\bin;E:\ruanjian\node\;E:\ruanjian\Git\cmd;E:\ruanjian\erl9.2\bin;E:\ruanjian\rabbitmq\rabbitmq_server-3.7.5\sbin;C:\WINDOWS\System32\OpenSSH\;E:\ruanjian\android-sdk_r24.4.1-windows\android-sdk-windows\platform-tools;E:\ruanjian\Appium\node_modules\.bin;E:\ruanjian\android-sdk_r24.4.1-windows\android-sdk-windows\tools;E:\ruanjian\QuickTime\QTSystem\;C:/Program Files/JetBrains/IntelliJ IDEA 2019.3.3/plugins/maven/lib/maven3\bin;C:\Users\czw\AppData\Roaming\npm;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;;E:\ruanjian\Fiddler;.
+02-20 02:02 - org.apache.jasper.servlet.TldScanner  179   At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02-20 02:02 - o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]  179   Initializing Spring embedded WebApplicationContext
+02-20 02:03 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+02-20 02:03 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+02-20 02:03 - cn.xyz.rocketmq.UserStatusConsumer  45     MQ config nameAddr ===> localhost:9876
+02-20 02:03 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+02-20 02:03 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+02-20 02:03 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+02-20 02:03 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+02-20 02:03 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+02-20 02:03 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+02-20 02:03 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+02-20 02:03 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+02-20 02:03 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+02-20 02:03 - cn.xyz.mianshi.scheduleds.CommTask  105   ====定时任务开启中=======》
+02-20 02:03 - org.apache.coyote.http11.Http11NioProtocol  179   Starting ProtocolHandler ["http-nio-8092"]
+02-20 02:03 - org.apache.tomcat.util.net.NioSelectorPool  179   Using a shared selector for servlet write/read
+02-20 02:03 - com.shiku.mianshi.Application  59    Started Application in 96.882 seconds (JVM running for 100.017)
+02-20 02:03 - o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]  179   Initializing Spring FrameworkServlet 'dispatcherServlet'
+02-20 02:03 - cn.xyz.mianshi.utils.InitializationData  92    >>>>>>>>>>>>>>> 异常信息数据初始化完成  <<<<<<<<<<<<<
+02-20 02:03 - com.shiku.mianshi.Application  70    启动成功  当前版本编译时间  =====》 null
+02-20 02:03 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/
+02-20 02:03 - com.shiku.mianshi.filter.AuthorizationFilter  101   ************************
+02-20 02:03 - com.shiku.mianshi.filter.AuthorizationFilter  224   不包含请求令牌

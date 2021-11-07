@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>用户管理</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet" media="all">
+
+<body>
+<div class="layui-row">
+	<div class="layui-col-md1">&nbsp;</div>
+	<input id="pageCount" type="" name="" style="display: none">
+	<div id="userList" class="layui-col-md10">
+		<div class="user_btn_div" style="margin-top: 2%">
+			<input type="text" name="" class="layui-input nickName" style="width: 15%;display: inline" placeholder="用户昵称">
+			<form class="layui-form" action="" style="float: left">
+				<div class="layui-form-item">
+					<select id="status" class="layui-select">
+						<option value="">请选择在线状态</option>
+						<option value="1">在线</option>
+						<option value="0">离线</option>
+					</select>
+				</div>
+			</form>
+
+			<button class="layui-btn search_user">搜索</button>
+
+			<div class="layui-form-item timeComponent" style="display: initial;">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="padding: 9px 8px;width: 150px">注册时间范围：</label>
+					<div class="layui-input-inline">
+						<input class="layui-input" id="userListMsgDate" placeholder="请选择时间范围" type="text">
+					</div>
+				</div>
+				<button onclick="User.addUser()" class="layui-btn btn_addUser">新增用户</button>
+				<button onclick="User.autoCreateUser()" class="layui-btn btn_createUser">生成机器人</button>
+
+				<button class="layui-btn export_rand_user">导出</button>
+			</div>
+
+
+		</div>
+
+
+		<div id="user_table" class="layui-card" style="margin-top: 1%">
+			<div class="layui-card-header"><p>用户列表</p></div>
+			<div class="layui-card-body">
+				<table id="user_list" lay-filter="user_list" style="table-layout:fixed;word-break:break-all;" >
+
+				</table>
+			</div>
+		</div>
+
+		<!-- 随机生成用户 -->
+		<div id="autoCreateUser" class="layui-card" style="margin-top: 1%;display: none">
+			<div class="layui-card-header">随机生成用户</div>
+			<table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+				<tr>
+					<td>随机生成的用户数量</td>
+					<td><input id="userNum" type="" name="" class="layui-input" placeholder="请输入数量" onkeyup="value=value.replace(/[^\d]/g,'')" ></td>
+				</tr>
+			</table>
+			<button onclick="User.commit_autoCreateUser()" class="layui-btn">提交</button>
+			<button onclick="User.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+		</div>
+
+		<!-- 导出用户 -->
+		<div id="exportUser" class="layui-card" style="margin-top: 1%;display: none">
+			<div class="layui-card-header">导出用户</div>
+			<table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+				<tr>
+					<td>用户类型</td>
+					<td>
+						<select id="userType" class="layui-select">
+							<option value="1">普通用户</option>
+							<option value="3">随机用户(系统自动生成)</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<button onclick="User.commit_exportUser()" class="layui-btn">导出</button>
+			<button onclick="User.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+		</div>
+
+		<!-- 好友管理 -->
+		<div id="myFriends" class="layui-card" style="margin-top: 1%;display: none;">
+			<div class="layui-card-header">用户 “<span type="" class="disUserName"></span>” 的好友列表：</div>
+			<div class="layui-card-body">
+				<table id="myFriends_table" lay-filter="myFriends_table">
+
+				</table>
+				<button onclick="User.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+			</div>
+		</div>
+		<!-- 邀请码 -->
+		<div id="myInviteCode" class="layui-card" style="margin-top: 3%; display: none;padding:20px 30px; ">
+
+			<div class="layui-form" >
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<input  type="text"  class="layui-input invite_code_name"  placeholder="邀请码" style="width:150px;">
+					</div>
+
+					<div class="layui-inline">
+						<div class="layui-input-inline">
+							<select   class="inviteCodeStatus" lay-search="">
+								<option value="-1">全部</option>
+								<option value="0">未使用</option>
+								<option value="1">已使用</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="layui-inline">
+						<button  class="layui-btn search_inviteCode">搜索</button>
+					</div>
+
+					<div class="layui-inline" style="margin-left: 20px; ">
+						<button  class="layui-btn btn_create_register_InviteCode">生成注册型邀请码</button>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="layui-card-header">用户 “<span type="" class="disUserName"></span>” 的邀请码：</div>
+			<div class="layui-card-body">
+				<table id="myInviteCode_table" lay-filter="myInviteCode_table">
+
+				</table>
+				<button onclick="User.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+			</div>
+		</div>
+
+		<!-- 聊天记录 -->
+		<div id="friendsChatRecord" class="layui-card" style="margin-top: 1%;display: none;">
+			<div class="layui-card-header">聊天记录详情</div>
+			<div class="layui-card-body">
+				<table id="friendsChatRecord_table" lay-filter="friendsChatRecord_table">
+
+				</table>
+				<button onclick="User.button_back_chatRecord()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+			</div>
+		</div>
+
+		<!-- 多选操作 -->
+		<script type="text/html" id="toolbarUsers">
+			<div class="layui-btn-container">
+				<button id="checkDeleteUsersId" class="layui-btn layui-btn-sm checkDeleteUsers" onclick="User.checkDeleteUsers()" lay-event="delete">多选删除</button>
+			</div>
+		</script>
+
+		<script type="text/html" id="toolbarUsersFriends">
+			<div class="layui-btn-container">
+				<button class="layui-btn layui-btn-sm checkDeleteUsersFriends" onclick="User.checkDeleteUsersFriends()" lay-event="delete">多选删除</button>
+				<button id="friendsInfo_y" class="layui-btn layui-btn-sm friendsInfo" onclick="User.exportExcelFriends()">导出好友明细</button>
+
+			</div>
+		</script>
+
+		<script type="text/html" id="toolbarUsersChatRecord">
+			<div class="layui-btn-container">
+				<button class="layui-btn layui-btn-sm checkDeleteUsersFriends" onclick="User.toolbarUsersChatRecord()" lay-event="delete">多选删除</button>
+			</div>
+		</script>
+
+
+		<!--操作-->
+		<script type="text/html" id="userListBar">
+			{{#  if(d.userId < 10100){ }}
+			<a class="layui-btn layui-btn-disabled layui-btn-xs delete" lay-event="delete">删除</a>
+			{{#  }else{  }}
+			<a class="layui-btn layui-btn-danger layui-btn-xs delete" lay-event="delete">删除</a>
+			{{#  } }}
+			{{#  if(d.userId < 10100){ }}
+			<a class="layui-btn layui-btn-disabled layui-btn-xs update" lay-event="update">修改</a>
+			{{#  }else{  }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs update" lay-event="update">修改</a>
+			{{#  } }}
+			{{#  if(d.userId < 10100){ }}
+			<a class="layui-btn layui-btn-disabled layui-btn-xs randUser" lay-event="randUser">重置密码</a>
+			{{#  }else{  }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs randUser" lay-event="randUser">重置密码</a>
+			{{#  } }}
+			{{#  if(d.userId < 10100){ }}
+			{{#  if(d.status == 1){ }}
+			<a class="layui-btn layui-btn-disabled layui-btn-xs locking" lay-event="locking">锁定</a>
+			{{#  }else{  }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs cancelLocking" lay-event="cancelLocking">解锁</a>
+			{{#  } }}
+			{{#  }else{  }}
+			{{#  if(d.status == 1){ }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs locking" lay-event="locking">锁定</a>
+			{{#  }else{  }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs cancelLocking" lay-event="cancelLocking">解锁</a>
+			{{#  } }}
+			{{#  } }}
+
+			<a class="layui-btn layui-btn-primary layui-btn-xs recharge" lay-event="recharge">充值</a>
+			<a class="layui-btn layui-btn-primary layui-btn-xs handCash" lay-event="handCash">手工提现</a>
+			<a class="layui-btn layui-btn-primary layui-btn-xs bill" lay-event="bill">账单</a>
+			<a class="layui-btn layui-btn-primary layui-btn-xs friends" lay-event="friends">好友管理</a>
+			{{# if(localStorage.getItem("registerInviteCode")!="0"){ }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs createInviteCode" lay-event="inviteCode">邀请码</a>
+			{{# } }}
+
+		</script>
+
+		<script type="text/html" id="delFriends">
+			{{#  if(d.status == -1){ }}
+			<a class="layui-btn layui-btn-disabled layui-btn-xs deleteFriends" lay-event="deleteFriends">删除好友</a>
+			{{#  }else{  }}
+			<a class="layui-btn layui-btn-danger layui-btn-xs deleteFriends" lay-event="deleteFriends">删除好友</a>
+			{{#  } }}
+
+			<a class="layui-btn layui-btn-primary layui-btn-xs chatRecord" lay-event="chatRecord">聊天记录</a>
+
+			{{#  if(d.status == -1){ }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs moveBlacklist" lay-event="moveBlacklist">移除黑名单</a>
+			{{#  }else{  }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs joinBlacklist" lay-event="joinBlacklist">加入黑名单</a>
+			{{#  } }}
+		</script>
+
+		<script type="text/html" id="delChartRecord">
+			<a class="layui-btn layui-btn-danger layui-btn-xs deletechatRecord" lay-event="deletechatRecord">删除</a>
+		</script>
+
+		<!--邀请码相关操作-->
+		<script type="text/html" id="inviteCodeBar">
+			{{#  if(d.totalTimes==1){ }}
+			<a class="layui-btn layui-btn-danger layui-btn-xs delete" lay-event="del_inviteCode">删除</a>
+			{{# }else if(d.totalTimes==-1){ }}
+			<a class="layui-btn layui-btn-xs" lay-event="del_inviteCode">禁用</a>
+			{{# } }}
+		</script>
+
+		<script type="text/html" id="billOperation">
+			<a class="layui-btn layui-btn-danger layui-btn-xs billDetails" lay-event="billDetails">账单详情</a>
+		</script>
+
+	</div>
+
+	<!-- 添加用户 -->
+	<div id="addUser" class="layui-col-md10" style="display: none">
+		<div id="addUserTitle" class="layui-card-header">新增用户</div>
+		<table class="layui-table">
+			<thead>
+			<tr>
+				<td width="20%">用户参数</td>
+				<td>用户信息</td>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td>用户昵称</td>
+				<td><input id="userId" type="" name="" style="display: none"><input id="userName" type="" name="" class="layui-input" ></td>
+			</tr>
+			<tr>
+				<td>手机号码</td>
+				<td><input id="telephone" type="" name="" class="layui-input"></td>
+			</tr>
+			<tr class="password">
+				<td>密码</td>
+				<td><input id="password" type="" name="" class="layui-input"></td>
+			</tr>
+			<tr>
+				<td>出生日期</td>
+				<!--<td><input id="birthday" type="" name="" class="layui-input"></td>-->
+				<td>
+					<div class="layui-form">
+						<div class="layui-input-inline">
+							<input class="layui-input" id="birthday" placeholder="yyyy-MM-dd HH:mm:ss" type="text">
+						</div>
+					</div>
+				</td>
+
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td>
+					<form class="layui-form" action="" style="">
+						<div class="layui-form-item">
+							<select id="sex" class="layui-select" style="width: 100%">
+								<option selected="selected" value="">请选择</option>
+								<option value="0">女</option>
+								<option value="1">男</option>
+							</select>
+						</div>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td>是否设置为公众号</td>
+				<td>
+					<form class="layui-form" action="" style="">
+						<div class="layui-form-item">
+							<select id="isPublic" class="layui-select" style="width: 100%">
+								<option selected="selected" value="">请选择</option>
+								<option value="0">否</option>
+								<option value="2">是</option>
+								<!--<option value="1">否</option>-->
+							</select>
+						</div>
+					</form>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+
+		<div style="display: inline;">
+			<button onclick="User.commit_addUser()" class="layui-btn">提交</button>
+			<button onclick="User.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/console/js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="./js/core.js"></script>
+<script type="text/javascript" src="./js/tripledes.js"></script>
+<script type="text/javascript" src="/pages/console/js/userList.js"></script>
+<!-- 日期选择器 -->
+<script>
+	layui.use('laydate', function() {
+		var laydate = layui.laydate;
+		//日期时间选择器
+		laydate.render({
+			elem: '#birthday'
+			,type: 'datetime'
+			,max: 0 //最大时间
+		});
+	})
+
+</script>
+
+</body>
+</html>

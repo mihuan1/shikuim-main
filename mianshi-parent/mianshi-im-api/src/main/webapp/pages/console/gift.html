@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>礼物管理</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+<body>
+	<div class="layui-row">
+		<div id="back" class="layui-col-md1">&nbsp;</div>
+		<input id="pageCount" type="" name="" style="display: none">
+		<div id="gift_list" class="layui-col-md10">
+			<div class="gift_btn_div" style="margin-top: 2%">
+				<input id="giftName" type="text" name="" class="layui-input" style="width: 15%;display: inline" placeholder="礼物名称">
+				<button onclick="Gift.findGiftList()" class="layui-btn">搜索</button>
+				<button onclick="Gift.addGift()" class="layui-btn add_gift">新增礼物</button>
+			</div>
+			<div class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">礼物列表</div>
+				<div class="layui-card-body">
+					<table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+						<thead>
+							<tr>
+								<td>礼物名称</td>
+								<td>礼物url</td>
+								<td>礼物价格</td>
+								<td>礼物类型</td>
+								<td>操作</td>
+							</tr>
+						</thead>
+						<tbody id="giftList_table">
+							
+						</tbody>
+					</table>
+					<div id="laypage" class="layui-box layui-laypage layui-laypage-default">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 新增礼物-->
+		<div id="addGift" class="layui-col-md10" style="display: none;">
+			<div class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">新增礼物</div>
+				 <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+				 	<tr>
+				 		<td>礼物名称</td>
+				 		<td><input id="add_giftName" type="text" class="layui-input"></td>
+				 	</tr>
+				 	<tr>
+				 		<td>礼物url</td>
+				 		<td><input id="giftUrl" type="text" class="layui-input"></td>
+				 	</tr>
+				 	<tr>
+				 		<td>礼物价格</td>
+				 		<td><input id="giftPrice" type="text" class="layui-input"></td>
+				 	</tr>
+				 	<tr>
+				 		<td>礼物类型</td>
+				 		<td>
+				 			<select id="giftType" class="layui-select">
+				 				<option value="1">1</option>
+				 				<option value="2">2</option>
+				 			</select>
+				 		</td>
+				 	</tr>
+				 </table>
+				 <button onclick="Gift.commit_addGift()" class="layui-btn">提交</button>
+				 <button onclick="Gift.giftList(0)" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+	<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+	<script type="text/javascript" src="./js/common.js"></script>
+	<script type="text/javascript" src="./js/console_ui.js"></script>
+	<script type="text/javascript" src="/pages/console/js/gift.js"></script>
+
+</body>
+</html>

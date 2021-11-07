@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>朋友圈下网站管理</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+
+<body>
+
+<div class="layui-row">
+		<div id="back" class="layui-col-md1">&nbsp;</div>
+		<div id="friendsterWebsite_div" class="layui-col-md10">
+			<div class="liveRoom_btn_div" style="margin-top: 2%">
+				<button onclick="FriendsterWebsite.addFriendsterWebsite()" class="layui-btn btn_addLive">新增自定网站</button>
+			</div>
+			<div id="friendsterWebsiteList" class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">自定网站列表</div>
+				<div class="layui-card-body">
+					<table id="friendsterWebsite_table" lay-filter="friendsterWebsite_table"></table>
+				</div>
+			</div>
+		</div>
+		<div id="addFriendsterWebsite" class="layui-col-md10" style="display: none;">
+			<div class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">新增自定网站</div>
+				<div class="layui-card-body">
+					<table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+						<tr>
+							<td>网站标题</td>
+							<td><input id="title" type="text" name="" class="layui-input"></td>
+						</tr>
+						<tr>
+							<td>网站网址</td>
+							<td><input id="url" type="text" name="" class="layui-input"></td>
+						</tr>
+						<tr>
+							<td>网站图标</td>
+							<td>
+								<button class="layui-btn" onclick="FriendsterWebsite.selectCover()">选择图标</button>
+								<span id="friendsterWebsiteImage"></span>
+								<form id="uploadFriendsterWebsiteImage" name="uploadFriendsterWebsiteImage" action="" method="post" enctype="multipart/form-data" style="display: none;">
+									<input id="icon" type="file" name="file" onchange="FriendsterWebsite.uploadImg()">
+								</form>
+							</td>
+						</tr>
+					</table>
+					<button onclick="FriendsterWebsite.commit_addFriendsterWebsite()" class="layui-btn addLiveRoombtn">提交</button>
+					<button onclick="FriendsterWebsite.btn_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--操作-->
+	<script type="text/html" id="friendsterWebsiteListBar">
+		<a class="layui-btn layui-btn-danger layui-btn-xs delete" lay-event="delete">删除</a>
+	</script>
+
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/common/jquery/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.form.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="/pages/console/js/friendsterWebsite.js"></script>
+</body>
+</html>

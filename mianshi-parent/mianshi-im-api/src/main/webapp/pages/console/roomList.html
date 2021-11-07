@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>群组管理</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet"  media="all">
+<body>
+
+		<!-- 群组消息统计 -->
+		<div id="groupMsgChart" style="display: none;">
+			<div class="layui-col-sm12">
+	      		<div class="layui-card">
+		        <div class="layui-card-header" style="height: 52px;">
+		          	<div class="layui-form" style="min-width: 400px;max-height: 30px;display: inline-flex; margin-top: 8px;">
+					  <div class="layui-form-item">
+					    <div class="layui-inline">
+					      <label class="layui-form-label" style="padding: 9px 8px">时间范围</label>
+					      <div class="layui-input-inline">
+					        <input class="layui-input" id="groupMsgDate" placeholder=" - " type="text">
+					      </div>
+					    </div>
+					  </div>
+				  	<div class="layui-form-item" >
+					    <div class="layui-inline" >
+						      <div class="layui-input-inline" style="width: 80px;">
+						        <select class="groupMsg_time_unit" name="timeItem"  lay-filter="groupMsg_time_unit">
+								        <option value="1">月</option>
+								        <option value="2" selected>天</option>
+								        <option value="3">小时</option>
+								        <option value="4">分钟</option>
+							     </select>
+						      </div>
+					    </div>
+					 </div>
+					</div>
+		        </div>
+		        <div class="layui-card-body">
+		          <div class="layui-row">
+		          
+		            <div class="layui-col-sm12">
+		                <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade" lay-filter="LAY-index-pagetwo" lay-anim="fade" style="width: 100%;">
+		                  	<div id="groupMsgCount"  style="width: 650px; height: 350px;"></div>
+		                </div>
+		            </div>
+		            
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+
+		</div>
+
+	<div class="layui-row">
+		<!-- <div class="layui-fluid"> -->
+			<!-- <div class="layui-row layui-col-space15"> -->
+				<div class="layui-col-md1">&nbsp;</div>
+				<input id="save_roomId" type="" name="" style="display: none">
+				<div id="roomList" class="layui-col-md10" style="">
+					<div class="room_btn_div" style="margin-top: 2%">
+						<input  type="text" name="" class="layui-input group_name" style="width: 15%;display: inline" placeholder="群组名称">
+						<input  type="text" name="" class="layui-input leastNumbers" style="width: 15%;display: inline" placeholder="显示超出此人数的群组">
+						<button  class="layui-btn search_group">搜索</button>
+						<button onclick="Room.addRoom()" class="layui-btn btn_addRoom">新增群组</button>
+						<input type="text" name="" class="layui-input keyWord" style="width: 15%;display: none" placeholder="关键词">
+						<button  class="layui-btn search_keyWord" style="display: none">搜索</button>
+						<button  class="layui-btn deleteMonthLogs" style="display: none">删除一个月之前的所有聊天记录</button>
+						<button  class="layui-btn deleteThousandAgoLogs" style="display: none">删除十万条之前的所有聊天记录</button>
+						
+					</div>
+					<div id="room_table_div" class="layui-card" style="margin-top: 1%">
+						<div class="layui-card-header"><p>群组列表</p></div>
+						<div class="layui-card-body">
+							<table id="room_table" lay-filter="room_table"></table>
+						</div>
+					</div>
+					<!--<div id="room_table_div" class="layui-card" style="margin-top: 2%; background-color: #f2f2f2">
+						<table id="room_table" lay-filter="room_table"></table>
+					</div> -->
+
+					<!-- 群组消息模块 -->
+					<div id="roomMsgList" class="layui-card" style="margin-top:1%;display: none">
+				    	<div class="layui-card-header">群组消息</div>
+						<div class="layui-card-body">
+							<table id="room_msg" lay-filter="room_msg" >
+							</table>
+							<button onclick="Room.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+						</div>
+					</div>
+
+					<!-- 成员管理 -->
+					<div id="roomUserList" class="layui-card" style="display: none">
+					
+				    	<div class="layui-card-header">成员管理</div>
+						<div class="layui-card-body">
+							<table id="room_user" lay-filter="room_user">
+								
+							</table>
+							
+							<button onclick="Room.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+						</div>
+					</div>
+					<!-- 群发消息 -->
+					<div id="pushToRoom" class="layui-card" style="display: none">
+						<div class="layui-card-header">发送消息</div>
+						<div class="layui-card-body">
+							<table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+								<tr>
+									<td>群组Id</td>
+									<td><input id="push_roomJid" type="text" class="layui-input"></td>
+								</tr>
+								<tr>
+									<td>发送者</td>
+									<td>
+										<select id="push_sender" class="layui-select">
+											
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>消息内容</td>
+									<td>
+										<textarea id="push_context" class="layui-textarea" placeholder="请输入内容"></textarea>
+									</td>
+								</tr>
+							</table>
+							<button onclick="Room.commit_push()" class="layui-btn">发送</button>
+							<button onclick="Room.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+						</div>
+					</div>
+					<!-- 随机添加用户 -->
+					<div id="addRandomUser" class="layui-card" style="display: none">
+						<div class="layui-card-header">随机添加用户</div>
+						<div class="layui-card-body">
+							<table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+								<tr>
+									<td>群组Id</td>
+									<td><p id="roomId"></p></td>
+								</tr>
+								<tr>
+									<td>添加用户数量</td>
+									<td><input id="addRandomUserSum" type="" onkeyup="value=value.replace(/[^\d]/g,'')" class="layui-input" placeholder="请输入添加数量"></td>
+								</tr>
+							</table>
+							<button onclick="Room.commit_addRandomUser()" class="layui-btn" style="margin-top: 1%">提交</button>
+							<button onclick="Room.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="margin-top: 1%">&lt;&lt;返回</button>
+						</div>
+					</div>
+					<!-- 修改群详情 -->
+					<div id="updateRoom" class="layui-card" style="display: none">
+						<div class="layui-card-header">修改群详情</div>
+						<!--<div class="layui-card-body">-->
+						<form class="layui-form" action="">
+							<table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+								<tr>
+									<td>群组Id</td>
+									<td id="update_roomId"></td>
+								</tr>
+								<tr>
+									<td>群组Jid</td>
+									<td id="update_roomJid"></td>
+								</tr>
+								<tr>
+									<td>群组名称</td>
+									<td>
+										<input id="name" type="text" class="layui-input">
+										<input id="updateRoom_id" type="text" name="" style="display: none;">
+									</td>
+								</tr>
+								<tr>
+									<td>群组描述</td>
+									<td><input id="desc" type="text" class="layui-input"></td>
+								</tr>
+								<tr>
+									<td>群组人数</td>
+									<td><input id="maxUserSize" type="text" class="layui-input"></td>
+								</tr>
+								<tr>
+									<td>私密群组</td>
+									<td>
+										<select id="isLook" class="layui-select" style="width: 50%" lay-filter="test">
+											<option value="0">公开群</option>
+											<option value="1">隐私群</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>显示已读人数</td>
+									<td>
+										<select id="showRead" class="layui-select" lay-filter="test">
+											<option value="0">关闭</option>
+											<option value="1">开启</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>群组邀请确认</td>
+									<td>
+										<select id="isNeedVerify" class="layui-select" lay-filter="test">
+											<option value="0">关闭</option>
+											<option value="1">开启</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>群组减员通知</td>
+									<td>
+										<select id="isAttritionNotice" class="layui-select" lay-filter="test">
+											<option value="0">关闭</option>
+											<option value="1">开启</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>允许显示群成员</td>
+									<td>
+										<select id="showMember" class="layui-select" lay-filter="test">
+											<option value="1">开启</option>
+											<option value="0">关闭</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>允许发送群名片</td>
+									<td>
+										<select id="allowSendCard" class="layui-select" lay-filter="test">
+											<option value="1">开启</option>
+											<option value="0">关闭</option>
+										</select>
+									</td>
+								</tr>
+								<!--<tr>
+									<td>允许群主修改属性</td>
+									<td>
+										<select id="allowHostUpdate" class="layui-select" lay-filter="test">
+											<option value="1">开启</option>
+											<option value="0">关闭</option>
+										</select>
+									</td>
+								</tr>-->
+								<tr>
+									<td>允许普通成员邀请好友</td>
+									<td>
+										<select id="allowInviteFriend" class="layui-select" lay-filter="test">
+											<option value="1">开启</option>
+											<option value="0">关闭</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>允许普通成员上传</td>
+									<td>
+										<select id="allowUploadFile" class="layui-select" lay-filter="test">
+											<option value="1">开启</option>
+											<option value="0">关闭</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>允许普通成员发起会议</td>
+									<td>
+										<select id="allowConference" class="layui-select" lay-filter="test">
+											<option value="1">开启</option>
+											<option value="0">关闭</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>允许普通成员发起讲课</td>
+									<td>
+										<select id="allowSpeakCourse" class="layui-select" lay-filter="test">
+											<option value="1">开启</option>
+											<option value="0">关闭</option>
+										</select>
+									</td>
+								</tr>
+							</table>
+							<!--<button onclick="Room.commit_update()" class="layui-btn">保存</button>-->
+							<button onclick="Room.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+						<!--</div>-->
+						</form>
+
+					</div>
+				</div>
+
+				<!-- 新增群组模块 -->
+				<div id="addRoom" class="layui-card" style="display: none;">
+					<div class="layui-card" style="margin-top: 1%">
+						<div class="layui-card-header">新增群组</div>
+						<div class="layui-card-body">
+							<table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+								<!-- <tr>
+									<td>群组信息</td>
+								</tr> -->
+								<tr>
+									<td>群名称</td>
+									<td><input id="add_roomName" type="text" name="" class="layui-input" placeholder="请输入群组名称"></td>
+								</tr>
+								<tr>
+									<td>房间说明</td>
+									<td><input id="add_desc" type="text" name="" class="layui-input" placeholder="请输入房间说明"></td>
+								</tr>
+							</table>
+							<button onclick="Room.commit_addRoom()" class="layui-btn">新增</button>
+							<button onclick="Room.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+	</div>
+	<!--操作-->
+	<script type="text/html" id="roomListBar">
+		<a class="layui-btn layui-btn-primary layui-btn-xs chatRecord" lay-event="chatRecord">聊天记录</a>
+		<a class="layui-btn layui-btn-primary layui-btn-xs member" lay-event="member">成员管理</a>
+		<a class="layui-btn layui-btn-primary layui-btn-xs randUser" lay-event="randUser">添加机器人</a>
+	    <a class="layui-btn layui-btn-primary layui-btn-xs modifyConf" lay-event="modifyConf">修改配置</a>
+        <a class="layui-btn layui-btn-primary  layui-btn-xs msgCount" lay-event="msgCount">消息统计</a>
+        <a class="layui-btn layui-btn-primary layui-btn-xs sendMsg" lay-event="sendMsg">发送消息</a>
+		{{#  if(d.s == 1){ }}
+		<a class="layui-btn layui-btn-primary layui-btn-xs locking" lay-event="locking">锁定</a>
+		{{#  }else{  }}
+		<a class="layui-btn layui-btn-primary layui-btn-xs cancelLocking" lay-event="cancelLocking">解锁</a>
+		{{#  } }}
+       	<a class="layui-btn layui-btn-xs layui-btn-danger del" lay-event="del">删除</a>
+	</script>
+
+	<script type="text/html" id="roomMemberListBar">
+		<a class="layui-btn layui-btn-danger layui-btn-xs deleteMember" lay-event="deleteMember">移出</a>
+	</script>
+
+	<script type="text/html" id="roomMessageListBar">
+		<a class="layui-btn layui-btn-danger layui-btn-xs deleteMessage" lay-event="deleteMessage">删除</a>
+	</script>
+	<!--多选删除群组-->
+	<script type="text/html" id="toolbarGroupMessageList">
+		<div class="layui-btn-container">
+			<button class="layui-btn layui-btn-sm groupChatdelete" onclick="Room.toolbarGroupMessageList()" lay-event="GroupChatdelete">多选删除</button>
+		</div>
+	</script>
+	<script type="text/html" id="toolbarMembers">
+		<div class="layui-btn-container">
+			<!--多选移出群成员-->
+			<button class="layui-btn layui-btn-sm checkDeleteUsersFriends" onclick="Room.toolbarMembers()" lay-event="GroupChatdelete">多选移出群成员</button>
+			<!--多选删除群成员-->
+			<button class="layui-btn layui-btn-sm checkDeleteMember" onclick="Room.toolbarDeleteMembers()" lay-event="GroupChatdeleteMember">多选删除群成员</button>
+			<!--群成员导出-->
+			<button class="layui-btn layui-btn-sm exportFriends" onclick="Room.exprotExcelByMember()" lay-event="GroupChatdelete">导出群成员</button>
+			<!--邀请加入群组-->
+			<button class="layui-btn layui-btn-sm inviteJoinRoom" onclick="Room.inviteJoinRoom()" lay-event="inviteJoinRoom">邀请加入群组</button>
+		</div>
+	</script>
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="./js/core.js"></script>
+<script type="text/javascript" src="./js/tripledes.js"></script>
+<script type="text/javascript" src="./js/roomList.js"></script>
+<script type="text/javascript" src="/pages/common/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="/pages/common/echarts/shine.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>付款码付款记录</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+
+<body>
+	<div class="layui-row">
+		<div id="back" class="layui-col-md1">&nbsp;</div>
+		<input id="pageCount"  name="" style="display: none">
+		<div id="paymentCode_div" class="layui-col-md10">
+			<div class="" style="margin-top: 2%">
+				<input id="pageCount" type="" name="" style="display: none">
+				<input type="text" name="" class="layui-input paymentCode_keyword" style="width: 15%;display: inline" placeholder="付款用户Id">
+				<button class="layui-btn  search_paymentCode">搜索</button>
+				<div class="layui-form-item timeComponent" style="display: inline">
+					<div class="layui-inline">
+						<label class="layui-form-label" style="padding: 9px 8px;width: 150px">付款的时间范围：</label>
+						<div class="layui-input-inline">
+							<input class="layui-input" id="paymentCodeDate" placeholder="请选择时间范围" type="text">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 付款记录 -->
+			<div id="paymentCodeList" class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">付款记录</div>
+				<div class="layui-card-body">
+					<table id="paymentCode_table" lay-filter="paymentCode_table"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/console/js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="/pages/console/js/paymentCode.js"></script>
+</body>
+</html>

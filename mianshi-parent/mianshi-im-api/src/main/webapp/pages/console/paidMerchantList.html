@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>支付平台商户管理</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet" media="all">
+
+<body>
+	<div class="layui-row">
+		<div class="layui-col-md1">&nbsp;</div>
+		<input id="pageCount" type="" name="" style="display: none">
+		<div id="merchantList" class="layui-col-md10">
+			<div class="user_btn_div" style="margin-top: 2%">
+				<button onclick="Merchant.addMerchant()" class="layui-btn btn_addPaidMerchant">新增商户</button>
+			</div>
+
+			<div id="merchant_list_table" class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header"><p>商户列表</p></div>
+				<div class="layui-card-body">
+					<table id="merchant_list_table_body" lay-filter="merchant_list_table" style="table-layout:fixed;word-break:break-all;" >
+						
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<!-- 添加用户 -->
+		<div id="addMerchant" class="layui-col-md10" style="display: none">
+			<div id="addMerchantTitle" class="layui-card-header">新增商户</div>
+			<table class="layui-table">
+				<thead>
+					<tr>
+						<td width="20%">商户参数</td>
+						<td>商户信息</td>
+					</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>商户id</td>
+					<td><input id="vendorMerchantId" type="" name="" class="layui-input"></td>
+				</tr>
+				<tr>
+					<!--alipay:支付宝,tenpay:财付通,qqpay:QQ钱包,wxpay:微信支付-->
+					<td>支付方式</td>
+					<td>
+						<form class="layui-form" action="" style="">
+							<div class="layui-form-item">
+								<select id="payType" class="layui-select" style="width: 100%">
+									<option value="">请选择</option>
+									<option selected="selected"  value="alipay">支付宝</option>
+									<!--<option value="tenpay">财付通</option>-->
+									<!--<option value="qqpay">QQ钱包</option>-->
+									<option value="wxpay">微信支付</option>
+								</select>
+							</div>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>商品名称</td>
+					<td><input id="name" type="" name="" class="layui-input"></td>
+				</tr>
+				<tr>
+					<td>网站名称</td>
+					<td><input id="sitename" type="" name="" class="layui-input"></td>
+				</tr>
+				<tr>
+					<td>密钥</td>
+					<td><input id="sign" type="" name="" class="layui-input"></td>
+				</tr>
+				<tr>
+					<td>支付地址url</td>
+					<td><input id="payUrl" type="" name="" class="layui-input"></td>
+				</tr>
+				<tr>
+					<td>查询订单地址url</td>
+					<td><input id="orderQueryUrl" type="" name="" class="layui-input"></td>
+				</tr>
+				<tr>
+					<td>是否启用</td>
+					<td>
+						<form class="layui-form" action="" style="">
+							<div class="layui-form-item">
+								<select id="enable" class="layui-select" style="width: 100%">
+									<option value="">请选择</option>
+									<option selected="selected" value="0">是</option>
+									<option value="1">否</option>
+								</select>
+							</div>
+						</form>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			
+			<div style="display: inline;">
+				<button onclick="Merchant.commit_addMerchant()" class="layui-btn">提交</button>
+				<button onclick="Merchant.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/console/js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="./js/core.js"></script>
+<script type="text/javascript" src="./js/tripledes.js"></script>
+<script type="text/javascript" src="/pages/console/js/paidMerchantList.js"></script>
+
+	<script type="text/html" id="paidMerchantOperationBar">
+		{{#  if(d.enable == 0){ }}
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="click_to_disable">禁用</a>
+		<a class="layui-btn layui-btn-disabled layui-btn-xs" lay-event="click_to_enable">启用</a>
+		{{#  }else{ }}
+		<a class="layui-btn layui-btn-disabled layui-btn-xs" lay-event="click_to_disable">禁用</a>
+		<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="click_to_enable">启用</a>
+		{{#  } }}
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="click_to_del">删除</a>
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>举报管理</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/console/js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="/pages/console/js/complaint.js"></script>
+<body>
+	<div class="layui-row">  
+		<div id="back" class="layui-col-md1">&nbsp;</div>
+		<input id="pageCount"  name="" style="display: none">
+		<div id="complaintList" class="layui-col-md10">
+			<div class="report_btn_div" style="margin-top: 2%">
+				<input id="sender" type="text" name="" class="layui-input" style="width: 15%;display: inline" placeholder="举报的人Id">
+				<input id="receiver" type="text" name="" class="layui-input" style="width: 15%;display: inline" placeholder="">				
+				<select id="complaint_select" class="layui-select" value="">
+					<option value="0">被举报的人</option>
+					<option value="1">被举报的群组</option>
+					<option value="2">被举报的网页</option>
+				</select>
+				<button onclick="Com.findComplaint()" class="layui-btn">搜索</button>
+			</div>
+			<div class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">举报列表</div>
+				<div class="layui-card-body">
+					<table cellspacing="0" cellpadding="0" border="0" class="layui-table" >
+						<thead>
+							<tr align='center'>
+								<td>举报人Id</td>
+								<td>举报人昵称</td>
+								<td id="td_value">被举报人Id</td>
+								<td id="td_nameValue">被举报人昵称</td>
+								<td>举报原因</td>
+								<td>举报时间</td>
+								<td>操作</td>
+							</tr>
+						</thead>
+						<tbody id="complaint_table">
+							
+						</tbody>
+						<tbody id="complaintRoom_table" style="display: none;">
+							
+						</tbody>
+					</table>
+					<div id="laypage" class="layui-box layui-laypage layui-laypage-default">
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: tigase:tigase-mongodb:1.1.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://D:/repository/repository/tigase/tigase-mongodb/1.1.1-SNAPSHOT/tigase-mongodb-1.1.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/repository/repository/tigase/tigase-mongodb/1.1.1-SNAPSHOT/tigase-mongodb-1.1.1-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/repository/repository/tigase/tigase-mongodb/1.1.1-SNAPSHOT/tigase-mongodb-1.1.1-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>APP充值列表</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+<body>
+<div class="layui-row">
+	<div id="back" class="layui-col-md1">&nbsp;</div>
+	<input id="pageCount" type="" name="" style="display: none">
+	<div id="appRecharge_div" class="layui-col-md10">
+		<div class="appRecharge_btn_div" style="margin-top: 2%">
+			<input id="userId" type="text" name="" class="layui-input" style="width: 15%;display: inline" placeholder="充值用户Id">
+			<form class="layui-form" action="" style="float: left">
+				<div class="layui-form-item">
+					<select id="complaint_select" class="layui-select" lay-verify="required" value="">
+						<option value="0">请选择充值入口</option>
+						<option value="1">APP充值</option>
+						<option value="3">后台充值</option>
+					</select>
+				</div>
+			</form>
+			<button class="layui-btn search_live">搜索</button>
+			<div class="layui-form-item timeComponent" style="display: inline">
+				<div class="layui-inline">
+					<label class="layui-form-label" style="padding: 9px 8px;width: 150px">充值的时间范围：</label>
+					<div class="layui-input-inline">
+						<input class="layui-input" id="appRechargeMsgDate" placeholder="请选择时间范围" type="text">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="appRecharge" class="layui-card" style="margin-top: 1%">
+			<div class="layui-card-header">APP充值列表</div>
+			<div class="layui-card-body">
+				<table id="appRecharge_table" lay-filter="appRecharge_table">
+				</table>
+				<span style="margin-left: 80%">当前总充值金额：<cite class="current_total"></cite>  元</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/common/jquery/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="./js/appRecharge.js"></script>
+</body>
+</html>

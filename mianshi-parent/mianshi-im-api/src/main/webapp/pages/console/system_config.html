@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="/pages/common/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="./css/public.css" media="all" />
+</head>
+<body class="childrenBody">
+<div class="layui-container" style="width: 90%;margin-top: 30px;">
+	<form class="layui-form">
+		<table class="layui-table mag0">
+			<colgroup>
+				<col width="25%">
+				<col width="45%">
+				<col>
+		    </colgroup>
+		    <thead>
+		    	<tr>
+		    		<th>参数说明</th>
+		    		<th>参数值</th>
+		    		<th>变量名</th>
+		    		<th>参数说明</th>
+		    	</tr>
+		    </thead>
+		    <tbody>
+		    	<!-- 服务端配置 -->
+		    	<tr>
+		    		
+		    		<td style="border: 0"></td>
+		    		<td style="border: 0;text-align: center;">服务端运行参数:</td>
+		    		<!-- <td></td>
+		    		<td></td> -->
+		    	</tr>
+		    	
+		    	<tr>
+		    		<td>XMPP 心跳超时值</td>
+		    		<td><input type="" name="" class="layui-input XMPPTimeout"></td>
+		    		<td>XMPPTimeout</td>
+		    		<td>此值为秒数，超过这个秒数未收到心跳则视为离线；同时重启Tigase才能生效</td>
+		    	</tr>
+		    	
+		    	<tr>
+		    		<td>是否启用消息回执</td>
+		    		<td>
+		    			<select class="layui-input-inline isOpenReceipt">
+		    				<option value="1">开启</option>
+		    				<option value="0">关闭</option>
+		    			</select>
+		    		</td>
+		    		<td>isOpenReceipt</td>
+		    		<td>默认为关闭，使用流管理的回执</td>
+		    	</tr>
+
+				<tr>
+					<td>是否显示在线状态</td>
+					<td>
+						<select class="layui-input-inline isOpenOnlineStatus">
+							<option value="0">关闭</option>
+							<option value="1">开启</option>
+						</select>
+					</td>
+					<td>isOpenOnlineStatus</td>
+					<td>默认为关闭，用于客户端是否显示在线状态</td>
+				</tr>
+
+				<tr>
+		    		<td>是否开启短信验证码</td>
+		    		<td>
+		    			<select class="layui-input-inline isOpenSMSCode">
+		    				<option value="1">开启</option>
+		    				<option value="0">关闭</option>
+		    			</select>
+		    		</td>
+		    		<td>isOpenSMSCode</td>
+		    		<td></td>
+		    	</tr>
+		    	<tr>
+		    		<td>是否开启集群模式</td>
+		    		<td>
+		    			<select class="layui-input-inline isOpenCluster">
+		    				<option value="1">开启</option>
+		    				<option value="0">关闭</option>
+		    			</select>
+		    		</td>
+		    		<td>isOpenCluster</td>
+		    		<td></td>
+		    	</tr>
+		    	<tr>
+		    		<td>HTTP是否安全验证</td>
+		    		<td>
+		    			<select class="layui-input-inline authApi">
+		    				<option value="1">开启</option>
+		    				<option value="0">关闭</option>
+		    			</select>
+		    		</td>
+		    		<td>
+		    			isAuthApi
+		    		</td>
+		    		<td></td>
+		    	</tr>
+
+		    	<tr>
+		    		<td>手机号搜索用户</td>
+		    		<td>
+		    			<select class="layui-input-inline telephoneSearchUser">
+          					<option value="0">关闭</option>
+          					<option value="1">精确搜索</option>
+  							<option value="2">模糊搜索</option>
+        				</select>
+		    		</td>
+		    		<td>telephoneSearchUser</td>
+		    		<td></td>
+		    	</tr>
+				
+				<tr>
+					<td>昵称搜索用户</td>
+					<td>
+						<select class="layui-input-inline nicknameSearchUser">
+							<option value="0">关闭</option>
+							<option value="1">精确搜索</option>
+							<option value="2">模糊搜索</option>
+						</select>
+					</td>
+					<td>nicknameSearchUser</td>
+					<td></td>
+				</tr>
+
+		    	<tr>
+		    		<td>手机号登陆</td>
+		    		<td>
+		    			<select class="layui-input-inline telephoneLogin">
+          					<option value="1">开启</option>
+  							<option value="0">关闭</option>
+        				</select>
+		    		</td>
+		    		<td>isTelephoneLogin</td>
+		    		<td></td>
+		    	</tr>
+		    	
+		    	<tr>
+		    		<td>用户ID登陆</td>
+		    		<td>
+						<select class="layui-input-inline userIdLogin">
+          					<option value="1">开启</option>
+  							<option value="0">关闭</option>
+        				</select>
+		    		</td>
+		    		<td>isUserIdLogin</td>
+		    		<td></td>
+		    	</tr>
+				<tr>
+					<td>使用手机号或者用户名注册</td>
+					<td>
+						<select class="layui-input-inline regeditPhoneOrName">
+							<option value="1">用户名</option>
+							<option value="0">手机号</option>
+						</select>
+					</td>
+					<td>regeditPhoneOrName</td>
+					<td></td>
+				</tr>
+				
+				<tr>
+					<td>注册邀请码</td>
+					<td>
+						<select class="layui-input-inline registerInviteCode">
+							<option value="0">关闭</option>
+							<option value="1">开启一对一邀请（一码一用，必须填写邀请码才能注册）</option>
+							<option value="2">开启一对多邀请（一码多用，邀请码为选填项）</option>
+						</select>
+					</td>
+					<td>registerInviteCode</td>
+					<td></td>
+				</tr>
+				
+				
+		    	<tr>
+		    		<td>敏感词过滤</td>
+		    		<td>
+		    			<select class="layui-input-inline isKeyWord">
+		    				<option value="1">开启</option>
+		    				<option value="0">关闭</option>
+		    			</select>
+		    		</td>
+		    		<td>isKeyWord</td>
+		    		<td>同时重启Tigase才能生效</td>
+		    	</tr>
+		    	<tr>
+		    		<td>保存单聊聊天记录</td>
+		    		<td>
+		    			<select class="layui-input-inline isSaveMsg">
+		    				<option value="1">开启</option>
+		    				<option value="0">关闭</option>
+		    			</select>
+		    		</td>
+		    		<td>isSaveMsg</td>
+		    		<td>同时重启Tigase才能生效</td>
+		    	</tr>
+		    	<tr>
+		    		<td>保存群聊聊天记录</td>
+		    		<td>
+		    			<select class="layui-input-inline isSaveMucMsg">
+		    				<option value="1">开启</option>
+		    				<option value="0">关闭</option>
+		    			</select>
+		    		</td>
+		    		<td>isSaveMucMsg</td>
+		    		<td>同时重启Tigase才能生效</td>
+		    	</tr>
+		    	<!-- <tr>
+		    		<td>强制同步消息发送时间</td>
+		    		<td>
+		    			<select class="layui-input-inline isMsgSendTime">
+		    				<option value="1">开启</option>
+		    				<option value="0">关闭</option>
+		    			</select>
+		    		</td>
+		    		<td>
+		    			isMsgSendTime
+		    		</td>
+		    		<td>同时重启Tigase才能生效</td>
+		    	</tr> -->
+		    	
+		    	
+		    	<!-- <tr>
+		    		<td>iOS推送平台</td>
+		    		<td>
+		    			<select class="layui-input-inline iosPushServer">
+		    				<option value="apns">APNS推送</option>
+		    				<option value="baidu">百度推送</option>
+		    			</select>
+		    		</td>
+		    		<td>
+		    			iosPushServer
+		    		</td>
+		    		<td></td>
+		    	</tr> -->
+		    	<tr>
+		    		<td>是否开启voip推送</td>
+		    		<td>
+		    			<select class="layui-input-inline isOpenVoip">
+		    				<option value="1">开启</option>
+		    				<option value="0">关闭</option>
+		    			</select>
+		    		</td>
+		    		<td>
+		    			isOpenVoip
+		    		</td>
+		    		<td></td>
+		    	</tr>
+
+				<tr>
+					<td>是否开启Google推送</td>
+					<td>
+						<select class="layui-input-inline isOpenGoogleFCM">
+							<option value="1">开启</option>
+							<option value="0">关闭</option>
+						</select>
+					</td>
+					<td>
+						isOpenGoogleFCM
+					</td>
+					<td>谷歌推送开关控制（需服务器在大陆外启用有效）</td>
+				</tr>
+
+		    	<tr>
+		    		<td>短信服务支持</td>
+		    		<td>
+		    			<select class="layui-input-inline SMSType">
+		    				<option value="aliyun">阿里云短信</option>
+		    				<option value="ttgj">天天国际短信</option>
+		    			</select>
+		    		</td>
+		    		<td>
+		    			SMSType
+		    		</td>
+		    		<td></td>
+		    	</tr>
+
+				<tr>
+					<td>图形验证码类型</td>
+					<td>
+						<select class="layui-input-inline imgVerificationCode">
+							<option value="0">数字字母混合</option>
+							<option value="1">纯数字</option>
+						</select>
+					</td>
+					<td>
+						imgVerificationCode
+					</td>
+					<td></td>
+				</tr>
+
+		    	<tr>
+		    		<td>通讯录自动添加好友</td>
+		    		<td>
+		    			<select class="layui-input-inline isAutoAddressBook">
+		    				<option value="1">是</option>
+		    				<option value="0">否</option>
+		    			</select>
+		    		</td>
+		    		<td>
+		    			isAutoAddressBook
+		    		</td>
+		    		<td></td>
+		    	</tr>
+				<tr>
+					<td>是否保存接口请求日志</td>
+					<td>
+						<select class="layui-input-inline isSaveRequestLogs">
+							<option value="0">是</option>
+							<option value="1">否</option>
+						</select>
+					</td>
+					<td>
+						isSaveRequestLogs
+					</td>
+					<td></td>
+				</tr>
+		    	<tr>
+		    		<td>直播赠送礼物分成比率</td>
+		    		<td><input type="text" class="layui-input giftRatio" placeholder="" onblur="num()"></td>
+		    		<td>giftRatio</td>
+		    		<td></td>
+		    	</tr>
+				 <tr>
+					<td>在线咨询链接</td>
+					<td><input type="text" class="layui-input promotionUrl" placeholder=""></td>
+					<td>promotionUrl</td>
+					<td>示例：https://www.baidu.com/?pid=10000
+						pid后面的数字是你的用户ID,该ID很重要。</td>
+				</tr>
+				<tr>
+					<td>注册默认成为好友的用户手机号</td>
+					<td><input type="text" class="layui-input defaultTelephones" placeholder=""></td>
+					<td>defaultTelephones</td>
+					<td>支持填写多个带区号的手机号，多个带区号的手机号之间用“，”分隔</td>
+				</tr>
+
+				<tr>
+					<td>隐私政策URL地址的前缀</td>
+					<td><input type="text" class="layui-input privacyPolicyPrefix" placeholder=""></td>
+					<td>privacyPolicyPrefix</td>
+					<td></td>
+				</tr>
+
+		    	<!-- 用户默认隐设设置 -->
+		    	<tr>
+
+		    		<td style="border: 0"></td>
+		    		<td style="border: 0;text-align: center;">用户默认隐私设置:</td>
+		    	</tr>
+		    	<tr>
+		    		<td>默认漫游时长</td>
+		    		<td>
+		    			<select  class="layui-input-inline roamingTime">
+		    				<option value="-2">不漫游</option>
+		    				<option value="-1">永久</option>
+		    				<option value="0.04">一小时</option>
+		    				<option value="1">1天</option>
+		    				<option value="7">一周</option>
+		    				<option value="30">一个月</option>
+		    				<option value="120">一季</option>
+		    				<option value="365">一年</option>
+		    			</select>
+		    		</td>
+		    		<td>roamingTime</td>
+		    		<td></td>
+		    	</tr>
+		    	<tr>
+		    		<td>默认过期销毁时长</td>
+		    		<td>
+		    			<select class="layui-input-inline outTimeDestroy">
+		    				<option value="-1">永久</option>
+		    				<option value="0.04">一小时</option>
+		    				<option value="1">一天</option>
+		    				<option value="7">一周</option>
+		    				<option value="30">一月</option>
+		    				<option value="120">一季</option>
+		    				<option value="365">一年</option>
+		    			</select>
+		    		</td>
+		    		<td>outTimeDestroy</td>
+		    		<td></td>
+		    	</tr>
+		    	<tr>
+		    		<td>客户端默认语种</td>
+		    		<td>
+		    			<select class="layui-input-inline language">
+		    				<option value="zh">中文</option>
+		    				<option value="en">English</option>
+		    				<option value="big5">繁体</option>
+		    			</select>
+		    		</td>
+		    		<td>
+		    			language
+		    		</td>
+		    		<td></td>
+		    	</tr>
+		    	<tr>
+		    		<td>是否需要好友验证</td>
+		    		<td>
+		    			<select class="layui-input-inline isFriendsVerify">
+		    				<option value="1">是</option>
+		    				<option value="0">否</option>
+		    			</select>
+		    		</td>
+		    		<td>isFriendsVerify</td>
+		    		<td></td>
+		    	</tr>
+		    	<tr>
+		    		<td>XMPP是否加密传输</td>
+		    		<td>
+		    			<select class="layui-input-inline isEncrypt">
+		    				<option value="1">是</option>
+		    				<option value="0">否</option>
+		    			</select>
+		    		</td>
+		    		<td>isEncrypt</td>
+		    		<td></td>
+		    	</tr>
+		    	<tr>
+		    		<td>是否支持多点登录</td>
+		    		<td>
+		    			<select class="layui-input-inline isMultiLogin">
+		    				<option value="1">是</option>
+		    				<option value="0">否</option>
+		    			</select>
+		    		</td>
+		    		<td>
+		    			isMultiLogin
+		    		</td>
+		    		<td></td>
+		    	</tr>
+		    	<tr>
+		    		<td>消息来时是否振动</td>
+		    		<td>
+		    			<select class="layui-input-inline isVibration">
+		    				<option value="1">是</option>
+		    				<option value="0">否</option>
+		    			</select>
+		    		</td>
+		    		<td>
+		    			isVibration
+		    		</td>
+		    		<td></td>
+		    	</tr>
+		    	<tr>
+		    		<td>让对方知道我正在输入</td>
+		    		<td>
+		    			<select class="layui-input-inline isTyping">
+		    				<option value="1">开启</option>
+		    				<option value="0">关闭</option>
+		    			</select>
+		    		</td>
+		    		<td>isTyping</td>
+		    		<td></td>
+		    	</tr>
+		    	<tr>
+		    		<td>使用google地图</td>
+		    		<td>
+		    			<select class="layui-input-inline isUseGoogleMap">
+		    				<option value="1">开启</option>
+		    				<option value="0">关闭</option>
+		    			</select>
+		    		</td>
+		    		<td>isUseGoogleMap</td>
+		    		<td></td>
+		    	</tr>
+				<tr>
+					<td>允许通过手机号搜索我</td>
+					<td>
+						<select class="layui-input-inline phoneSearch">
+							<option value="1">开启</option>
+							<option value="0">关闭</option>
+						</select>
+					</td>
+					<td>phoneSearch</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>允许通过昵称搜索我</td>
+					<td>
+						<select class="layui-input-inline nameSearch">
+							<option value="1">开启</option>
+							<option value="0">关闭</option>
+						</select>
+					</td>
+					<td>nameSearch</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>允许安卓APP进程保活</td>
+					<td>
+						<select class="layui-input-inline isKeepalive">
+							<option value="1">开启</option>
+							<option value="0">关闭</option>
+						</select>
+					</td>
+					<td>isKeepalive</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>允许别人看见我的上次上线时间</td>
+					<td>
+						<select class="layui-input-inline showLastLoginTime">
+							<option value="-1">所有人不显示</option>
+							<option value="1">所有人显示</option>
+							<option value="2">所有好友显示</option>
+							<option value="3">手机联系人显示</option>
+						</select>
+					</td>
+					<td>showLastLoginTime</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>允许别人看见我的手机号</td>
+					<td>
+						<select class="layui-input-inline showTelephone">
+							<option value="-1">所有人不显示</option>
+							<option value="1">所有人显示</option>
+							<option value="2">所有好友显示</option>
+							<option value="3">手机联系人显示</option>
+						</select>
+					</td>
+					<td>showTelephone</td>
+					<td></td>
+				</tr>
+				<!--建立群组默认参数设置-->
+				<tr>
+					<td style="border: 0"></td>
+					<td style="border: 0;text-align: center;">建立群组默认参数设置:</td>
+				</tr>
+				<tr>
+					<td>群人数上限</td>
+					<td><input type="text" class="layui-input maxUserSize" placeholder=""></td>
+					<td>maxUserSize</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>是否私密群组</td>
+					<td>
+						<select class="layui-input-inline isLook">
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
+					</td>
+					<td>
+						isLook
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>是否显示已读人数</td>
+					<td>
+						<select class="layui-input-inline showRead">
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</select>
+					</td>
+					<td>
+						showRead
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>是否开启群组邀请确认</td>
+					<td>
+						<select class="layui-input-inline isNeedVerify">
+							<option value="0">关闭</option>
+							<option value="1">开启</option>
+						</select>
+					</td>
+					<td>
+						isNeedVerify
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>群组减员发送通知</td>
+					<td>
+						<select class="layui-input-inline isAttritionNotice">
+							<option value="1">开启</option>
+							<option value="0">关闭</option>
+						</select>
+					</td>
+					<td>isAttritionNotice</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>是否允许显示群成员</td>
+					<td>
+						<select class="layui-input-inline showMember">
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
+					</td>
+					<td>
+						showMember
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>是否允许普通成员私聊</td>
+					<td>
+						<select class="layui-input-inline allowSendCard">
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
+					</td>
+					<td>
+						allowSendCard
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>是否允许普通成员邀请好友</td>
+					<td>
+						<select class="layui-input-inline allowInviteFriend">
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
+					</td>
+					<td>
+						allowInviteFriend
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>是否允许普通成员上传群共享文件</td>
+					<td>
+						<select class="layui-input-inline allowUploadFile">
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
+					</td>
+					<td>
+						allowUploadFile
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>是否允许普通成员发起会议</td>
+					<td>
+						<select class="layui-input-inline allowConference">
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
+					</td>
+					<td>
+						allowConference
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>是否允许普通成员发起讲课</td>
+					<td>
+						<select class="layui-input-inline allowSpeakCourse">
+							<option value="1">是</option>
+							<option value="0">否</option>
+						</select>
+					</td>
+					<td>
+						allowSpeakCourse
+					</td>
+					<td></td>
+				</tr>
+		    </tbody>
+		</table>
+		<div class="magt10 layui-center">
+			<div class="layui-input-block" style="margin-left: 0px">
+				<button class="layui-btn save" lay-submit="" lay-filter="systemConfig">保存</button>
+		    </div>
+		</div>
+	</form>
+</div>
+	<script type="text/javascript" src="/pages/common/layui/layui.js"></script>
+	<script type="text/javascript" src="/pages/common/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+	<script type="text/javascript" src="./js/common.js"></script>
+	<script type="text/javascript" src="./js/system_config.js"></script>
+</body>
+</html>

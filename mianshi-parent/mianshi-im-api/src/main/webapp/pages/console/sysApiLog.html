@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>接口日志</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+
+<body>
+
+	<div class="layui-row">
+			<div class="layui-col-md1">&nbsp;</div>
+			<input id="pageCount" type="" name="" style="display: none">
+			<div id="roomList" class="layui-col-md10" style="">
+				<div class="apiLog_btn_div" style="margin-top: 2%">
+					<input  type="text" name="" class="layui-input sysApiLog_name" style="width: 15%;display: inline" placeholder="接口名称">
+					
+					<button  class="layui-btn search_sysApiLog">搜索</button>
+					<button  class="layui-btn deleteSevenDaysAgoLogs">清除七天前的所有日志</button>
+
+				</div>
+
+				<table id="sysApiLog_table" lay-filter="sysApiLogs_table"></table>
+			
+			</div>
+	</div>
+				
+
+
+	
+	<!--操作-->
+	<script type="text/html" id="sysApiLog_Bar">
+		<a class="layui-btn layui-btn-xs layui-btn-danger del" lay-event="del">删除</a>
+	</script>
+	<!-- 多选删除-->
+	<script type="text/html" id="toolbarApilog">
+		<div class="layui-btn-container">
+			<button class="layui-btn layui-btn-sm checkDeleteUsersFriends" onclick="ApiLog.toolbarApilog()" lay-event="checkDelete">多选删除</button>
+		</div>
+	</script>
+
+	<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+	<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+	<script type="text/javascript" src="./js/common.js"></script>
+	<script type="text/javascript" src="./js/console_ui.js"></script>
+	<script type="text/javascript" src="./js/sysApiLog.js"></script>
+	
+</body>
+</html>

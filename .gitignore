@@ -1,0 +1,6 @@
+# 项目排除路径
+/mianshi-parent/mianshi-im-api/target/
+/mianshi-parent/mianshi-service/target/
+/shiku-push/target/
+/tigase-server/target/
+/upload/target/

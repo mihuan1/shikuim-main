@@ -1,0 +1,158 @@
+{
+	"contentManagement": [
+		{
+			"title": "系统配置",
+			"icon": "&#xe716;",
+			"href": "",
+			"spread": false,
+			"systemConfig": true,
+			"children": [
+				{
+					"title": "服务器配置",
+					"icon": "&#xe857;",
+					"href": "/pages/console/system_config.html",
+					"spread": false
+				},
+				{
+					"title": "客户端配置",
+					"icon": "&#xe7ae;",
+					"href": "/pages/console/clientConfig.html",
+					"spread": false
+				},
+				{
+					"title":"集群配置",
+					"icon":"&#xe656;",
+					"href":"/pages/console/clusterConfig.html",
+					"spread":false
+				}
+			]
+
+		},
+		{
+			"title": "用户管理",
+			"icon":"&#xe66f;",
+			"href": "",
+			"spread": false,
+			"roleInfo":true,
+			"children": [
+				{
+					"title": "用户列表",
+					"icon":"&#xe66f;",
+					"href": "/pages/console/userList.html",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title": "角色管理",
+			"icon": "&#xe716;",
+			"href": "",
+			"spread": false,
+			"roleInfo":true,
+			"children": [
+				{
+					"title": "管理员",
+					"icon":"&#xe66c;",
+					"href": "/pages/console/admin.html",
+					"spread": false,
+					"adminUser":true
+				},
+				{
+					"title": "客服",
+					"icon":"&#xe63a;",
+					"href": "/pages/console/customer.html",
+					"spread": false,
+					"customer": true
+				},
+				{
+					"title": "财务",
+					"icon":"&#xe65e",
+					"href": "/pages/console/finance.html",
+					"spread": false,
+					"finance":true
+				},
+				{
+					"title": "机器人",
+					"icon":"&#xe606",
+					"href": "/pages/console/robot.html",
+					"spread": false,
+					"robot": true
+				},
+				{
+					"title": "游客",
+					"icon":"&#xe66f",
+					"href": "/pages/console/tourist.html",
+					"spread": false,
+					"tourist": true
+				}
+			]
+
+		},
+		{
+			"title": "群组管理",
+			"icon": "&#xe770;",
+			"href": "/pages/console/roomList.html",
+			"spread": false,
+			"roomList": true
+		},
+		{
+			"title": "单聊记录",
+			"icon": "&#xe63a;",
+			"href": "/pages/console/messageList.html",
+			"spread": false,
+			"messageList": true
+		},
+		{
+			"title": "自定网站",
+			"icon": "&#xe6af;",
+			"href": "/pages/console/friendsterWebsite.html",
+			"spread": false
+		},
+		{
+			"title": "举报管理",
+			"icon": "&#xe6b2;",
+			"href": "/pages/console/complaint.html",
+			"spread": false,
+			"complaint": true
+		},
+		{
+			"title": "朋 友 圈",
+			"icon": "&#xe6af;",
+			"href": "/pages/console/msg.html",
+			"spread": false
+		},
+		{
+			"title": "提示信息",
+			"icon": "&#xe702;",
+			"href": "/pages/console/promptMessage.html",
+			"spread": false,
+			"tipsMsg": true
+		},
+		{
+			"title": "敏 感 词",
+			"icon": "&#xe66e;",
+			"href": "/pages/console/keyword.html",
+			"spread": false,
+			"sensitiveWords": true
+		},
+		{
+			"title": "全量推送",
+			"icon": "&#xe66e;",
+			"href": "/pages/console/fullPush.html",
+			"spread": false,
+			"sensitiveWords": true
+		},
+
+		{
+			"title": "接口日志",
+			"icon":"&#xe60e;",
+			"href": "/pages/console/sysApiLog.html",
+			"spread": false,
+			"interfaceLogs": true
+		}
+
+	]
+
+}
+
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="loginHtml">
+<head>
+	<title>蜜獾聊天管理后台</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link href="/pages/common/layui/css/layui.css" rel="stylesheet" media="all"/>
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<link href="/pages/common/layui/css/layui.css" rel="stylesheet" media="all"/>
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<img class="wave" src="../common/images/wave.png">
+<div class="container">
+	<div class="img">
+		<img src="../common/images/bg.svg">
+	</div>
+	<div class="login-content">
+		<form class="layui-form">
+			<img style="border-radius:50%" src="../common/images/logo.png">
+			<h2 class="title">蜜獾即时通讯</h2>
+			<div class="input-div one">
+				<div class="i">
+					<i class="fas fa-user"></i>
+				</div>
+				<div class="div">
+					<h5>用户名</h5>
+					<input type="text" lay-verify="required" name="account" class="input">
+				</div>
+			</div>
+			<div class="input-div pass">
+				<div class="i">
+					<i class="fas fa-lock"></i>
+				</div>
+				<div class="div">
+					<h5>密码</h5>
+					<input type="password"  lay-verify="required" name="password" class="input">
+				</div>
+			</div>
+			<input type="button" lay-filter="sysUser_login" class="btn" lay-submit value="登 陆">
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="/pages/common/jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="/pages/common/jquery/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/console/js/common.js"></script>
+<script type="text/javascript" src="./js/main.js"></script>
+<script type="text/javascript" src="./js/login.js"></script>
+
+</body>
+</html>

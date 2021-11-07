@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>消息管理</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+
+<body>
+	<div class="layui-row">
+		<div class="layui-col-md1">&nbsp;</div>
+		<input id="pageCount" type="" name="" style="display: none">
+		<div class="layui-col-md10">
+			<div class="msg_btn_div"  style="margin-top: 2%" >
+				<input id="sender" type="text" name="" class="layui-input" style="width: 15%;display: inline" placeholder="发送者Id">
+				<input id="receiver" type="text" name="" class="layui-input" style="width: 15%;display: inline" placeholder="接收者Id">
+				<input id="keyWord" type="text" name="" class="layui-input" style="width: 15%;display: inline" placeholder="关键词内容">
+				<button class="layui-btn search_message">搜索消息</button>
+				<button  class="layui-btn deleteMonthLogs">删除一个月之前的所有聊天记录</button>
+				<button  class="layui-btn deleteThousandAgoLogs">删除十万条之前的所有聊天记录</button>
+				<!--<button onclick="Msg.deleteMsg()" class="layui-btn del_msg">清空消息</button>-->
+			</div>
+			<div class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">单聊聊天记录</div>
+				<div class="layui-card-body">
+					<table id="message_table" lay-filter="message_table">
+						
+					</table>
+					
+				</div>
+			</div>
+		</div>
+			
+	</div>
+
+	<script type="text/html" id="messageListBar">
+		<a class="layui-btn layui-btn-danger layui-btn-xs delete" lay-event="delete">删除</a>
+	</script>
+	<script type="text/html" id="toolbarMessageList">
+		<div class="layui-btn-container">
+			<button class="layui-btn layui-btn-sm checkDeleteUsersFriends" onclick="Msg.checkDeleteMessage()" lay-event="checkDelete">多选删除</button>
+		</div>
+	</script>
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="./js/core.js"></script>
+<script type="text/javascript" src="./js/tripledes.js"></script>
+<script type="text/javascript" src="/pages/console/js/messageList.js"></script>
+</body>
+</html>

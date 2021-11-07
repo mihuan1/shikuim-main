@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第三方网站集成酷聊登录流程演示</title>
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div id="userInfo" style="margin:0 auto;margin-top: 300px;width:600px;height:250px;background:#fcf8e3;display:table;">
+    <table>
+        <h4 style="text-align: center"> ====  酷聊用户数据回显  ====</h4>
+        <tr>
+            <td>
+                <p>昵称：<span id="userNickName"></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>头像：<span id="userImage"></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>性别：<span id="userSex"></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>地址：<span id="userAddress"></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>openId：<span id="openId"></span></p>
+            </td>
+        </tr>
+    </table>
+
+
+
+
+</div>
+</body>
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+<script>
+    $(document).ready(function (){
+        console.log(localStorage.getItem("nickName"))
+        $("#userNickName").empty().text(JSON.parse(localStorage.getItem("nickName")).value);
+        $("#userImage").empty().text(JSON.parse(localStorage.getItem("userImage")).value);
+        $("#userSex").empty().text((JSON.parse(localStorage.getItem("userSex")).value == 0 ? "女" : "男"));
+        $("#userAddress").empty().text(JSON.parse(localStorage.getItem("userAddress")).value);
+        $("#openId").empty().text(JSON.parse(localStorage.getItem("openId")).value);
+    })
+</script>
+
+
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+<script src="vendor/jquery/jquery.md5.js"></script>
+<script src="js/common.js"></script>
+<script src="js/login.js"></script>
+<script src="js/main.js"></script>
+</html>

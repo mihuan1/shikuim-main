@@ -1,0 +1,42 @@
+.top_div{
+	height: 60px;
+	line-height: 60px;
+	color: white;
+}
+.top_div_p{
+	float:left;
+	font-size: 18px;
+	font-weight:bold;
+	color: white;
+	margin-left: 10px;
+}
+.top_logout{
+	margin-left: 10px;
+	margin-right: 10px;
+	color: white;
+}
+.left_a{
+	cursor:pointer;
+}
+.index_all{
+	display: none;
+	margin-top: 2%;
+	margin-left: 14%;
+}
+.index_div_one{
+	height: 200px;
+	line-height: 200px;
+	text-align: center;
+	background-color: #009688;
+}
+.index_div_body{
+	margin-top: 55px;
+	color: white;
+}
+.index_div_p{
+	cursor:pointer;
+	font-size: 14.5px;
+}
+.hide{
+	display: none;
+}

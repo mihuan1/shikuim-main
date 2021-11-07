@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="/pages/common/layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="./css/public.css" media="all" />
+
+<title>集群配置</title>
+</head>
+<body>
+<div class="layui-tab layui-tab-brief" lay-filter="demo">
+  <ul class="layui-tab-title">
+    <li class="layui-this">地区节点</li>
+    <li>指定入口</li>
+    <li>指定中心</li>
+  </ul>
+  <div class="layui-tab-content layui-row">
+  	<div id="back" class="layui-col-md1">&nbsp;</div>
+  	
+  	<!-- 地区配置 -->
+    <div id="aaa" class="layui-tab-item layui-tab-card layui-show layui-col-md10">
+    	<div id="areaList">
+    		
+    		<table id="area_list" lay-filter="area_list">
+    			
+    		</table>
+    		<div class="magt10 layui-center">
+				<div class="layui-input-block" style="margin-left: 0px">
+					<button onclick="Clu.addAreaConfig()" class="layui-btn save" lay-submit="" lay-filter="systemConfig">添加</button>
+			    </div>
+			</div>
+    	</div>
+    	<div id="add_area" style="display: none;">
+    		<form class="layui-form">
+    			<table class="layui-table mag0">
+    				<colgroup>
+						<col width="25%">
+						<col width="45%">
+						<col>
+				    </colgroup>
+				    <thead>
+				    	<tr>
+				    		<th>参数说明</th>
+				    		<th>参数值</th>
+				    		<th>变量名</th>
+				    		<th>参数说明</th>
+				    	</tr>
+				    </thead>
+				    <tbody>
+				    	<tr>
+				    		<td>地区代码</td>
+				    		<td>
+				    			
+				    			<div class="layui-input-inline layui-form" style="width: 30%"> 
+				    				<select name="country" id="country" lay-filter="country">
+					    				<option value="">请选择国家</option>
+					    			</select>
+				    			</div>
+				    			<div class="layui-input-inline layui-form" style="width: 30%">
+				    				<select name="province" id="province" lay-filter="province">
+					    				<option value="">请选择省份</option>
+					    			</select>
+				    			</div>
+				    			<div class="layui-input-inline layui-form" style="width: 30%">
+				    				<select name="city" id="city" lay-filter="city">
+					    				<option value="">请选择城市</option>
+					    			</select>
+				    			</div>
+				    			
+				    		</td>
+				    		<td>area</td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>地区名称</td>
+				    		<td>
+				    			<input type="text" id="inputAdreeName" class="layui-input name" lay-verify="required" placeholder="请输入地区名称">
+				    		</td>
+				    		<td>name</td>
+				    		<td></td>
+				    	</tr>
+				    </tbody>
+    			</table>
+			
+			 <div class="magt10 layui-center">
+				<div class="layui-input-block" style="margin-left: 0px">
+					<button lay-submit="" lay-filter="systemConfig" class="layui-btn" type="button" onclick="Clu.commit_areaConfig()">保存</button>
+					<button class="layui-btn layui-btn-primary" type="button" onclick="Clu.back()">返回</button>
+			    </div>
+			</div>
+		</form>
+    	</div>
+    </div>
+    <!-- 入口配置 -->
+    <div class="layui-tab-item layui-tab-card layui-col-md10">
+    	<div id="urlConfigList">
+    		<table class="layui-table mag0">
+    			
+    			<thead>
+    				<tr>
+    					<th>id</th>
+    					<th>服务器类型</th>
+    					<th>访问来源地区</th>
+    					<th>提供服务地区</th>
+    					<th>操作</th>
+    				</tr>
+    			</thead>
+    			<tbody id="url_tab">
+    				
+    			</tbody>
+    		</table>
+    		<div class="magt10 layui-center">
+				<div class="layui-input-block" style="margin-left: 0px">
+					<button class="layui-btn entranceBtn" onclick="Clu.addUrlConfig()" lay-submit="" lay-filter="systemConfig">新增</button>
+			    </div>
+			</div>
+    	</div>
+    	<form id="addUrlConfig" class="layui-form" style="display: none;">
+			<table class="layui-table mag0">
+				<colgroup>
+					<col width="25%">
+					<col width="45%">
+					<col>
+			    </colgroup>
+			    <thead>
+			    	<tr>
+			    		<th>参数说明</th>
+			    		<th>参数值</th>
+			    		<th>变量名</th>
+			    		<th>参数说明</th>
+			    	</tr>
+			    </thead>
+			    <tbody>
+			    	<tr>
+			    		<td>服务器类型</td>
+			    		<td>
+			    			
+			    			<select class="layui-select type" lay-filter="type">
+			    				<option>请选择服务器类型</option>
+			    				<option id="url_all" value="0">全部类型</option>
+			    				<option id="url_xmpp" value="1">xmpp服务器</option>
+			    				<option id="url_http" value="2">http服务器</option>
+			    				<option id="url_video" value="3">视频服务器</option>
+			    				<option id="url_live" value="4">直播服务器</option>
+			    				<option id="url_upload" value="5">上传服务器</option>
+			    				<option id="url_download" value="6">下载服务器</option>
+			    				<input type="text" name="" id="urlConfig_id" style="display: none;">
+			    			</select>
+			    		</td>
+			    		<td>type</td>
+			    		<td></td>
+			    	</tr>
+			    	<tr>
+			    		<td>访问来源地区</td>
+			    		<td>
+			    			
+			    			<select class="layui-select areaUrlConfig">
+			    				
+			    			</select>
+			    		</td>
+			    		<td>area</td>
+			    		<td></td>
+			    	</tr>
+			    	
+			    	<tr>
+			    		<td>提供服务地区</td>
+			    		<td>
+			    			<select class="layui-select areaUrl">
+			    				
+			    			</select></td>
+			    		<td>url</td>
+			    		<td></td>
+			    	</tr>
+			    	
+			    </tbody>
+			 </table>
+			 <div class="magt10 layui-center">
+				<div class="layui-input-block" style="margin-left: 0px">
+					<button class="layui-btn" onclick="Clu.commit_urlConfig()" lay-submit="" lay-filter="systemConfig">保存</button>
+			    	<button class="layui-btn layui-btn-primary" type="button" onclick="Clu.back()">返回</button>
+			    </div>
+			</div>
+		</form>
+    </div>
+
+    <!-- 中心服务器 -->
+    <div class="layui-tab-item layui-tab-card layui-col-md10">
+    	<div id="centerConfigList">
+    		<table class="layui-table mag0">
+    			
+    			<thead>
+    				<tr>
+    					<th>节点名称</th>
+    					<th>服务器类型</th>
+    					<th>访问来源地区A</th>
+    					<th>访问来源地区B</th>
+    					<th>提供服务地区</th>
+    					<th>状态</th>
+    					
+    					<th>操作</th>
+    				</tr>
+    			</thead>
+    			<tbody id="center_tab">
+    				
+    			</tbody>
+    		</table>
+    		<div class="magt10 layui-center">
+				<div class="layui-input-block" style="margin-left: 0px">
+					<button class="layui-btn centreBtn" onclick="Clu.addCenter()" lay-submit="" lay-filter="systemConfig">新增</button>
+			    </div>
+			</div>
+    	</div>
+    	<form id="addCenterConfig" class="layui-form" style="display: none;">
+			<table class="layui-table mag0">
+				<colgroup>
+					<col width="25%">
+					<col width="45%">
+					<col>
+			    </colgroup>
+			    <thead>
+			    	<tr>
+			    		<th>参数说明</th>
+			    		<th>参数值</th>
+			    		<th>变量名</th>
+			    		<th>参数说明</th>
+			    	</tr>
+			    </thead>
+			    <tbody>
+			    	<tr>
+			    		<td>服务器类型</td>
+			    		<td>
+			    			<select lay-verify="required" lay-filter="center_type" class="center_type">
+			    				<option>请选择服务器类型</option>
+			    				<option value="1">xmpp服务器</option>
+			    				<option value="2">http服务器</option>
+			    				<option value="3">视频服务器</option>
+			    				<option value="4">直播服务器</option>
+			    				<option value="5">上传服务器</option>
+			    				<option value="6">下载服务器</option>
+			    				<input type="text" name="" id="center_id" style="display: none;">
+			    			</select>
+			    		</td>
+			    		<td>type</td>
+			    		<td></td>
+			    	</tr>
+			    	<tr>
+			    		<td>节点名称</td>
+			    		<td>
+			    			<input type="text" class="layui-input center_name" lay-verify="required" placeholder="请输入节点名称">
+			    		</td>
+			    		<td>name</td>
+			    		<td></td>
+			    	</tr>
+			    	
+			    	<tr>
+			    		<td>访问来源地区A</td>
+			    		<td>
+			    			
+			    			<select lay-verify="required" lay-filter="center_clientA" class="center_clientA">
+			    				
+			    			</select>
+			    		</td>
+			    		<td>clientA</td>
+			    		<td></td>
+			    	</tr>
+			    	<tr>
+			    		<td>访问来源地区B</td>
+			    		<td>
+			    			
+			    			<select lay-verify="required" lay-filter="center_clientB" class="center_clientB">
+			    				
+			    			</select>
+			    		</td>
+			    		<td>clientB</td>
+			    		<td></td>
+			    	</tr>
+			    	<tr>
+			    		<td>提供服务地区</td>
+			    		<td>
+			    			<select class="urlConfigIds" name="list" lay-verify="urlConfigIds">
+			    				
+			    			</select>
+			    			
+			    		</td>
+			    		<td>area</td>
+			    		<td></td>
+			    	</tr>
+			    	<tr>
+			    		<td>状态</td>
+			    		<td>
+			    			<!-- <input type="text" class="layui-input status" placeholder=""> -->
+			    			<select lay-verify="required" class="layui-select center_status">
+			    				<option id="zc" value="1">正常</option>
+			    				<option id="jy" value="-1">禁用</option>
+			    			</select>	
+			    		</td>
+			    		<td>status</td>
+			    		<td></td>
+			    	</tr>
+			    </tbody>
+			 </table>
+			 <div class="magt10 layui-center">
+				<div class="layui-input-block" style="margin-left: 0px">
+					<button class="layui-btn" onclick="Clu.addCenterConfig()" lay-submit="">保存</button>
+					<button class="layui-btn layui-btn-primary" type="button" onclick="Clu.back()">返回</button>
+			    </div>
+			</div>
+		</form>
+    </div>
+    <!-- 服务器列表 -->
+    <div id="server_list" class="layui-tab-item layui-tab-card layui-col-md10" style="display: none;">
+    	<div id="server_tab">
+    		<table id="ServerList" cellspacing="0" cellpadding="0" border="0" class="layui-table">
+	    		<thead>
+	    			<tr>
+	    				<th>id</th>
+	    				<th>机器名称</th>
+	    				<th>服务器地址</th>
+	    				<th>端口</th>
+	    				<th>当前人数</th>
+	    				<th>人数上限</th>
+	    				<th>地区</th>
+	    				<th>服务器类型</th>
+	    				<th>状态</th>
+	    				<th>操作</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody id="server_tbody">
+	    			
+	    		</tbody>
+	    	</table>
+	    	 <div class="magt10 layui-center">
+				<div class="layui-input-block" style="margin-left: 0px">
+					<button onclick="Clu.addServer()" class="layui-btn save" lay-submit="" lay-filter="systemConfig">添加</button>
+			    	<button class="layui-btn layui-btn-primary" type="button" onclick="Clu.back()">返回</button>
+			    </div>
+			</div>
+    	</div>
+    	<div id="server_add" style="display: none;">
+    		<input id="server_Id" type="" name="" style="display: none;">
+    		<form class="layui-form">
+    			<table class="layui-table mag0">
+					<colgroup>
+						<col width="25%">
+						<col width="45%">
+						<col>
+				    </colgroup>
+				    <thead>
+				    	<tr>
+				    		<th>参数说明</th>
+				    		<th>参数值</th>
+				    		<th>变量名</th>
+				    		<th>参数说明</th>
+				    	</tr>
+				    </thead>
+				    <tbody>
+				    	<tr>
+				    		<td>机器名称</td>
+				    		<td>
+				    			<input type="text" class="layui-input add_id" style="display: none">
+				    			<input type="text" class="layui-input add_name" lay-verify="required" placeholder="请输入机器名称">
+				    			
+				    		</td>
+				    		<td>name</td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>服务器地址</td>
+				    		<td>
+				    			<input type="text" class="layui-input add_url" lay-verify="required" placeholder="请输入服务器地址">
+				    		</td>
+				    		<td>url</td>
+				    		<td></td>
+				    	</tr>
+				    	
+				    	<tr>
+				    		<td>端口</td>
+				    		<td><input type="text" class="layui-input add_port" placeholder="请输入端口"></td>
+				    		<td>port</td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>当前人数</td>
+				    		<td><input type="text" class="layui-input add_count" placeholder=""></td>
+				    		<td>count</td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>人数上限</td>
+				    		<td><input type="text" class="layui-input add_maxPeople" placeholder=""></td>
+				    		<td>maxPeople</td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>地区</td>
+				    		<td>
+				    			<select class="serverAdd_area">
+				    				
+				    			</select>
+				    		</td>
+				    		<td>area</td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>服务器类型</td>
+				    		<td>
+				    			<select class="add_type">
+				    				<option value="1">xmpp服务器</option>
+				    				<option value="2">http服务器</option>
+				    				<option value="3">视频服务器</option>
+				    				<option value="4">直播服务器</option>
+				    				<option value="5">上传服务器</option>
+			    					<option value="6">下载服务器</option>
+				    			</select>
+				    		</td>
+				    		<td>type</td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>状态</td>
+				    		<td>
+				    			
+				    			<select class="layui-select add_status">
+				    				<option>状态</option>
+				    				<option id="server_add_zc" value="1">正常</option>
+				    				<option id="server_add_jy" value="-1">禁用</option>
+				    			</select>	
+				    		</td>
+				    		<td>status</td>
+				    		<td></td>
+				    	</tr>
+				    </tbody>
+
+				 </table>
+    		</form>
+    		
+			 <div class="magt10 layui-center">
+				<div class="layui-input-block" style="margin-left: 0px">
+					<button class="layui-btn" type="button" onclick="Clu.commitAddServer()">保存</button>
+					<button class="layui-btn layui-btn-primary" type="button" onclick="Clu.back()">返回</button>
+			    </div>
+			</div>
+    	</div>
+    </div>
+
+  </div>
+</div>
+<script type="text/html" id="areaList_toolbar">
+	<a class="layui-btn layui-btn-danger layui-btn-xs delete" lay-event="delete">删除</a>
+	<a class="layui-btn layui-btn-primary layui-btn-xs update" lay-event="update">修改</a>
+	<a class="layui-btn layui-btn-primary layui-btn-xs serverList" lay-event="serverList">服务器群</a>
+</script>
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="/pages/console/js/addr.js"></script>
+<script type="text/javascript" src="/pages/console/js/clusterConfig.js"></script>
+</body>
+</html>

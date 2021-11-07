@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>财务</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+
+<body>
+	<div class="layui-row">
+		<div class="layui-col-md1">&nbsp;</div>
+		<input id="pageCount" type="" name="" style="display: none">
+		<div id="userList" class="layui-col-md10">
+			<div class="admin_btn_div" style="margin-top: 2%">
+				<input type="text" name="" class="layui-input admin_keyword" style="width: 15%;display: inline" placeholder="管理员帐号">
+				<!-- <select id="status" class="layui-select">
+					<option value="">请选择在线状态</option>
+					<option value="1">在线</option>
+					<option value="0">离线</option>
+				</select> -->
+				<button class="layui-btn  search_admin">搜索</button>
+				<button class="layui-btn  btn_addAdmin">新增财务</button>
+				
+			</div>
+
+			<div class="layui-card admin_table" style="margin-top: 1%">
+				<div class="layui-card-header">财务列表</div>
+				<div class="layui-card-body">
+					<table id="admin_list" lay-filter="admin_list" style="table-layout:fixed;word-break:break-all;" >
+						
+					</table>
+				</div>
+			</div>
+
+			
+		<!-- 设置管理员 -->
+		<div id="add_admin" class="layui-col-md10" style="display: none">
+			
+			<form  id="add_admin_form" class="layui-form" action="" style="margin-top: 60px; ">
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">帐号</label>
+				    <div class="layui-input-block">
+				      <input type="text" required  lay-verify="required" placeholder="输入不带区号的手机号码" autocomplete="off" class="layui-input  admin_accunt">
+				    </div>
+				  </div>
+				  
+				  <!--<div class="layui-form-item">
+				    <label class="layui-form-label">密码</label>
+				    <div class="layui-input-block">
+				      <input type="text" required  lay-verify="required" placeholder="输入您的密码确认" autocomplete="off" class="layui-input admin_passwd">
+				    </div>
+				  </div>-->
+
+			</form>
+			
+			
+
+		</div>
+
+		</div>
+	</div>
+
+	<!--操作-->
+	<script type="text/html" id="adminListBar">
+		<a class="layui-btn layui-btn-danger layui-btn-xs delete" lay-event="delete">删除</a>
+		
+		<a class="layui-btn layui-btn-primary layui-btn-xs randUser" lay-event="randUser">重置密码</a>
+		{{#  if(d.status == 1){ }}
+		<a class="layui-btn layui-btn-primary layui-btn-xs locking" lay-event="locking">禁用</a>
+		{{#  }else{  }}
+		<a class="layui-btn layui-btn-primary layui-btn-xs cancelLocking" lay-event="cancelLocking">解禁</a>
+		{{#  } }}
+	</script>
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/console/js/common.js"></script>
+<script type="text/javascript" src="/pages/console/js/finance.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+
+</body>
+</html>

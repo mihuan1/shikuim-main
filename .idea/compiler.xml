@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mianshi-service" />
+        <module name="mianshi-im-api" />
+        <module name="shiku-tigase" />
+        <module name="tigase-server" />
+        <module name="upload" />
+        <module name="shiku-push" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mianshi-im-api" target="1.8" />
+      <module name="mianshi-parent" target="1.5" />
+      <module name="mianshi-service" target="1.8" />
+      <module name="shiku-push" target="1.8" />
+      <module name="shiku-tigase" target="1.8" />
+      <module name="tigase-server" target="1.8" />
+      <module name="tigase-server-master" target="1.8" />
+      <module name="upload" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mianshi-service" options="-extdirs lib" />
+      <module name="shiku-push" options="-extdirs lib" />
+      <module name="upload" options="-parameters -bootclasspath C:/Java/jdk1.8.0_71/jre/lib/rt.jar;C:/Java/jdk1.8.0_71/jre/lib/jce.jar" />
+    </option>
+  </component>
+</project>

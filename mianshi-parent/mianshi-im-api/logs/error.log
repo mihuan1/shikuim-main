@@ -1,0 +1,84 @@
+===11-07 19:29:22 ERROR cn.xyz.aspect.RedisServiceAspect Line:61  - restartRedissonClient Exception Unable to connect to Redis server: 127.0.0.1/127.0.0.1:6379
+===11-07 19:29:25 ERROR cn.xyz.aspect.RedisServiceAspect Line:61  - restartRedissonClient Exception Unable to connect to Redis server: 127.0.0.1/127.0.0.1:6379
+===11-07 19:29:25 ERROR cn.xyz.mianshi.service.impl.AdminManagerImpl Line:83  - Unable to send command! Node source: NodeSource [slot=null, addr=null, redisClient=null, redirect=null, entry=MasterSlaveEntry [masterEntry=[freeSubscribeConnectionsAmount=1, freeSubscribeConnectionsCounter=value:50:queue:0, freeConnectionsAmount=31, freeConnectionsCounter=value:63:queue:0, freezed=false, freezeReason=null, client=[addr=redis://127.0.0.1:6379], nodeType=MASTER, firstFail=0]]], connection: RedisConnection@24648393 [redisClient=[addr=redis://127.0.0.1:6379], channel=[id: 0x20bc850f, L:0.0.0.0/0.0.0.0:53529 ! R:127.0.0.1/127.0.0.1:6379], currentCommand=CommandData [promise=RedissonPromise [promise=ImmediateEventExecutor$ImmediatePromise@1acd245(failure: java.util.concurrent.CancellationException)], command=(PING), params=[], codec=org.redisson.client.codec.StringCodec]], command: (GET), params: [app:config] after 3 retry attempts
+===11-07 19:29:34 ERROR cn.xyz.aspect.RedisServiceAspect Line:61  - restartRedissonClient Exception Unable to connect to Redis server: 127.0.0.1/127.0.0.1:6379
+===11-07 19:29:38 ERROR cn.xyz.aspect.RedisServiceAspect Line:61  - restartRedissonClient Exception Unable to connect to Redis server: 127.0.0.1/127.0.0.1:6379
+===11-07 19:29:38 ERROR org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet] Line:181 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+org.redisson.client.WriteRedisConnectionException: Unable to send command! Node source: NodeSource [slot=null, addr=null, redisClient=null, redirect=null, entry=MasterSlaveEntry [masterEntry=[freeSubscribeConnectionsAmount=1, freeSubscribeConnectionsCounter=value:50:queue:0, freeConnectionsAmount=30, freeConnectionsCounter=value:62:queue:0, freezed=false, freezeReason=null, client=[addr=redis://127.0.0.1:6379], nodeType=MASTER, firstFail=0]]], connection: RedisConnection@3013898 [redisClient=[addr=redis://127.0.0.1:6379], channel=[id: 0xa9909a3e, L:0.0.0.0/0.0.0.0:53550 ! R:127.0.0.1/127.0.0.1:6379], currentCommand=CommandData [promise=RedissonPromise [promise=ImmediateEventExecutor$ImmediatePromise@23366f(failure: java.util.concurrent.CancellationException)], command=(PING), params=[], codec=org.redisson.client.codec.StringCodec]], command: (DEL), params: [last_common_msg_local_server_name] after 3 retry attempts
+	at org.redisson.command.CommandAsyncService.checkWriteFuture(CommandAsyncService.java:872)
+	at org.redisson.command.CommandAsyncService.access$000(CommandAsyncService.java:97)
+	at org.redisson.command.CommandAsyncService$7.operationComplete(CommandAsyncService.java:791)
+	at org.redisson.command.CommandAsyncService$7.operationComplete(CommandAsyncService.java:788)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:502)
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:476)
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:415)
+	at io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:540)
+	at io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:533)
+	at io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:114)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.safeSetFailure(AbstractChannel.java:1018)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.write(AbstractChannel.java:874)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.write(DefaultChannelPipeline.java:1365)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:716)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite(AbstractChannelHandlerContext.java:708)
+	at io.netty.channel.AbstractChannelHandlerContext.access$1700(AbstractChannelHandlerContext.java:56)
+	at io.netty.channel.AbstractChannelHandlerContext$AbstractWriteTask.write(AbstractChannelHandlerContext.java:1102)
+	at io.netty.channel.AbstractChannelHandlerContext$WriteAndFlushTask.write(AbstractChannelHandlerContext.java:1149)
+	at io.netty.channel.AbstractChannelHandlerContext$AbstractWriteTask.run(AbstractChannelHandlerContext.java:1073)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:405)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:906)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: io.netty.channel.ExtendedClosedChannelException: null
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.write(...)(Unknown Source)
+===11-07 19:29:43 ERROR cn.xyz.aspect.RedisServiceAspect Line:61  - restartRedissonClient Exception Unable to connect to Redis server: 127.0.0.1/127.0.0.1:6379
+===11-07 19:29:43 ERROR org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet] Line:181 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+org.redisson.client.WriteRedisConnectionException: Unable to send command! Node source: NodeSource [slot=null, addr=null, redisClient=null, redirect=null, entry=MasterSlaveEntry [masterEntry=[freeSubscribeConnectionsAmount=1, freeSubscribeConnectionsCounter=value:50:queue:0, freeConnectionsAmount=31, freeConnectionsCounter=value:63:queue:0, freezed=false, freezeReason=null, client=[addr=redis://127.0.0.1:6379], nodeType=MASTER, firstFail=0]]], connection: RedisConnection@22141658 [redisClient=[addr=redis://127.0.0.1:6379], channel=[id: 0xe17e2dfa, L:0.0.0.0/0.0.0.0:53535 ! R:127.0.0.1/127.0.0.1:6379], currentCommand=CommandData [promise=RedissonPromise [promise=ImmediateEventExecutor$ImmediatePromise@1d82832(failure: java.util.concurrent.CancellationException)], command=(PING), params=[], codec=org.redisson.client.codec.StringCodec]], command: (DEL), params: [last_common_msg_local_server_name] after 3 retry attempts
+	at org.redisson.command.CommandAsyncService.checkWriteFuture(CommandAsyncService.java:872)
+	at org.redisson.command.CommandAsyncService.access$000(CommandAsyncService.java:97)
+	at org.redisson.command.CommandAsyncService$7.operationComplete(CommandAsyncService.java:791)
+	at org.redisson.command.CommandAsyncService$7.operationComplete(CommandAsyncService.java:788)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:502)
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:476)
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:415)
+	at io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:540)
+	at io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:533)
+	at io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:114)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.safeSetFailure(AbstractChannel.java:1018)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.write(AbstractChannel.java:874)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.write(DefaultChannelPipeline.java:1365)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite0(AbstractChannelHandlerContext.java:716)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWrite(AbstractChannelHandlerContext.java:708)
+	at io.netty.channel.AbstractChannelHandlerContext.access$1700(AbstractChannelHandlerContext.java:56)
+	at io.netty.channel.AbstractChannelHandlerContext$AbstractWriteTask.write(AbstractChannelHandlerContext.java:1102)
+	at io.netty.channel.AbstractChannelHandlerContext$WriteAndFlushTask.write(AbstractChannelHandlerContext.java:1149)
+	at io.netty.channel.AbstractChannelHandlerContext$AbstractWriteTask.run(AbstractChannelHandlerContext.java:1073)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:405)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:906)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: io.netty.channel.ExtendedClosedChannelException: null
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.write(...)(Unknown Source)
+===11-07 19:29:52 ERROR cn.xyz.aspect.RedisServiceAspect Line:61  - restartRedissonClient Exception Unable to connect to Redis server: 127.0.0.1/127.0.0.1:6379
+===11-07 19:29:52 ERROR cn.xyz.aspect.RedisServiceAspect Line:61  - restartRedissonClient Exception Unable to connect to Redis server: 127.0.0.1/127.0.0.1:6379
+===11-07 19:30:14 ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter Line:42  - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field redissonClient in cn.xyz.aspect.RedisServiceAspect required a bean of type 'org.redisson.api.RedissonClient' that could not be found.
+	- User-defined bean method 'redissonSingle' in 'KRedisAutoConfiguration' ignored as the bean value is null
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'org.redisson.api.RedissonClient' in your configuration.
+

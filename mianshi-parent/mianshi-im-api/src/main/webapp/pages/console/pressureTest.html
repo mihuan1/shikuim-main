@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>压力测试</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+<body>
+<div class="layui-row">
+	<div id="back" class="layui-col-md1">&nbsp;</div>
+	<input id="pageCount" type="" name="" style="display: none">
+	<div id="redPage_div" class="layui-col-md10">
+		<div class="redPage_btn_div" style="margin-top: 2%">
+			<input id="roomName" type="text" name="" class="layui-input" style="width: 15%;display: inline" placeholder="群组名称">
+			<button class="layui-btn search_live">搜索</button>
+		</div>
+		<div id="roomList" class="layui-card" style="margin-top: 1%">
+			<div class="layui-card-header">群组列表</div>
+			<div class="layui-card-body">
+				<table id="room_table" lay-filter="room_table"></table>
+			</div>
+		</div>
+	</div>
+	<div id="test_div" class="layui-col-md12">
+		<div class="layui-col-md1">&nbsp;</div>
+		<div id="redEnvelope1" class="layui-card layui-col-md10" style="margin-top: 1%">
+			<div class="layui-card-header">压力测试</div>
+			<!--<div class="layui-card-body">
+				<table id="robot_table1" lay-filter="robot_table"></table>
+			</div>-->
+			<div class="layui-form">
+				<!--<label>已选择的群组：</label>
+				<input type="text" class="layui-input checkBoxGroup" >-->
+				<label>请输入每个群组消息总发送量：</label>
+				<input type="text" class="layui-input sendTotal" >
+				<label style="display:block;margin-top: 15px">请输入每个群组发送者总人数：</label>
+				<input type="text" class="layui-input sendPeopleNum" >
+				<label style="display:block;margin-top: 15px">请输入每条消息间隔时间(毫秒)：</label>
+				<input type="text" class="layui-input timeInterval" placeholder="默认时间间隔为10毫秒">
+				<button class="layui-btn sendMsg">发送</button>
+			</div>
+		</div>
+	</div>
+	<div id="result" class="layui-col-md12">
+		<div class="layui-col-md1">&nbsp;</div>
+		<div id="resultTest" class="layui-card layui-col-md10" style="margin-top: 1%">
+			<div class="layui-card-header">测试结果综合数据展示</div>
+			<div class="layui-form">
+				<label style="display:block;margin-top: 15px">测试的批次：</label>
+				<input type="text" class="layui-input timeStr" >
+				<label style="display:block;margin-top: 15px">发送总数：</label>
+				<input type="text" class="layui-input sendTotalNum" >
+				<label style="display:block;margin-top: 15px">发送总用时(秒)：</label>
+				<input type="text" class="layui-input sendTotalNumTime" >
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!--<script type="text/html" id="barDemo">
+	<a class="layui-btn-mini" lay-event="getChecked" style="color:#3385ff">获得选中的数据</a>
+	&lt;!&ndash;<span class="layui-btn layui-btn-sm" lay-event="getChecked">获得选中的数据</span>&ndash;&gt;
+</script>-->
+
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/common/jquery/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="./js/pressureTeset.js"></script>
+</body>
+</html>

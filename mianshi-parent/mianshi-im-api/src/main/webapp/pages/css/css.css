@@ -1,0 +1,359 @@
+@CHARSET "UTF-8";
+
+body {
+	/* 	padding-top: 40px; */
+	/* 	padding-bottom: 40px; */
+	/* 	background-color: #eee; */
+	font-size: 12px;
+	font-family: "微软雅黑";
+}
+
+a {
+	font-size: 12px;
+	font-family: "微软雅黑";
+}
+
+a:hover {
+	font-size: 12px;
+	font-family: "微软雅黑";
+	text-decoration: none;
+}
+
+a:link {
+	font-size: 12px;
+	font-family: "微软雅黑";
+	text-decoration: none;
+}
+
+a:active {
+	font-size: 12px;
+	font-family: "微软雅黑";
+	text-decoration: none;
+}
+
+.mininav {
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url("/pages/img/mininavBg.jpg");
+	background-origin: padding-box;
+	background-position: 0 0;
+	background-repeat: repeat-x;
+	background-size: auto auto;
+	height: 30px;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+.form-signin .form-signin-heading, .form-signin .checkbox {
+	margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+	font-weight: normal;
+}
+
+.form-signin  {
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+}
+.form-control{
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	/* padding: 10px; */
+	font-size: 16px;
+}
+.form-signin .form-control:focus {
+	z-index: 2;
+}
+
+.form-signin input[type="email"] {
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.emojl-panel {
+	position: absolute;
+	top: 355px;
+	left: 0px;
+	width: 370px;
+	height: 200px;
+	background-color: #dddddd;
+	border: 1px solid #EEEEEE;
+	z-index: 1056;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px #000;
+	padding: 5px;
+}
+
+/*
+.btn {
+	display: block;
+	position: relative;
+	border: 1px solid;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: .75em 12px;
+	width: 100%;
+	font-family: '微软雅黑', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 16px;
+}
+*/
+.btn_face {
+	padding: 5px;
+}
+
+.chat_toolbar .btn_img {
+	width: 30px;
+	height: 30px;
+}
+
+.btn_face .btn_img {
+	background: url(/img/chat_bottombar_icon_face.png);
+}
+
+.btn_img {
+	margin: 0 4px;
+	background-size: 100% 100% !important;
+}
+
+.btn_img, .btn_small .btn_img {
+	display: block;
+	width: 20px;
+	height: 20px;
+}
+
+/*----------分割线----------*/
+.chat_content_group {
+	padding: 10px
+}
+
+.chat_content_avatar {
+	float: left;
+	width: 40px;
+	height: 40px;
+	margin-right: 10px
+}
+
+.chat_nick {
+	font-size: 14px;
+	margin: 0 0 10px
+}
+
+.chat_content {
+	display: inline-block;
+	min-height: 16px;
+	max-width: 50%;
+	background: #97c94c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#cf9),
+		to(#9c3));
+	background: -webkit-linear-gradient(#cf9, #9c3);
+	background: -moz-linear-gradient(#cf9, #9c3);
+	background: -ms-linear-gradient(#cf9, #9c3);
+	background: -o-linear-gradient(#cf9, #9c3);
+	background: linear-gradient(#cf9, #9c3);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 10px 15px;
+	word-break: break-all;
+	box-shadow: 1px 1px 5px #000;
+	line-height: 1.4
+}
+
+.chat_content_group.buddy {
+	text-align: left
+}
+
+.chat_content_group.self {
+	text-align: right
+}
+
+.chat_content_group.self>.chat_content {
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(white, #e1e1e1));
+	background: -webkit-linear-gradient(white, #e1e1e1);
+	background: -moz-linear-gradient(white, #e1e1e1);
+	background: -ms-linear-gradient(white, #e1e1e1);
+	background: -o-linear-gradient(white, #e1e1e1);
+	background: linear-gradient(#fff, #e1e1e1)
+}
+
+.chat_content_group.self>.chat_content_avatar {
+	float: right;
+	margin: 0 0 0 10px
+}
+
+.chat_content_group.self>.chat_nick {
+	text-align: right
+}
+
+.chat_content_group.self>.chat_content {
+	text-align: left
+}
+
+.chat_content_group.system>.chat_content {
+	max-width: 100%;
+	background: #f6fabb;
+	background: -webkit-linear-gradient(#f6fabb, #fdf98d);
+	background: -moz-linear-gradient(#f6fabb, #fdf98d);
+	background: -ms-linear-gradient(#f6fabb, #fdf98d);
+	background: -o-linear-gradient(#f6fabb, #fdf98d);
+	background: linear-gradient(#f6fabb, #fdf98d)
+}
+
+.chat_content_group.system {
+	text-align: left !important
+}
+
+.chat_content .icon {
+	width: 20px;
+	height: 20px;
+	float: left;
+	background-image: url(../img/tips_icon.png)
+}
+
+.chat_content .icon_info {
+	background-position: -60px 0
+}
+
+.chat_content .icon_err {
+	background-position: -20px 0
+}
+
+.chat_content .icon_succ {
+	background-position: -40px 0
+}
+
+.container_box {
+	border: 1px solid #d9dadc;
+	background-color: #fff;
+}
+
+.container_box_bd {
+	padding-bottom: 30px;
+	padding: 60px 135px;
+}
+
+label {
+	font-weight: normal;
+}
+
+label.error {
+	padding-top: 5px;
+	font-weight: normal;
+	color: #EA5200;
+}
+
+.media-heading {
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+
+.media-main {
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+}
+
+.media-avatar {
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+.media-desc {
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: gray;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 260px;
+	white-space: nowrap;
+}
+
+/* tab color */
+.nav-tabs>li>a {
+	/* 	background-color: #333333; */
+	/* 	border-color: #777777; */
+	/* 	color: #fff; */
+	
+}
+
+/* active tab color */
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus
+	{
+	color: #fff;
+	background-color: #337ab7;
+	border: 1px solid #337ab7;
+	border-radius: 0;
+}
+
+/* hover tab color */
+.nav-tabs>li>a:hover {
+	/* 	border-color: #000000; */
+	/* 	background-color: #111111; */
+	
+}
+
+
+
+
+/* 用户在线状态走势图 */
+.search{
+	margin:25px;
+}
+.startTimeLab{
+	margin-left:100px;
+}
+.endTimeLab{
+	margin-left:100px !important;
+}
+
+ .search label span{
+	color: #333;	
+	font-size: 15px;
+	width: 95px;
+	display: block;
+	float: left;
+	padding-top: 3px;
+}
+.search input{
+   border: 1px solid #ddd;
+   height: 30px;
+   padding-left: 10px;
+   display: block;
+   width: 120px;
+   float: left;
+}
+.search button{
+  margin-left:100px !important; 
+  margin-bottom:30px;
+}
+.btn-group{
+	margin-left:130px !important;
+}
+

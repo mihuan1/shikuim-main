@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mianshi-im-api:war">
+    <output-path>$PROJECT_DIR$/mianshi-parent/mianshi-im-api/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>mianshi-im-api</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="imapi-2021-11-07.war">
+      <element id="artifact" artifact-name="mianshi-im-api:war exploded" />
+    </root>
+  </artifact>
+</component>

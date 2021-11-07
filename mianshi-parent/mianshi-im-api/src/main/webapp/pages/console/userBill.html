@@ -1,0 +1,93 @@
+<!DOCTYPE  html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+
+<body class="childrenBody">
+<form class="layui-form">
+	<!-- <blockquote class="layui-elem-quote quoteBox"> -->
+		<!-- <form class="layui-form">
+			<div class="layui-inline">
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input search_user_val" placeholder="输入ID或昵称搜索" />
+				</div>
+				<a class="layui-btn search_user_btn" data-type="reload">搜索</a>
+			</div>
+			
+		</form> -->
+	<!-- </blockquote> -->
+	<table id="user_bill_list" lay-filter="user_bill_list"></table>
+
+	<!--操作-->
+	<!-- <script type="text/html" id="userListBar">
+		<a class="layui-btn layui-btn-xs" lay-event="edit">充值</a>
+		<a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="rechargeRcord">充值记录</a>
+		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+	</script> -->
+</form>
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/console/js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript">
+		
+		console.log('usetBill  Test  userId'+localStorage.getItem("currClickUser") );
+		//用户账单
+	    var tableIns = layui.table.render({
+
+	      elem: '#user_bill_list'
+	      ,url:request("/console/userBill")+"&userId="+localStorage.getItem("currClickUser")
+	      ,id: 'user_bill_list'
+	      ,page: true
+	      ,curr: 0
+          ,limit:Common.limit
+          ,limits:Common.limits
+	      ,groups: 7
+	      ,cols: [[ //表头
+	           {field: 'tradeNo', title: '交易单号',sort:'true', width:200}
+	          ,{field: 'money', title: '金额',sort:'true', width:100}
+	          ,{field: 'time', title: '时间',sort:'true', width:200,templet: function(d){
+	          		return  UI.getLocalTime(d.time);
+	          }}
+	          ,{field: 'type', title: '类型',sort:'true', width:100,templet: function(d){
+	          		if (d.type==1){return "用户充值";}
+	          		else if(d.type==2){return "用户提现";}
+	          		else if(d.type==3){return "后台充值";}
+	          		else if(d.type==4){return "发送红包";}
+	          		else if(d.type==5){return "领取红包";}
+	          		else if(d.type==6){return "红包退款";}
+	          		else if(d.type==7){return "转账";}
+	          		else if(d.type==8){return "接受转账";}
+	          		else if(d.type==9){return "转账退回";}
+	          		else if(d.type==10){return "付款码付款";}
+	          		else if(d.type==11){return "付款码收款";}
+	          		else if(d.type==12){return "二维码收款 付款方";}
+	          		else if(d.type==13){return "二维码收款 收款方";}
+	          		else if(d.type==16){return "后台手工提现";}
+	          }}
+	          ,{field: 'payType', title: '支付方式',sort:'true', width:150,templet: function(d){
+	          		if (d.payType==1){return "支付宝支付";}
+	          		else if(d.payType==2){return "微信支付";}
+	          		else if(d.payType==3){return "余额支付";}
+	          		else if(d.payType==4){return "系统支付";}
+	          		else{return "其他方式支付"}
+	          }}
+	         /* ,{field: 'telephone', title: '手机号码',sort:'true', width:150}*/
+	          
+	        ]]
+			,done:function(res, curr, count){
+				checkRequst(res);
+			}
+	    });
+
+
+</script>
+
+</body>
+</html>

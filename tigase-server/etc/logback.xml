@@ -1,0 +1,40 @@
+<configuration scan="true">
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/tigase.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{MM-dd HH:mm} [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			  <!--<pattern>%d %p (%file:%line\)- %m%n</pattern>-->
+
+            <!--格式化输出：%d:表示日期    %thread:表示线程名     %-5level:级别从左显示5个字符宽度  %msg:日志消息    %n:是换行符-->
+
+            <pattern>%d{MM-dd HH:mm} - %-5level %logger{30} %msg%n</pattern>
+			<charset>UTF-8</charset>
+
+        </encoder>
+
+    </appender>
+    <logger name="tigase.xmpp.XMPPDomBuilderHandler" level="warn"/>
+    <logger name="tigase.server" level="trace"/>
+    <logger name="tigase.io" level="warn"/>
+    <logger name="tigase.osgi" level="trace"/>
+    <logger name="tigase.xmpp" level="trace"/>
+    
+    <logger name="org.mongodb.driver" level="ERROR"/>
+	<logger name="org.mongodb.driver.cluster" level="ERROR" />
+	<logger name="log4j.logger.org.mongodb.driver" level="OFF" />
+	<logger name="io.netty" level="ERROR"/>
+    <logger name="org.redisson" level="ERROR"/>
+		<!--jetty / http-api configuration-->
+    <logger name="org.eclipse.jetty" level="warn" />
+		
+    <root level="trace">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
+

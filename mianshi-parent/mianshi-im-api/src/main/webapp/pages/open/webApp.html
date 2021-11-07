@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>即时通讯开放平台</title>
+<link rel="stylesheet" type="text/css" href="css/open.css">
+<link rel="stylesheet" type="text/css" href="../common/layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="css/mobileApp.css">
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<!-- 文件上传 -->
+<script src="/pages/open/js/jquery.form.js" type="text/javascript"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+
+<script type="text/javascript" src="/pages/open/js/config.js"></script>
+<script type="text/javascript" src="/pages/open/js/webApp.js"></script>
+</head>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		line-height: 1.6;
+	}
+	body{
+		border: 0;
+		padding: 0;
+		margin: 0
+	}
+</style>
+<body>
+<div class="inner_wrp">
+	<ul class="layui-nav" lay-filter="happy" style="height: 46px;line-height: 46px;background-color: white">
+		<li class="layui-nav-item" type="1" style="line-height: 46px;height: 26px;" onclick=""><a href="/pages/open/mobileApp.html" style="color: #c5c5c5">移动应用</a></li>
+		<li class="layui-nav-item" type="2" style="line-height: 46px;height: 26px;"><a href="/pages/open/webApp.html" style="color: #c5c5c5">网站应用</a><p style="width: 65px;margin-left: 15px;height: 2px;background-color: #3EB94E"></p></li>
+		<!-- <li class="layui-nav-item" type="3" style="line-height: 46px"><a href="#" style="color: #c5c5c5">公众账号</a></li>
+		<li class="layui-nav-item" type="4" style="line-height: 46px"><a href="#" style="color: #c5c5c5">小程序</a></li>
+		<li class="layui-nav-item" type="5" style="line-height: 46px"><a href="#" style="color: #c5c5c5">第三方平台</a></li> -->
+	</ul>
+</div>
+<div id="mobileApp" class="layui-container" style="min-height: 630px;margin-top: 10px;">
+	<!-- app列表 -->
+	<div id="applist" class="appList-item">
+		<button class="layui-btn layui-btn-normal" onclick="Web.createWebApp()">创建网站应用</button>
+		<table id="applist_tab" class="layui-table" lay-filter="app_list"></table>
+	</div>
+	<!-- 创建app -->
+		<div id="createApp_div" style="display: none;">
+			<h3>创建网站应用</h3>
+			<div class="createApp">
+				
+				<div class="create_first_div">
+					<ol style="position: relative;">
+						<li class="ol_li">
+							<div id="title_solid_one" class="title_solid"></div>
+							<div class="title_prompt">
+								<i id="img_one" class="title_i background_one" style=""></i>
+								<h4>填写基本信息</h4>
+							</div>
+						</li>
+						<li class="ol_li">
+							<div id="title_solid_two" class="title_solid"></div>
+							<div class="title_prompt">
+								<i id="img_two" class="title_i background_two" style=""></i>
+								<h4>填写网站信息</h4>
+							</div>
+						</li>
+						<li class="ol_litwo">
+							<div class="title_solid" style="width: 0"></div>
+							<div class="title_prompt">
+								<i id="img_three" class="title_i background_three" style=""></i>
+								<h4>提交成功</h4>
+							</div>
+						</li>
+					</ol>
+				</div>
+				<div id="step1" class="create_two_div" >
+					<!-- <form class="layui-form"> -->
+						<div style="padding-bottom: 25px">
+							<label class="label">网站应用名称</label>
+							<div class="input_rule">
+								<span class="input_rule_span"><input id="appName" lay-verify="required" type="" name="" class="layui-input input_self"></span>
+								<p class="input_p">
+	            					请注意，名称将在分享、收藏、登录、支付等操作时被用户看到，需在2到20个字节之间，一个中文占两个字节，半年只能修改1次
+	        					</p>
+							</div>
+						</div>
+						<div style="padding-bottom: 25px">
+							<label class="label">应用简介</label>
+							<div class="input_rule">
+								<span class="input_rule_span"><textarea id="appIntroduction" maxlength="80" style="width: 100%;background-color: transparent;border:0;outline:0;height: 45px;resize: none;"></textarea></span>
+								<p class="input_p">
+	            					最多80字
+	        					</p>
+							</div>
+						</div>
+						<div style="padding-bottom: 25px">
+							<label class="label">应用官网</label>
+							<div class="input_rule">
+								<span class="input_rule_span"><input id="appUrl" name="appUrl" class="layui-input input_self"></span>
+								<p class="input_p">
+	            					请填写网站的应用官网
+	        					</p>
+							</div>
+						</div>
+						<div>
+							<label class="label">网站信息登记表扫描件</label>
+							<div class="input_rule">
+								<div style="width: 510px;margin-bottom: 40px;">
+									<div class="photo_div">
+										<p class="photo_p">请下载《开放平台网站信息登记表》后填写打印，并盖章后上传扫描件。支持JPG、PNG、BMP格式，不超过2MB </p>
+										<span class="file_span">
+											<a  href="javascript:;" class="layui-btn">选择文件</a>
+											<ul class="file_ul"></ul>
+											<div class="file_div">
+												<form id="uploadwebInfoImgFileFrom" name="uploadwebInfoImgFileFrom" action="" method="post" enctype="multipart/form-data">
+													<input id="photowebInfoImgUrl" type="hidden" name="photowebInfoImgUrl">
+													<input id="photowebInfoImgUpload" lay-filter="photowebInfoImgUpload" onchange="Web.uploadWebInfo()" name="file" type="file" style="display: none;" accept="image/bmp,image/png,image/jpeg,image/jpg,image/gif">
+												</form>
+												
+												<label onclick="Web.selectwebInfoImgFile()" class="file_label"></label>
+											</div>
+										</span>
+										<img id="uploadwebInfoImg_url" src="" style="width: 35px">
+										<!-- <span class="file_span_img">
+											<strong>参考示例</strong>
+											<img src="img/28.png">
+										</span> -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div style="padding-bottom: 25px">
+							<label class="label">网站应用图片</label>
+							<div class="input_rule">
+								<div style="width: 510px;margin-bottom: 40px;">
+									<div class="photo_div">
+										<p class="photo_p">请上传移动应用水印图片 
+											28*28像素，仅支持PNG格式，大小不超过300KB。</p>
+										<span class="file_span">
+											<a  href="javascript:;" class="layui-btn">选择文件</a>
+											<ul class="file_ul"></ul>
+											<div class="file_div">
+												<form id="uploadSmallFileFrom" name="uploadSmallFileFrom" action="" method="post" enctype="multipart/form-data">
+													<input id="photoSmallUrl" type="hidden" name="photoSmallUrl">
+													<input id="photoSmallUpload" lay-filter="photoSmallUpload" onchange="Web.uploadSmall()" name="file" type="file" style="display: none;" accept="image/bmp,image/png,image/jpeg,image/jpg,image/gif">
+												</form>
+												
+												<label onclick="Web.selectSmallFile()" class="file_label"></label>
+											</div>
+										</span>
+										<img id="uploadSmall_url" src="" style="width: 35px">
+										<span class="file_span_img">
+											<strong>参考示例</strong>
+											<img src="img/28.png">
+										</span>
+									</div>
+								</div>
+								<div style="width: 510px;margin-bottom: 40px;">
+									<div class="photo_div">
+										<p class="photo_p">请上传移动应用水印图片 
+											108*108像素，仅支持PNG格式，大小不超过300KB。</p>
+										<span class="file_span">
+											<a href="javascript:;" class="layui-btn">选择文件</a>
+											<ul class="file_ul"></ul>
+											<div class="file_div">
+												<form id="uploadFileFrom" name="uploadFileFrom" action="" method="post" enctype="multipart/form-data">
+													<input id="photoUrl" type="hidden" name="photoUrl">
+													<input id="photoUpload" type="file" onchange="Web.upload()" name="file" style="display: none;" accept="image/bmp,image/png,image/jpeg,image/jpg,image/gif">
+												</form>
+												<label onclick="Web.selectFile()" class="file_label"></label>
+											</div>
+										</span>
+										<img id="upload_url" src="" style="width: 35px">
+										<span class="file_span_img">
+											<strong>参考示例</strong>
+											<img src="img/108.png">
+										</span>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="next">
+							<a id="nextBt" onclick="Web.nextBt()" href="javascript:;" class="layui-btn">下一步</a>
+						</div>
+					<!-- </form> -->
+				</div>
+				<div id="step2" style="display: none;">
+					<form class="layui-form">
+						<div id="" style="padding-bottom: 25px">
+							<label class="label">授权回调域名</label>
+							<div class="input_rule">
+								<span class="input_rule_span"><input id="callbackUrl" required lay-verify="required" type="" name="" class="layui-input input_self"></span>
+								<p class="input_p">
+	            					请填写开发需要的合法域名，用户使用账号登录后，只能回调至该域名下的页面
+	        					</p>
+							</div>
+							<div class="form2_submit">
+								<a id="up" onclick="Web.upBt()" class="layui-btn" href="javascript:void(0);">上一步</a>
+								<a onclick="Web.submit()" class="layui-btn layui-btn-normal" href="javascript:void(0);">提交审核</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- app详情 -->
+		<div id="WebAppItem" style="display: none;">
+			<div style="padding-top: 18px;color: #222">
+				<a href="" style="color: #222;text-decoration: none;outline: 0;">管理中心</a>
+				<span>/</span>
+				应用详情
+			</div>
+			<div style="padding-bottom: 30px;border: 1px solid #e6e6e6;background-color: #fff;margin-top: 44px;min-height: 630px;">
+				<div style="position: relative;">
+					<div style="overflow: hidden;margin: -1px;">
+						<div style="content: '\200B';display: block;clear: both;padding: 32px 32px;">
+							<div style="float: left;margin-right: 1em;height: 110px;">
+								<img id="app_url" src="" style="width: 110px;height: 110px;">
+							</div>
+							<div style="margin-left: 124px;position: relative;min-height: 110px;">
+								<p id="app_name" style="font-size: 16px;margin: 0;"></p>
+								<p style="color: #9e9f9f;line-height: 25px;margin: 0;"><strong>AppID:</strong><span id="app_id">wx373339ef4f3cd807</span></p>
+								<p style="color: #9e9f9f;line-height: 25px;margin: 0;"><strong>AppSecret：</strong>
+									<span id="AppSecret"></span>
+								</p>
+								<div style="margin-top: 10px;color: #7fba4f;">
+									<i></i>
+									<span id="app_status"></span>
+								</div>
+								<div style="position: absolute;top: 0;width: 100%;text-align: right;">
+									<div id="app_delete" style="text-align: right;">
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="interfaceInfo">
+						<div style="border: 0;">
+							<h3 style="padding: 0 32px;background-color: #ebebeb;line-height: 44px;">接口信息</h3>
+							<div>
+								<table class="layui-table" style="margin: 0">
+									<thead>
+										<tr>
+											<th style="border-left-color: #dfdfdf;border-bottom-color: #dfdfdf;padding-top: 0;padding-bottom: 0;line-height: 46px;border-width: 0;border-left-width: 0;">接口名称</th>
+											<th style="border-left-color: #dfdfdf;border-bottom-color: #dfdfdf;padding-top: 0;padding-bottom: 0;line-height: 46px;border-width: 0;border-left-width: 0;">接口介绍</th>
+											<th style="border-left-color: #dfdfdf;border-bottom-color: #dfdfdf;padding-top: 0;padding-bottom: 0;line-height: 46px;border-width: 0;border-left-width: 0;">接口状态</th>
+											<th style="border-left-color: #dfdfdf;border-bottom-color: #dfdfdf;padding-top: 0;padding-bottom: 0;line-height: 46px;border-width: 0;border-left-width: 0;">操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>分享权限</td>
+											<td>将内容分享给朋友或朋友圈</td>
+											<td id="isAuthShare"></td>
+											<td id="isAuthShareOperate"></td>
+										</tr>
+										
+										<tr>
+											<td>登录权限</td>
+											<td>使用账号登录App</td>
+											<td id="isAuthLogin"></td>
+											<td id="isAuthLoginOperate"></td>
+										</tr>
+										<tr>
+											<td>支付权限</td>
+											<td>获得支付能力 </td>
+											<td id="isAuthPay"></td>
+											<td id="isAuthPayOperate"></td>
+										</tr>
+										<tr>
+											<td>申请群助手</td>
+											<td>在群组中被添加后快速进入应用</td>
+											<td id="isGroupHelper"></td>
+											<td id="isGroupHelperOperate"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						
+					</div>
+
+					<!-- 支付回调域名 -->
+					<div id="payCallBack" style="display: none;margin-top: 10px">
+						<div class="createApp">
+							<div>
+								<form class="layui-form">
+									<div id="" style="padding-bottom: 25px">
+										<label class="label" style="width: 10em">支付授权回调域名</label>
+										<div class="input_rule">
+											<span class="input_rule_span">
+												<input id="payCallBackUrl" required lay-verify="required" type="" name="" class="layui-input input_self">
+											</span>
+											<p class="input_p">
+				            					请填写开发需要的合法域名，只能回调至该域名下的接口
+				        					</p>
+										</div>
+										<div class="form2_submit" style="margin-left: 2.9em">
+
+											<a id="up" onclick="Web.upInfo()" class="layui-btn" href="javascript:void(0);">上一步</a>
+											<input id="applicationPayId" type="text" name="" style="display: none;">
+											<a onclick="Web.confirmApplicationPay()" class="layui-btn layui-btn-normal" href="javascript:void(0);">确认申请</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					
+					<!-- 申请成为群助手 -->
+					<div id="GroupHelper" style="display: none;margin-top: 10px">
+						<div style="border: 0;">
+							<h3 style="padding: 0 32px;background-color: #ebebeb;line-height: 44px;">群助手列表
+								<a onclick="Web.addHelper()" style="float: right;margin-top: 10px;">添加</a>
+							</h3>
+							<div>
+								<table class="layui-table" style="margin: 0">
+									<thead>
+										<tr>
+											<th style="border-left-color: #dfdfdf;border-bottom-color: #dfdfdf;padding-top: 0;padding-bottom: 0;line-height: 46px;border-width: 0;border-left-width: 0;">群助手名称</th>
+											<th style="border-left-color: #dfdfdf;border-bottom-color: #dfdfdf;padding-top: 0;padding-bottom: 0;line-height: 46px;border-width: 0;border-left-width: 0;">群助手介绍</th>
+											<th style="border-left-color: #dfdfdf;border-bottom-color: #dfdfdf;padding-top: 0;padding-bottom: 0;line-height: 46px;border-width: 0;border-left-width: 0;">开发者信息</th>
+											<th style="border-left-color: #dfdfdf;border-bottom-color: #dfdfdf;padding-top: 0;padding-bottom: 0;line-height: 46px;border-width: 0;border-left-width: 0;">操作</th>
+										</tr>
+									</thead>
+									<tbody id="GroupHelperList">
+										
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		
+		<!-- 添加群助手 -->
+		<div id="AddGroupHelper" style="display: none;margin-top: 10px">
+			<input id="addHelper_openAppId" type="" name="" style="display: none;">
+			<input id="updateHelper_helperId" type="" name="" style="display: none;">
+			<div style="border: 0;">
+				<h3 style="padding: 0 32px;background-color: #ebebeb;line-height: 44px;">添加群助手</h3>
+				<div class="">
+					<div style="padding-bottom: 25px">
+						<label class="label">群助手名称</label>
+						<div class="input_rule">
+							<span class="input_rule_span">
+								<input id="helName" lay-verify="required" type="" name="" class="layui-input input_self">
+							</span>
+						</div>
+					</div>
+
+					<div style="padding-bottom: 25px">
+						<label class="label">群助手描述</label>
+						<div class="input_rule">
+							<span class="input_rule_span">
+								<input id="helDesc" lay-verify="required" type="" name="" class="layui-input input_self">
+							</span>
+							
+						</div>
+					</div>
+
+					<div style="padding-bottom: 25px">
+						<label class="label">开发者</label>
+						<div class="input_rule">
+							<span class="input_rule_span">
+								<input id="helDeveloper" lay-verify="required" type="" name="" class="layui-input input_self">
+							</span>
+						</div>
+					</div>
+
+					<div>
+						<label class="label">群助手图标</label>
+						<div class="input_rule">
+							<div style="width: 510px;margin-bottom: 40px;">
+								<div class="photo_div">
+									<!-- <p class="photo_p">请下载《开放平台网站信息登记表》后填写打印，并盖章后上传扫描件。支持JPG、PNG、BMP格式，不超过2MB </p> -->
+									<span class="file_span">
+										<a  href="javascript:;" class="layui-btn">选择文件</a>
+										<ul class="file_ul"></ul>
+										<div class="file_div">
+											<form id="uploadIconFileFrom" name="uploadIconImgFileFrom" action="" method="post" enctype="multipart/form-data">
+												<input id="photoIconUrl" type="hidden" name="photoIconUrl">
+												<input id="photoIconUpload" lay-filter="photoIconUpload" onchange="Web.uploadIcon()" name="file" type="file" style="display: none;" accept="image/bmp,image/png,image/jpeg,image/jpg,image/gif">
+											</form>
+											
+											<label onclick="Web.selectIconFile()" class="file_label"></label>
+										</div>
+									</span>
+									<img id="uploadIconUrl_url" src="" style="width: 35px">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="padding-bottom: 25px">
+						<label class="label">群助手类型</label>
+						<select id="HelperType" class="layui-select" onchange="Web.selectHelperType()">
+							<option>请选择类型</option>
+							<option value="2">网页</option>
+							<option value="3">富文本</option>
+						</select>
+					</div>
+
+					<div id="webUrl" style="padding-bottom: 25px;display: none;">
+						<label class="label">网页地址</label>
+						<div class="input_rule">
+							<span class="input_rule_span">
+								<input id="helperLink" lay-verify="required" type="" name="" class="layui-input input_self">
+							</span>
+						</div>
+					</div>
+					<div id="appPackName_hel" style="padding-bottom: 25px;display: none;">
+						<label class="label">android app包名</label>
+						<div class="input_rule">
+							<span class="input_rule_span">
+								<input id="appPackName" lay-verify="required" type="" name="" class="layui-input input_self">
+							</span>
+						</div>
+					</div>
+					<div id="callBackClassName_hel" style="padding-bottom: 25px;display: none;">
+						<label class="label">android回调方法</label>
+						<div class="input_rule">
+							<span class="input_rule_span">
+								<input id="callBackClassName" lay-verify="required" type="" name="" class="layui-input input_self">
+							</span>
+						</div>
+					</div>
+					<div id="iosUrlScheme_hel" style="padding-bottom: 25px;display: none">
+						<lable class="label">ios URLScheme</lable>
+						<div class="input_rule">
+							<span class="input_rule_span">
+								<input id="iosUrlScheme" lay-verify="required" type="text" name="" class="layui-input input_self">
+							</span>
+						</div>
+					</div>
+					<div id="Other" style="display: none;">
+						<div style="padding-bottom: 25px">
+							<label class="label">标题</label>
+							<div class="input_rule">
+								<span class="input_rule_span">
+									<input id="otherTitle" lay-verify="required" type="" name="" class="layui-input input_self">
+								</span>
+							</div>
+
+						</div>
+						<div style="padding-bottom: 25px">
+							<label class="label">描述</label>
+							<div class="input_rule">
+								<span class="input_rule_span">
+									<input id="otherDesc" lay-verify="required" type="" name="" class="layui-input input_self">
+								</span>
+							</div>
+
+						</div>
+						<div style="padding-bottom: 25px">
+							<label class="label">跳转地址</label>
+							<div class="input_rule">
+								<span class="input_rule_span">\
+									<input id="otherUrl" lay-verify="required" type="" name="" class="layui-input input_self">
+								</span>
+							</div>
+
+						</div>
+						<div style="padding-bottom: 25px">
+							<label class="label">图片地址</label>
+							<div class="input_rule">
+								<span class="input_rule_span">
+									<input id="otherImgUrl" lay-verify="required" type="" name="" class="layui-input input_self">
+								</span>
+							</div>
+
+						</div>
+						<div style="padding-bottom: 25px">
+							<label class="label">小图片</label>
+							<div class="input_rule">
+								<span class="input_rule_span">
+									<input id="otherAppIocn" lay-verify="required" type="" name="" class="layui-input input_self">
+								</span>
+							</div>
+
+						</div>
+						<div style="padding-bottom: 25px">
+							<label class="label">名称</label>
+							<div class="input_rule">
+								<span class="input_rule_span">
+									<input id="otherAppName" lay-verify="required" type="" name="" class="layui-input input_self">
+								</span>
+							</div>
+						</div>
+					</div>
+					<div style="padding-bottom: 25px">
+						<button id="submit_helper" class="layui-btn" onclick="Web.confirmIsGroupHelper()">提交</button>
+						<button id="update_helper" class="layui-btn" style="display: none;" onclick="Web.confirmUpdateHelper()">更新</button>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+</body>
+</html>

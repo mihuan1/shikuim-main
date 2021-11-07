@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>集成登录成功数据展示界面</title>
+</head>
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<body>
+    <div id="userInfo" style="margin:0 auto;margin-top: 300px;width:600px;height:250px;background:#fcf8e3;display:table;">
+        <table>
+            <h4 style="text-align: center"> ====  酷聊用户数据回显  ====</h4>
+            <tr>
+                <td>
+                    <p>昵称：<span id="userNickName"></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>头像：<span id="userImage"></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>性别：<span id="userSex"></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>地址：<span id="userAddress"></span></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>openId：<span id="openId"></span></p>
+                </td>
+            </tr>
+        </table>
+
+
+
+
+    </div>
+<!-- 模态框（Modal） -->
+<div id="errorMsgByTelephone" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" style="width: 85%;height: 20px;margin-top: 50%;margin-left: 30px">
+        <div class="modal-content">
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript">
+
+    var testData={
+        code : null,
+        isPCRequest : false,
+        paramData : null,
+    }
+
+
+    // window.onload=function () {
+    $(document).ready(function (){
+        var Request = new Object();
+        Request = GetRequest();
+        // var tocken = Request["userTocken"];
+        var code = Request["code"];
+        testData.code = code;
+        // alert("code"+code);
+        if (null != testData.code) {
+            if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                testData.isPCRequest = true;
+            }
+            myFn.invoke({
+                url: '/open/code/oauth',
+                data: {
+                    code: testData.code,
+                },
+                success: function (result) {
+                    if (1 == result.resultCode) {
+                        $("#userNickName").empty().text(result.data.nickName);
+                        $("#userImage").empty().text(result.data.image);
+                        $("#userSex").empty().text((result.data.sex == 0 ? "女" : "男"));
+                        $("#userAddress").empty().text(result.data.provinceId +"  "+result.data.cityId);
+                        $("#openId").empty().text(result.data.openId);
+                        // 当前时间
+                        var date = myFn.getCurrentSeconds();
+                        myFn.set("nickName",result.data.nickName,date+20);
+                        myFn.set("userImage",result.data.image,date+20);
+                        myFn.set("userSex",result.data.sex,date+20);
+                        myFn.set("userAddress",result.data.provinceId+"    "+result.data.cityId,date+20);
+                        myFn.set("openId",result.data.openId,date+20);
+                        /*localStorage.setItem("nickName",result.data.nickName);
+                        localStorage.setItem("userImage",result.data.image);
+                        localStorage.setItem("userSex",result.data.sex);
+                        localStorage.setItem("userAddress",result.data.provinceId+"    "+result.data.cityId);
+                        localStorage.setItem("openId",result.data.openId);*/
+                    }else{
+                        if(testData.isPCRequest){
+                            $('.modal-body').html(result.resultMsg);
+                            $("#errorMsgByTelephone").modal('show');
+                        }else{
+                            alert(result.resultMsg);
+                        }
+
+                    }
+                },
+                error : function (result) {
+                    alert("网络错误，请重试");
+                }
+            })
+        }else{
+            $('#userInfo').hide();
+        }
+    });
+
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+                theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+
+</script>
+<!--<script src="vendor/jquery/jquery-3.2.1.min.js"></script>-->
+<!--<script src="vendor/jquery/jquery.min.js"></script>-->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+<script src="vendor/jquery/jquery.md5.js"></script>
+<script src="js/common.js"></script>
+<script src="js/login.js"></script>
+<script src="js/main.js"></script>
+</html>

@@ -1,0 +1,216 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.shiku</groupId>
+		<artifactId>mianshi-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<groupId>com.shiku.push</groupId>
+	<artifactId>shiku-push</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+	<name>shiku-push</name>
+	
+	
+	<properties>
+		<tomcat.version>8.5.13</tomcat.version>
+		<jstl.version>1.2</jstl.version>
+		<jackson-databind.version>2.9.5</jackson-databind.version>
+		<java.version>1.8</java.version>
+		<spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+		<rocketmq.version>4.3.1</rocketmq.version>
+		<start-class>com.shiku.push.PushApplication</start-class>
+		<main.basedir>${basedir}/../..</main.basedir>
+		<m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
+	</properties>
+	
+	<!-- <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.4.RELEASE</version>
+        <relativePath/>
+    </parent> -->
+
+   
+
+    <dependencies>
+    	<dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>4.12</version>
+	      <scope>test</scope>
+	    </dependency>
+    
+    	<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
+    	
+      	<dependency>
+		  <groupId>com.google.firebase</groupId>
+		  <artifactId>firebase-admin</artifactId>
+		  <version>6.5.0</version>
+		</dependency>
+	
+		<dependency>
+		  <groupId>com.google.cloud</groupId>
+		  <artifactId>google-cloud-storage</artifactId>
+		  <version>1.55.0</version>
+		</dependency>
+		
+	
+		<dependency>
+			<groupId>com.shiku</groupId>
+			<artifactId>mianshi-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+			<!-- 自定义  小米 推送 -->
+		<!-- https://mvnrepository.com/artifact/com.xiaomi.mipush.sdk/mipush -->
+		
+		<dependency>
+		    <groupId>com.xiaomi.push</groupId>
+		    <artifactId>mipush-sdk-server</artifactId>
+		    <version>2.2.18</version>
+		</dependency>
+		
+		<!-- 极光推送  -->
+		<dependency>
+			<groupId>cn.jpush.api</groupId>
+			<artifactId>jpush-client</artifactId>
+			<version>3.2.17</version>
+		</dependency>
+		
+		
+		<!-- 魅族推送 -->
+		<dependency>
+		    <groupId>com.meizu.flyme</groupId>
+		    <artifactId>push-server-sdk</artifactId>
+		    <version>1.2.7.20181128_release</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json-simple</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+		
+		<!--Ios 推送 -->
+		
+		<dependency>
+		    <groupId>com.turo</groupId>
+		    <artifactId>pushy</artifactId>
+		    <version>0.13.6</version>
+		</dependency>
+		
+		<dependency>
+         <groupId>com.notnoop.apns</groupId>
+         <artifactId>apns</artifactId>
+         <version>1.0.0.Beta6</version>
+    	</dependency>
+    	
+		<!-- OPPO 推送 -->
+		<dependency>
+		    <groupId>com.oppo.push</groupId>
+		    <artifactId>opush-server-sdk</artifactId>
+		    <version>1.0.1</version>
+		</dependency>
+		
+		
+		<!-- VIVO  推送 -->
+		<dependency>
+		    <groupId>com.vivo.push</groupId>
+		    <artifactId>vPush-server-sdk</artifactId>
+		    <version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/vPush-server-sdk-1.0.jar</systemPath>
+		</dependency>
+		
+		 <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.31.Final</version>
+            <scope>compile</scope>
+        </dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-databind.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.47</version>
+		</dependency>
+
+
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.9.2</version>
+		</dependency>
+
+	
+	</dependencies>
+
+	<!-- Package as an executable jar -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!-- <version>1.1.6.RELEASE</version> -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<!-- <version>2.3.2</version> -->
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+					<compilerArguments>
+						<extdirs>lib</extdirs> 
+					</compilerArguments>
+				</configuration>
+			</plugin>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-surefire-plugin</artifactId>
+		        <configuration>
+		          <skip>true</skip>
+		        </configuration>
+		      </plugin>
+		</plugins>
+	</build>
+
+</project>

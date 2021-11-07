@@ -1,0 +1,160 @@
+<!DOCTYPE  html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>邀请用户加入群组</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+
+<body class="childrenBody">
+	<div class="layui-row">
+		<div class="layui-col-md1">&nbsp;</div>
+		<div id="userList" class="layui-col-md10">
+			<div class="layui-card-header"><p>邀请用户加入群组</p></div>
+			<div class="user_btn_div" style="margin-top: 2%">
+				<input type="text" name="" class="layui-input nickName" style="width: 15%;display: inline" placeholder="用户昵称">
+				<button class="layui-btn search_user">搜索</button>
+			</div>
+			<div id="user_table" class="layui-card" style="margin-top: 1%">
+				<!--<div class="layui-card-header"><p>用户列表</p></div>-->
+				<div class="layui-card-body">
+					<table id="user_list" lay-filter="user_list" style="table-layout:fixed;word-break:break-all;" >
+
+					</table>
+				</div>
+			</div>
+			<script type="text/html" id="inviteJoinRoomEven">
+				<div class="layui-btn-container">
+					<button class="layui-btn layui-btn-sm inviteJoinRoom" onclick="inviteJoinRoom()" lay-event="inviteJoinRoom">邀请用户加入群组</button>
+				</div>
+			</script>
+		</div>
+
+
+	</div>
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/console/js/common.js"></script>
+<script type="text/javascript" src="/pages/console/js/roomList.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript">
+    var userIds = new Array();
+    console.log('inviteJoinRoom  Test  roomId      '+localStorage.getItem("roomId"));
+    //用户账单
+    var tableIns = layui.table.render({
+
+        elem: '#user_list'
+        ,toolbar: '#inviteJoinRoomEven'
+        ,url:request("/console/userList")
+        ,id: 'user_list'
+        ,page: true
+        ,curr: 0
+        ,limit:10
+        ,limits:[10,15,20]
+        ,groups: 7
+        ,cols: [[ //表头
+            {type:'checkbox',fixed:'left'}// 多选
+            ,{field: 'userId', title: '用户Id',sort:'true', width:100}
+            ,{field: 'nickname', title: '昵称',sort:'true', width:100}
+            ,{field: 'telephone', title: '手机号码',sort:'true', width:140}
+            ,{field: 'model', title: '登录设备',sort:'true', width:140,templet(d){
+                    if(null != d.loginLog){
+                        var model = d.loginLog.model;
+                        if(null == model || undefined == model || "" == model){
+                            return "其他设备";
+                        }else{
+                            return model;
+                        }
+                    }
+                    return "其他设备"
+                }}
+            ,{field: 'isAuth', title: '短信注册',sort:'true', width:110,templet: function(d){
+                    return d.isAuth==1?"是":"否";
+                }}
+            ,{field: 'createTime', title: '注册时间',sort:'true', width:170,templet: function(d){
+                    return UI.getLocalTime(d.createTime);
+                }}
+        ]]
+        ,done:function(res, curr, count){
+
+        }
+
+    });
+
+
+
+    // 邀请好友加入群组
+    function inviteJoinRoom(){
+        // 多选操作
+        var checkStatus = layui.table.checkStatus('user_list'); //idTest 即为基础参数 id 对应的值
+        console.log("新版："+JSON.stringify(checkStatus.data)) //获取选中行的数据
+        console.log("新版："+checkStatus.data.length) //获取选中行数量，可作为是否有选中行的条件
+        console.log("新版："+checkStatus.isAll) //表格是否全选
+        for (var i = 0; i < checkStatus.data.length; i++){
+            userIds.push(checkStatus.data[i].userId);
+        }
+        if(0 == checkStatus.data.length){
+            layer.msg("请勾选邀请加入群组的用户");
+            return;
+        }
+        layer.msg("当前勾选： "+userIds);
+        inviteJoinRoomImpl(userIds.join(","),localStorage.getItem("roomId"));
+    };
+
+    function inviteJoinRoomImpl(userId,roomId){
+        console.log("inviteJoinRoomImpl  userId : "+userId+"      roomId:"+roomId+"inviteUserId : "+localStorage.getItem("account"));
+        layer.confirm('确定邀请指定用户加入群组',{icon:3, title:'提示消息',yes:function () {
+                Common.invoke({
+                    url:request('/console/inviteJoinRoom'),
+                    data:{
+                        userIds : userId,
+						roomId : roomId,
+						inviteUserId : localStorage.getItem("account")
+
+                    },
+                    success:function(result){
+                        if(result.resultCode==1){
+                            layer.msg("邀请加入成功",{"icon":1});
+                            layui.table.reload("user_list");
+                            // 刷新群成员列表
+							Room.reloadTable();
+                            userIds = [];
+                        }else{
+                            userIds = [];
+                            layer.alert(result.resultMsg);
+						}
+                    },
+                    error:function () {
+						
+                    }
+                })
+            },btn2:function () {
+                userIds = [];
+            },cancel:function () {
+                userIds = [];
+            }});
+    };
+
+
+    //搜索用户
+    $(".search_user").on("click",function(){
+        layui.table.reload("user_list",{
+            page: {
+                curr: 1 //重新从第 1 页开始
+            },
+            where: {
+                onlinestate:$("#status").val(),// 在线状态
+                keyWorld : $(".nickName").val()  //搜索的关键字
+            }
+        })
+        $(".nickName").val('');
+        $("#myFriends").hide();
+    });
+</script>
+
+</body>
+</html>

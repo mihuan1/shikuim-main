@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+        <title>wxMeet</title>
+        <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui">
+
+        <style type="text/css">
+            /*提示用浏览器打开 遮罩层 核心css*/
+            .wxtip{background: rgba(0,0,0,0.8); text-align: center; position: fixed; left:0; top: 0; width: 100%; height: 100%; z-index: 998; display: none;}
+            .wxtip-icon{width: 52px; height: 67px; background: url(./images/weixin-tip.png) no-repeat; display: block; position: absolute; right: 30px; top: 20px;}
+            .wxtip-txt{padding-top: 107px; color: #fff; font-size: 16px; line-height: 1.5;}
+           
+        </style>
+
+    </head>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/common.js"></script>
+
+    <body>
+        <div id="warningTitle" style="text-align: center">
+            <!--<p> ==== TEST ==== </p>-->
+            <img src="images/warning.png" width="300px" height="300px" style="margin-top: auto">
+        </div>
+        
+        <!-- 提示遮罩层 -->
+        <div class="wxtip" id="JweixinTip" style="display: none;">
+            <span class="wxtip-icon"></span>
+            <p class="wxtip-txt">点击右上角<br>选择在浏览器中打开</p>
+        </div>
+
+        
+
+        <script language="javascript">
+            //JS判断微信、QQ内置浏览器，useragent
+            window.onload = function (){
+                var ua = navigator.userAgent.toLowerCase();
+
+                if(ua.match(/MicroMessenger/i)=='micromessenger') { //微信 内置浏览器 
+                    
+                    //div.style.display = "block";
+
+                    document.getElementById('JweixinTip').style.display='block';
+
+
+                    //点击关闭遮罩层
+                    // document.getElementById('JweixinTip').onclick=function(){
+                    //     this.style.display='none';
+                    // }
+
+                    console.log("微信内置浏览器 block");
+                
+                }else{
+
+                    $("#warningTitle").hide();
+                    // 直接打开
+                    if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                        if(navigator.userAgent.match(/android/i)){
+                            window.open("shikuimapp://meet.youjob.co/"+Common.getRequest().room+"?room="+Common.getRequest().room+"&type="+Common.getRequest().type,'_self')
+                        }
+                        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+                            window.open("shikuimapp://meet.youjob.co/"+Common.getRequest().room+"?room="+Common.getRequest().room+"&type="+Common.getRequest().type,'_self')
+                        }
+                    }else{
+                        window.location.href=Common.getRequest().meetUrl+Common.getRequest().room;
+                    }
+                }
+            }
+
+        </script>
+    </body>
+</html>
+
+
+
+
+

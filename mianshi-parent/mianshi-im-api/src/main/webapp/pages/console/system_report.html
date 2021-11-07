@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>系统报表</title>
+</head>
+
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+<link href="./css/public.css" rel="stylesheet">
+<style>
+body{
+	margin: 0;
+}
+.yellow{
+	background-color:yellow;
+}
+</style>
+
+<script type="text/javascript"> 
+
+	Date.prototype.Format = function (fmt) { //author: meizz 
+	    var o = {
+	        "M+": this.getMonth() + 1, //月份 
+	        "d+": this.getDate(), //日 
+	        "h+": this.getHours(), //小时 
+	        "m+": this.getMinutes(), //分 
+	        "s+": this.getSeconds(), //秒 
+	        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+	        "S": this.getMilliseconds() //毫秒 
+	    };
+	    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+	    for (var k in o)
+	    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+	    return fmt;
+	}
+
+</script>
+
+<body>
+  	
+<div class="layui-container" style="width: 90%;margin-top: 30px;">
+
+  	<div class="layui-row layui-col-space15">
+		
+			<div class="layui-col-sm6 layui-col-md3">
+	      		<div class="layui-card">
+	        		<div class="layui-card-header">用户总数
+	        		</div>
+	        		<div class="layui-card-body layuiadmin-card-list">
+	          			<p class="layuiadmin-big-font user-total"></p>
+	        		</div>
+	      		</div>
+	    	</div>
+
+	    	<div class="layui-col-sm6 layui-col-md3">
+	      		<div class="layui-card">
+	        		<div class="layui-card-header">群组总数
+	        		</div>
+	        		<div class="layui-card-body layuiadmin-card-list">
+	          			<p class="layuiadmin-big-font room-total"></p>
+	        		</div>
+	      		</div>
+	    	</div>
+
+	    	<div class="layui-col-sm6 layui-col-md3">
+	      		<div class="layui-card">
+	        		<div class="layui-card-header">单聊消息总数
+	        		</div>
+	        		<div class="layui-card-body layuiadmin-card-list">
+	          			<p class="layuiadmin-big-font chat-msg-total"></p>
+	        		</div>
+	      		</div>
+	    	</div>
+			
+			<div class="layui-col-sm6 layui-col-md3">
+	      		<div class="layui-card">
+	        		<div class="layui-card-header">添加好友总数
+	        		</div>
+	        		<div class="layui-card-body layuiadmin-card-list">
+	          			<p class="layuiadmin-big-font friends-total"></p>
+	        		</div>
+	      		</div>
+	    	</div>
+
+		
+	    <!-- 全局时间范围选择 -->
+
+		<div class="layui-col-sm12">
+	        <div class="layui-card">
+	        	<div class="layui-card-header" style="height: 52px;">
+			  
+		          	<div class="layui-form" style="min-width: 400px;max-height: 30px;display: inline-flex; margin-top: 8px;">
+						  <div class="layui-form-item">
+						    <div class="layui-inline">
+						      <label class="layui-form-label" style="padding: 9px 8px">时间范围</label>
+						      <div class="layui-input-inline">
+						        <input class="layui-input" id="globalDate"  value=""   placeholder=" " type="text">
+						      </div>
+						    </div>
+						  </div>
+
+					    <div class="layui-form-item" >
+						    <div class="layui-inline" >
+							      <div class="layui-input-inline" style="width: 80px;">
+							        <select class="global-time-unit" name="timeUnit"  lay-filter="global-time-unit">
+									        <option value="1">月</option>
+									        <option value="2" selected>天</option>
+									        <option value="3">小时</option>
+									        <option value="4">分钟</option>
+								     </select>
+							      </div>
+						    </div>
+
+						    <div class="layui-inline" >
+						    	<span style="color: red;" class="prompt_info"></span>
+						    </div>
+						</div>
+                               
+					</div>
+	        	</div>
+	      	</div>
+	    </div>
+		
+
+		<!-- 用户在线数量统计 -->
+		<div class="layui-col-sm12">
+	      <div class="layui-card">
+	        <!-- <div class="layui-card-header" style="height: 52px;">
+	          	<div class="layui-form" style="min-width: 400px;max-height: 30px;display: inline-flex; margin-top: 8px;">
+				  <div class="layui-form-item">
+				    <div class="layui-inline">
+				      <label class="layui-form-label" style="padding: 9px 8px">时间范围</label>
+				      <div class="layui-input-inline">
+				        <input class="layui-input" id="userOnlineStatusDate" placeholder=" - " type="text">
+				      </div>
+				    </div>
+				  </div>
+
+				  	<div class="layui-form-item" >
+					    <div class="layui-inline" >
+						      <div class="layui-input-inline" style="width: 80px;">
+						        <select class="userOnline_time_unit" name="timeItem"  lay-filter="userOnline_time_unit">
+								        <option value="1">月</option>
+								        <option value="2" selected>天</option>
+								        <option value="3">小时</option>
+								        <option value="4">分钟</option>
+							     </select>
+						      </div>
+					    </div>
+					 </div>
+
+				</div>
+	          
+	        </div> -->
+	        
+	        <div class="layui-card-body">
+	          <div class="layui-row">
+	          
+	            <div class="layui-col-sm12">
+	                <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade" lay-filter="LAY-index-pagetwo" lay-anim="fade" style="width: 100%;">
+	                  	<!-- <div carousel-item="" id="LAY-index-pagetwo">  --> 
+	                  	<div id="userOnlineNumCount"  style="width:100%;height:300px;"></div>
+		                    
+	                </div>
+	            </div>
+	            
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+
+
+		<!-- 用户注册 -->
+		<div class="layui-col-sm12">
+	      <div class="layui-card">
+	        <div class="layui-card-body">
+	          <div class="layui-row">
+	            <div class="layui-col-sm12">
+	                <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade" lay-filter="LAY-index-pagetwo" lay-anim="fade" style="width: 100%; ">
+	                  	<!-- <div carousel-item="" id="LAY-index-pagetwo">  --> 
+	                  	<div id="userRegisterCount"  style="width:100%;height:300px;"></div>
+	                </div>
+	            </div>
+	            
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	
+		
+
+		<!-- 单聊消息 -->
+		<div class="layui-col-sm12">
+	      <div class="layui-card">
+	        
+	        <div class="layui-card-body">
+	          <div class="layui-row">
+	          
+	            <div class="layui-col-sm12">
+	                <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade" lay-filter="LAY-index-pagetwo" lay-anim="fade" style="width: 100%;">
+	                  	<!-- <div carousel-item="" id="LAY-index-pagetwo">  --> 
+	                  	<div id="chatMsgSumCount"  style="width:100%;height:300px;"></div>
+		                    
+	                </div>
+	            </div>
+	            
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+		
+
+		<!-- 创建群组-->
+		<div class="layui-col-sm12">
+	      <div class="layui-card">
+	        
+	        <div class="layui-card-body">
+	          <div class="layui-row">
+	         
+	            <div class="layui-col-sm12">
+	                <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade" lay-filter="LAY-index-pagetwo" lay-anim="fade" style="width: 100%;">
+	                  	<!-- <div carousel-item="" id="LAY-index-pagetwo">  --> 
+	                  	<div id="addRoomsCount"  style="width:100%;height:300px;"></div>
+		                    
+	                </div>
+	            </div>
+	            
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+
+
+
+
+		<!-- 好友关系 -->
+		<div class="layui-col-sm12">
+	      <div class="layui-card">
+	        
+	        <div class="layui-card-body">
+	          <div class="layui-row">
+	          
+	            <div class="layui-col-sm12">
+	                <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade" lay-filter="LAY-index-pagetwo" lay-anim="fade" style="width: 100%;">
+	                  	<!-- <div carousel-item="" id="LAY-index-pagetwo">  --> 
+	                  	<div id="friendsRelationCount"  style="width:100%;height:300px;"></div>
+		                    
+	                </div>
+	            </div>
+	            
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+		
+
+
+	 <!-- <div class="search" style="width:100%;">
+	 		  	<form action="" >
+	 				<label class=" startTimeLab"  style="margin-top:0px;">
+	 					<span>开始时间：</span>
+	 					<input id="startTime" class="datepicker" name="startTime" value="${param.startTime}"  type="text">
+	 				</label>
+	 			  	<label class=" endTimeLab" style="margin-top:0px;">
+	 				  	<span>结束时间：</span>
+	 				  	<input id="endTime" class="datepicker" name="endTime" value="${param.endTime}" type="text" >
+	 			  	</label>
+	 			  	<button type="button" onclick="serachSign()" id="searchButton" class="btn btn-info" style="margin-top:0px;">搜索</button>
+	 			</form>
+	  </div> -->
+		
+	 <!-- <div class="btn-group"  style="margin-bottom:25px;margin-left:14px;">
+	    			<button type="button" onclick="serachSign(-3,3)" class="btn btn-default green sign">最近一个月(天)</button>
+    				<button type="button" onclick="serachSign(-2,3)" class="btn btn-default green sign">最近7天(天)</button>
+    				<button type="button" onclick="serachSign(-2,2)" class="btn btn-default green sign">最近7天(小时)</button>
+    				<button type="button" onclick="serachSign(-1,2)" class="btn btn-default green sign yellow">最近48小时</button>
+    				<button type="button" onclick="serachSign(-1,1)" class="btn btn-default green sign">最近48小时(分钟)</button>
+				 	<button type="button" onclick="serachSign(0,2)" class="btn btn-default green sign">今日(小时)</button>
+				  <button type="button" onclick="serachSign(0,1)" class="btn btn-default green sign">今日(分钟)</button>
+				  <button type="button" onclick="serachSign(3,3)" class="btn btn-default green sign">所有</button>
+				 <span id="sign" style="display:none;">${param.sign}</span> 
+	  </div> --> 
+		
+		
+		
+
+
+    	
+	</div>
+</div>
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/jquery/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/common/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="/pages/common/echarts/shine.js"></script>
+<script type="text/javascript" src="/pages/console/js/common.js"></script>
+<script type="text/javascript" src="/pages/console/js/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>第三方绑定管理</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+<body>
+	<div class="layui-row">
+		<div id="back" class="layui-col-md1">&nbsp;</div>
+		<input id="pageCount"  name="" style="display: none">
+		<div id="bindingSDK_div" class="layui-col-md10">
+			<div class="" style="margin-top: 2%">
+				<input id="pageCount" type="" name="" style="display: none">
+				<input type="text" name="" class="layui-input bindingSDK_keyword" style="width: 15%;display: inline" placeholder="用户Id">
+				<button class="layui-btn  search_bindingSDK">搜索</button>
+			</div>
+			<!-- 第三方绑定列表 -->
+			<div id="bindingSDKList" class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">第三方绑定列表</div>
+				<div class="layui-card-body">
+					<table id="bindingSDK_table" lay-filter="bindingSDK_table"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/html" id="bindingSDKListBar">
+		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">解绑</a>
+	</script>
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/console/js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="/pages/console/js/bindingSDK.js"></script>
+</body>
+</html>

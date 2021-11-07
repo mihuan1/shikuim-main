@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>管理后台</title>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+<link href="/pages/console/css/public.css" rel="stylesheet">
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="/pages/console/js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="/pages/console/js/promptMessage.js"></script>
+</head>
+<body>
+	<div class="layui-row">
+		<div id="back" class="layui-col-md1">&nbsp;</div>
+		<input id="pageCount" type="" name="" style="display: none">
+		<div class="layui-col-md10" id="errorMessageList">
+			<div class="hintInfo_btn_div" style="margin-top: 2%">
+				<input type="text" name="" class="layui-input" id="code" placeholder="Code" style="width: 10%;display: inline">
+				<button class="layui-btn" onclick="Pro.findPromptList()">搜索</button>
+				<button class="layui-btn btn_add" onclick="Pro.addErrorMessage()">新增提示信息</button>
+			</div>
+			<div class="layui-card">
+				<div class="layui-card-header">提示信息管理</div>
+				<div class="layui-card-body">
+					<table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+						<thead>
+							<tr>
+								<td>Code</td>
+								<td>Type</td>
+								<td>中文</td>
+								<td>英文</td>
+								<td>繁体</td>
+								<td>操作</td>
+							</tr>
+						</thead>
+						<tbody id="messageList_table">
+							
+						</tbody>
+					</table>
+					<div id="laypage" class="layui-box layui-laypage layui-laypage-default">
+						
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div id="addErrorMessage" class="layui-col-md10" style="display: none">
+			<div class="layui-card-header">新增提示消息</div>
+			<table class="layui-table">
+				<thead>
+					<tr>
+						<td width="20%">提示消息参数</td>
+						<td>提示消息信息</td>
+					</tr>
+				</thead>
+				<tbody>
+					<input id="_id" style="display: none">
+					<tr>
+						<td>Code</td>
+						<td><input id="codeNum" type="" name="" class="layui-input info" onblur="Pro.onblurCode()"></td>
+					</tr>
+					<tr>
+						<td>Type</td>
+						<td>
+							<select id="type" class="layuiSelect" >
+								<option value="error">error</option>
+								<option value="success">success</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>中文</td>
+						<td><input id="zh" type="" name="" class="layui-input info"></td>
+					</tr>
+					<tr>
+						<td>英文</td>
+						<td><input id="en" type="" name="" class="layui-input info"></td>
+					</tr>
+					<tr>
+						<td>繁体</td>
+						<td><input id="big5" type="" name="" class="layui-input info"></td>
+					</tr>
+				</tbody>
+			</table>
+			<button onclick="Pro.commit_errorMessage()" class="layui-btn insertBtn">新增</button>
+			<button onclick="Pro.update_errorMessage()" class="layui-btn updateBtn">修改</button>
+			<button onclick="Pro.promptList(0)" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+		</div>
+	</div>
+</body>
+</html>

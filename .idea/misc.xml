@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/mianshi-parent/mianshi-im-api" />
+    <file type="web" url="file://$PROJECT_DIR$/shiku-push" />
+    <file type="web" url="file://$PROJECT_DIR$/upload" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/mianshi-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/shiku-push/pom.xml" />
+        <option value="$PROJECT_DIR$/shiku-tigase/pom.xml" />
+        <option value="$PROJECT_DIR$/tigase-server/pom.xml" />
+        <option value="$PROJECT_DIR$/upload/pom.xml" />
+        <option value="$PROJECT_DIR$/tigase-server/modules/master/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>

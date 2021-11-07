@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>敏感词管理</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="/pages/console/js/keyword.js"></script>
+<body>
+<div class="layui-row">
+		<div id="back" class="layui-col-md1">&nbsp;</div>
+		<input id="pageCount" type="" name="" style="display: none">
+		<div id="keyWordList" class="layui-col-md10">
+			<div class="keyword_btn_div" style="margin-top: 2%">
+				<input id="keyName" type="text" name="" class="layui-input" style="width: 15%;display: inline" placeholder="敏感词">
+				<button onclick="Key.findKeyWord()" class="layui-btn">搜索</button>
+				<button onclick="Key.addKeyWord()" class="layui-btn btn_add">添加</button>
+			</div>
+			<div class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">敏感词列表</div>
+				<div class="layui-card-body">
+					<table cellspacing="0" cellpadding="0" border="0" class="layui-table" >
+						<thead>
+							<tr align="center">
+								<td>敏感词</td>
+								<td>修改时间</td>
+								<td>操作</td>
+							</tr>
+						</thead>
+						<tbody id="keywordList_table">
+							
+						</tbody>
+					</table>
+					<div id="laypage" class="layui-box layui-laypage layui-laypage-default">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="addKeyWord" class="layui-col-md10" style="display: none">
+			<div class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">新增敏感词</div>
+				<input id="addKeyValue" class="layui-input" type="text" placeholder="请输入新的敏感词" style="width: 50%">
+				<button onclick="Key.commit_keyWord()" class="layui-btn" style="margin-top: 1%">提交</button>
+				<button onclick="Key.keyword_list(0)" class="layui-btn layui-btn-primary layui-btn-sm" style="margin-top: 1%">&lt;&lt;返回</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

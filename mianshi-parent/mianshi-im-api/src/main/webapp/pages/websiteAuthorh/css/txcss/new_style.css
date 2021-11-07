@@ -1,0 +1,43 @@
+#auth_tips {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+}
+
+.page_footer {
+    display: none;
+}
+
+.api_list li, #controlText {
+    font-size: 12px;
+    color: rgb(119, 119, 119);
+    line-height: 1.2;
+}
+/**/
+.api_list li {
+    padding: 11px 12.5px;
+}
+
+.api_list li * {
+    vertical-align: top;
+}
+
+.api_list, .control  {
+    border-color: rgb(219, 216, 216);
+}
+
+
+/*.ico_authorize {
+    width: 10.5px;
+    height: 7.5px;
+    background: url(../images/normal.png) transparent;
+    background-size: 10.5px 7.5px;
+    box-shadow: none;
+}
+li.selected .ico_authorize {
+    background: url(../images/checked.png);
+    background-size: 10.5px 7.5px;
+}*/
+li.disabled .ico_authorize {
+    background: url(../../images/necessary.png);
+    background-size: 15px 12px;
+}/*  |xGv00|7cd57950c452da453b1e51dd9160c0b7 */

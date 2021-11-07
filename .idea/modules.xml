@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mianshi-parent/mianshi-im-api/mianshi-im-api.iml" filepath="$PROJECT_DIR$/mianshi-parent/mianshi-im-api/mianshi-im-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mianshi-parent/mianshi-parent.iml" filepath="$PROJECT_DIR$/mianshi-parent/mianshi-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mianshi-parent/mianshi-service/mianshi-service.iml" filepath="$PROJECT_DIR$/mianshi-parent/mianshi-service/mianshi-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shiku-push/shiku-push.iml" filepath="$PROJECT_DIR$/shiku-push/shiku-push.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shiku-tigase/shiku-tigase.iml" filepath="$PROJECT_DIR$/shiku-tigase/shiku-tigase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/shikuim.iml" filepath="$PROJECT_DIR$/.idea/shikuim.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tigase-server/tigase-server.iml" filepath="$PROJECT_DIR$/tigase-server/tigase-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tigase-server/modules/master/tigase-server-master.iml" filepath="$PROJECT_DIR$/tigase-server/modules/master/tigase-server-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/upload/upload.iml" filepath="$PROJECT_DIR$/upload/upload.iml" />
+    </modules>
+  </component>
+</project>

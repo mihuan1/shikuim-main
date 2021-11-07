@@ -1,0 +1,445 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>即时通讯公众号管理平台</title>
+<link href="/pages/css/_coolchat.css" >
+<link rel="icon" href="/pages/common/images/favicon.ico">
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+<link href="/pages/css/mp.css" rel="stylesheet">
+
+</head>
+<style>
+	body{
+		margin: 0;	
+	}
+	a:hover {
+    	color: #777;
+	}
+</style>
+<body>
+	<div class="layui-layout layui-layout-admin">
+
+		<!-- 顶部 -->
+		<div class="layui-header top_div" style="background-color: #009688;">
+			<p onclick="UI.index()" class="top_div_p">即时通讯公众号平台</p>
+			<p style="float: right;">
+				欢迎你，<b id="mp_user_nickname"></b><a href="#" onclick="mpCommon.logout()" class="top_logout">退出登录</a>
+			</p>
+			<input type="hidden" id="url" value="${sessionScope.downloadAvatarUrl}">
+			<input type="hidden" id="apiKey" value="${sessionScope.apiKey}">
+		</div>
+		
+		<!--  left导航栏 -->
+		<div class="layui-side layui-side-menu layui-bg-black">
+			<ul class="layui-nav layui-nav-tree " style="list-style:none">
+				<li id="li_one" class="layui-nav-item layui-nav-itemed">
+					<a onclick="UI.index()" class="left_a">首页</a>
+				</li>
+				<li id="li_six" class="layui-nav-item">
+					<a onclick="UI.msg(0)" class="left_a">消息管理</a>
+				</li>
+				<li id="li_seven" class="layui-nav-item">
+					<a onclick="UI.fan(0)" class="left_a">粉丝管理</a>
+				</li>
+				<li id="li_two" class="layui-nav-item">
+					<a onclick="UI.pushText()" class="left_a">群发消息</a>
+				</li>
+				<li id="li_three" class="layui-nav-item">
+					<a onclick="UI.pushOneText()" class="left_a">发单图文</a>
+				</li>
+				<li id="li_four" class="layui-nav-item">
+					<a onclick="UI.pushManyText()" class="left_a">发多图文</a>
+				</li>
+				<li id="li_five" class="layui-nav-item">
+					<a onclick="UI.menu(0)" class="left_a">定义菜单</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		<!-- 首页内容 -->
+		<div id="index" class="layui-body" >
+			 <div id="index_one" class="layui-row layui-col-space10 index_all">
+				<div class="layui-col-md3 index_div_one" style="margin-left: 25px;">
+					<a onclick="UI.newMsg(0)"><div class="layui-card-body index_div_body"><p id="msgCount" style="cursor:pointer;"></p><p class="index_div_p" >新消息</p></div></a>
+				</div>
+				<div class="layui-col-md3 index_div_one" style="margin-left: 15px;">
+					<a onclick="UI.newAddUser(0)"><div class="layui-card-body index_div_body"><p id="fansCount" style="cursor:pointer;"></p><p class="index_div_p">新增粉丝</p></div></a>
+					
+				</div>
+				<div class="layui-col-md3 index_div_one" style="margin-left: 15px;">
+					<a onclick="UI.userSum(0)"><div class="layui-card-body index_div_body"><p id="userCount" style="cursor:pointer;"></p><p class="index_div_p">粉丝总数</p></div></a>
+					
+				</div>
+			</div>
+			
+			<!-- 新消息 -->
+			<div id="index_newMsg" class="layui-row layui-col-space10 hide">
+				<table class="layui-table">
+					<thead>
+						<tr>
+							<th>粉丝Id</th>
+							<th>粉丝昵称</th>
+							<th>未读数</th>
+							<th>最后一条消息</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="newMsg_tb">
+						
+					</tbody>
+					
+				</table>
+				<div id="newMsgPage" class="layui-table-page hide">
+					<div class="layui-box layui-laypage layui-laypage-default">
+						<span>每页10条</span>
+						<!-- <span>共*****条</span> -->
+						<span><button type="button" onclick="UI.newMsg(1)">上一页</button></span>
+						<span><button type="button" onclick="UI.newMsg(2)">下一页</button></span>
+						<span>
+							到第
+							<input type="text" min="1" value="1" class="layui-input">
+							页
+							<button type="button" class="layui-laypage-btn">确定</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<!-- 新消息详情 -->
+			<div id="newMsg_item" class="layui-table-page hide">
+				<table class="layui-table">
+					<thead>
+						<tr>
+							<th>粉丝头像</th>
+							<th>粉丝Id</th>
+							<th>粉丝昵称</th>
+							<th>消息内容</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="newMsg_body">
+						
+					</tbody>
+					
+				</table>
+			</div>
+			
+			<!-- 新增用户 -->
+			<div id="index_add" class="layui-row layui-col-space10 hide">
+				<table class="layui-table">
+					<thead>
+						<tr>
+							<th>粉丝Id</th>
+							<th>粉丝昵称</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="add_tb">
+						
+					</tbody>
+				</table>
+				<div id="addPage" class="layui-table-page hide">
+					<div class="layui-box layui-laypage layui-laypage-default">
+						<span id="addTotal"></span>
+						<span>每页10条</span>
+						<!-- <span>共*****条</span> -->
+						<span><button type="button" onclick="UI.newAddUser(1)">上一页</button></span>
+						<span><button type="button" onclick="UI.newAddUser(2)">下一页</button></span>
+						<span>
+							到第
+							<input type="text" min="1" value="1" class="layui-input">
+							页
+							<button type="button" class="layui-laypage-btn">确定</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<!-- 用户总数 -->
+			<div id="index_userSum" class="layui-row layui-col-space10 hide">
+				<table class="layui-table">
+					<thead>
+						<tr>
+							<th>粉丝Id</th>
+							<th>粉丝昵称</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="sum_tb">
+						
+					</tbody>
+				</table>
+				<div id="userSumPage" class="layui-table-page hide">
+					<div class="layui-box layui-laypage layui-laypage-default">
+						<span id="userTotal"></span>
+						<span>每页10条</span>
+						<!-- <span>共*****条</span> -->
+						<span><button type="button" onclick="UI.userSum(1)">上一页</button></span>
+						<span><button type="button" onclick="UI.userSum(2)">下一页</button></span>
+						<span>
+							到第
+							<input type="text" min="1" value="1" class="layui-input">
+							页
+							<button type="button" class="layui-laypage-btn">确定</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<!-- 群发消息 -->
+		<div id="pushText" class="layui-body hide" >
+			<div class="layui-row layui-col-space10">
+				<div class="layui-col-md10" style="margin-left: 10%;margin-top: 2%">
+					<textarea id="textbody" name="textbody" class="layui-textarea"  placeholder="请输入要群发的内容"></textarea>
+					<div style="margin-top: 2%">
+						<button onclick="UI.pushTextToAll()" class="layui-btn">群发</button>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 示例 -->
+			<div class="layui-row layui-col-space10">
+				<div class="layui-col-md10" style="margin-left: 10%;margin-top: 3%;height: 2%;" >
+					<h1>示例</h1>
+					<img alt="" style="margin-left: 20%" src="/pages/img/pushText.png">
+				</div>
+			</div>
+		</div>
+		
+		<!-- 群发单条图文 -->
+		<div id="pushOneText" class="layui-body hide">
+			<div class="layui-row layui-col-space10">
+				<div class="layui-col-md10" style="margin-left: 10%;margin-top: 2%">
+					<p>标题</p>
+					<input class="layui-input" placeholder="请输入标题" id="pushbody" name="body">
+					&nbsp;
+					<p>小标题</p>
+					<input class="layui-input" placeholder="请输入小标题" id="pushbodyTitle" name="body2">
+					&nbsp;
+					<p>图片url</p>
+					<input class="layui-input" placeholder="请输入图片url" id="pushbodyImgUrl" name="body3">
+					&nbsp;
+					<p>网页url</p>
+					<input class="layui-input" placeholder="请输入网页url" id="pushbodyHtmlUrl" name="body4">
+					
+					<div style="margin-top: 2%">
+						<button onclick="UI.pushOneToAll()" class="layui-btn">群发</button>
+					</div>
+				</div>
+			</div>
+			<!-- 示例 -->
+			<div class="layui-row layui-col-space10">
+				<div class="layui-col-md10" style="margin-left: 10%;margin-top: 2%;height: 2%;" >
+					<h1>示例</h1>
+					<img alt="" style="margin-left: 20%" src="/pages/img/pushOne.png">
+				</div>
+			</div>
+		</div>
+		
+		<!-- 群发多条图文 -->
+		<div id="pushManyText" class="layui-body hide" style="margin-left: 10%;margin-top: 2%">
+			<!-- <form action="/mp/manyToAll"> -->
+				<div id="tb">
+					<input id="body" name="title" class="layui-input" style="width: 20%;display: inline;margin-right: 1%" placeholder="请输入标题">
+					<input id="bodyImgUrl" name="img" class="layui-input" style="width: 20%;display: inline;margin-right: 1%" placeholder="请输入图片url">
+					<input id="bodyHtmlUrl" name="url" class="layui-input" style="width: 20%;display: inline;margin-right: 1%" placeholder="请输入网页url">
+				</div>
+				<button onclick="UI.add()" class="layui-btn" type="button" style="margin-top: 1%">新增</button>
+				<button onclick="UI.pushManyToAll()" class="layui-btn" type="submit" style="margin-top: 1%">群发</button>
+			<!-- </form> -->
+			
+			<!-- 示例 -->
+			<div class="layui-row layui-col-space10">
+				<div class="layui-col-md10" style="margin-top: 5%;height: 2%" >
+					<h1>示例</h1>
+					<img alt="" style="margin-left: 20%" src="/pages/img/pushMany.png">
+				</div>
+			</div>
+		</div>
+		
+		<!-- 自定义菜单 -->
+		<div id="menu" class="layui-body hide">
+			<!-- <form class="form-inline" action="/mp/menu/save" method="post" enctype="application/x-www-form-urlencoded"> -->
+				<select id="parentId" name="parentId" onchange="UI.change()" class="layui-select" style="margin-top: 1%">
+					<option value='0'>一级菜单</option>
+				</select>
+				<input id="menu_name" class="layui-input" style="width: 10%;display: inline" placeholder="菜单名">
+				<input id="menu_num" class="layui-input" style="width: 10%;display: inline" placeholder="排序">
+				<input id="menu_url" class="layui-input" style="width: 15%;display: inline" placeholder="访问地址">
+				<input id="menu_menuId" class="layui-input" style="width: 15%;display: inline" placeholder="menuId">
+				<input id="menu_mark" class="layui-input" style="width: 10%;display: inline" placeholder="标识">
+				<button onclick="UI.addMenu()" class="layui-btn" type="submit">添加菜单</button>
+			<!-- </form> -->
+			<table class="layui-table">
+				<thead>
+					<tr>
+						<th>菜单Id</th>
+						<th>菜单名</th>
+						<th>排序</th>
+						<th>子菜单名</th>
+						<th>访问地址</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="menu_td">
+				
+				</tbody>
+			</table>
+				<!-- <div id="menuPage" class="layui-table-page" style="display: none">
+					<div class="layui-box layui-laypage layui-laypage-default">
+						<span>每页10条</span>
+						<span>共*****条</span>
+						<span><a onclick="UI.menu(1)">上一页</a></span>
+						<span><a onclick="UI.menu(2)">下一页</a></span>
+						<span>
+							到第
+							<input type="text" min="1" value="1" class="layui-input">
+							页
+							<button type="button" class="layui-laypage-btn">确定</button>
+						</span>
+					</div>
+				</div> -->
+		</div>
+		
+		<!-- 修改菜单 -->
+		<div id="update_menu" class="layui-body layui-row layui-col-space10 hide">
+			<div class="layui-col-md10" style="margin-left: 10%;">
+				<select id="update_parentId" class="layui-select">
+					<option value="0">一级菜单</option>
+				</select>
+				<input id="update_id" style="display: none">
+				<p>菜单名</p>
+				<input id="update_name" class="layui-input" type="text" value="">
+				<p>排序</p>
+				<input id="update_index" class="layui-input" type="text" value="">
+				<p>访问地址</p>
+				<input id="update_urls" class="layui-input" type="text" value="">
+				<p>menu_id</p>
+				<input id="update_menu_id" class="layui-input" type="text" value="">
+				<p>标识</p>
+				<input id="update_desc" class="layui-input" type="text" value="">
+				<button onclick="UI.submit_update()" type="button" class="layui-btn">提交</button>
+				<button onclick="UI.return_btn()" type="button" class="layui-btn layui-btn-primary layui-btn-sm">返回</button>
+			</div>
+		</div>
+		
+		<!-- 消息管理 -->
+		<div id="msg" class="layui-body hide">
+			<table class="layui-table">
+				<thead>
+					<tr>
+						<th style="width: 8%">头像</th>
+						<th>粉丝Id</th>
+						<th>粉丝昵称</th>
+						<th>未读数</th>
+						<th>最后一条消息</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="msg_td">
+					
+				</tbody>
+			</table>
+			<div id="msgPage" class="layui-table-page hide">
+				<div class="layui-box layui-laypage layui-laypage-default">
+					共<span id="msgTotal"></span>条
+
+					<span>每页10条</span>
+					<!-- <span>共*****条</span> -->
+					<span><button type="button" onclick="UI.msg(1)">上一页</button></span>
+					<span><button type="button" onclick="UI.msg(2)">下一页</button></span>
+					<span>
+						到第
+						<input type="text" min="1" value="1" class="layui-input">
+						页
+						<button type="button" class="layui-laypage-btn">确定</button>
+					</span>
+					<!-- <span id="msgTotal"></span> -->
+				</div>
+			</div>
+		</div>
+		<!-- 消息管理中的消息详情 -->
+		<div id="msg_item" class="layui-body hide">
+			<div class="layui-table-page ">
+			<table class="layui-table">
+				<thead>
+					<tr>
+						<th>粉丝头像</th>
+						<th>粉丝Id</th>
+						<th>粉丝昵称</th>
+						<th>消息内容</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="Msg_body">
+					
+				</tbody>
+				
+			</table>
+		</div>
+		</div>
+		
+		<div id="pushMsg" class="layui-body hide">
+			<div class="layui-row layui-col-space10">
+				<div id="toUserId" class="hide"></div>
+				<div class="layui-col-md10" style="margin-left: 10%;margin-top: 2%">
+					<textarea id="Msgbody" name="Msgbody" class="layui-textarea"  placeholder="请输入要群发的内容"></textarea>
+					<div style="margin-top: 2%">
+						<button onclick="UI.pusgMsg()" class="layui-btn">发送</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 粉丝管理 -->
+		<div id="fan" class="layui-body hide">
+			<table class="layui-table">
+				<thead>
+					<tr>
+						<th style="width: 8%">头像</th>
+						<th>粉丝Id</th>
+						<th>粉丝昵称</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="fan_td">
+				
+				</tbody>
+			</table>
+			<div id="fanPage" class="layui-table-page hide">
+				<div class="layui-box layui-laypage layui-laypage-default">
+					<span id="fanTotal"></span>
+					<span>&nbsp;每页10条</span>
+					<!-- <span>共*****条</span> -->
+					<span><button type="button" onclick="UI.fan(1)">上一页</button></span>
+					<span><button type="button" onclick="UI.fan(2)">下一页</button></span>
+					<span>
+						到第
+						<input type="text" min="1" value="1" class="layui-input">
+						页
+						<button type="button" class="layui-laypage-btn">确定</button>
+					</span>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+
+	<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+
+	<scrip type="text/javascript" src="/pages/console/js/common.js"></scrip>
+	<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/pages/common/jquery/jquery.md5.js"></script>
+	<script type="text/javascript" src="/pages/js/core.js"></script>
+	<script type="text/javascript" src="/pages/js/tripledes.js"></script>
+	<script type="text/javascript" src="/pages/js/_coolchat-commons.js"></script>
+	
+
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="/pages/js/xmpp-sdk.js"></script>
+	<script type="text/javascript" src="/pages/js/strophe.js"></script>
+	<script type="text/javascript" src="js/mp_init.js"></script>
+</body>
+</html>

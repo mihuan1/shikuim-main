@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第三方网站集成酷聊登录流程演示</title>
+</head>
+<body>
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <!--<a href="http://192.168.0.141:8092/console/testUrl?appId=sk7c4fd05f92c7460a&callbackUrl=http://192.168.0.141:8080/websiteAuthorh/success.html">少时诵诗书所少时诵诗书</a>-->
+        <!--<a href="javascript:test('sk7c4fd05f92c7460a','http://192.168.0.141:8080/websiteAuthorh/success.html')"> ===== 安卓测试 酷聊登录 =====</a>-->
+        <!--<button class="login100-form-btn" style="margin:0 auto;margin-top: 500px;width:400px;height:100px;display:table;color: #55BEB7" onclick="test('sk7c4fd05f92c7460a','http://192.168.0.141:8080/websiteAuthorh/success.html')"> === 酷聊登录 === </button>-->
+    </div>
+
+
+
+</body>
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+<script>
+    $(document).ready(function (){
+        console.log("nickName :  "+JSON.stringify(localStorage.getItem("nickName")));
+        if(null == myFn.get("nickName") || undefined == myFn.get("nickName")){
+            window.location.href="http://120.79.25.45:8092/console/oauth/authorize?appId="+'sk3637720d914e4067'+"&callbackUrl="+"http://120.79.25.45:8092/pages/websiteAuthorh/success.html";
+            /* var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+             httpRequest.open('GET', 'http://192.168.0.141:8092/console/oauth/authorize?appId=sk7c4fd05f92c7460a&callbackUrl=http://192.168.0.141:8092/pages/websiteAuthorh/success1.html', true);//第二步：打开连接  将请求参数写在url中  ps:"./Ptest.php?name=test&nameone=testone"
+             httpRequest.send();//第三步：发送请求  将请求参数写在URL中*/
+            /* myFn.invoke({
+                 url: '/console/oauth/authorize',
+                 data: {
+                     appId:"sk7c4fd05f92c7460ac7460a",
+                     callbackUrl : "http://192.168.0.141:8092/pages/websiteAuthorh/success1.html"
+                 },
+                 success: function (result) {
+                     /!*if (1 == result.resultCode) {
+                         console.log(result.data);
+                         // 第三方网站名称
+                         localStorage.setItem("webName",result.data.webAppName);
+                         // window.location.href=result.data.authUrl+"?appId="+appId+"&callbackUrl="+callbackUrl+"&webAppName="+result.data.webAppName+"&webAppsmallImg="+result.data.webAppsmallImg;
+                         window.location.href="index.html"+"?appId="+appId+"&callbackUrl="+callbackUrl+"&webAppName="+result.data.webAppName+"&webAppsmallImg="+result.data.webAppsmallImg;
+                         return;
+                     }else{
+                         alert(result.resultMsg);
+                     }*!/
+
+                 },
+                 error : function (result) {
+                     alert("网络错误，请重试")
+                 }
+             })*/
+        }else{
+              window.location.href = "dataShow.html";
+        }
+
+    })
+
+</script>
+
+
+<!--<script src="vendor/jquery/jquery-3.2.1.min.js"></script>-->
+<!--<script src="vendor/jquery/jquery.min.js"></script>-->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+<script src="vendor/jquery/jquery.md5.js"></script>
+<script src="js/common.js"></script>
+<script src="js/login.js"></script>
+<script src="js/main.js"></script>
+</html>

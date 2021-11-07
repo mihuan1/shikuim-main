@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>直播管理</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+
+<body>
+<div class="layui-row">
+		<div id="back" class="layui-col-md1">&nbsp;</div>
+		<input id="pageCount" type="" name="" style="display: none">
+		<input type="" name="" id="save_roomId" style="display: none;">
+		<div id="liveRoom_div" class="layui-col-md10">
+			<div class="liveRoom_btn_div" style="margin-top: 2%">
+				<input id="roomName" type="text" name="" class="layui-input" style="width: 15%;display: inline" placeholder="房间名称">
+				<button class="layui-btn search_live">搜索</button>
+				<button onclick="Live.addLiveRoom()" class="layui-btn btn_addLive">新增直播</button>
+			</div>
+			<div id="liveRoomList" class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">直播间列表</div>
+				<div class="layui-card-body">
+					<table id="liveRoom_table" lay-filter="liveRoom_table"></table>
+				</div>
+			</div>
+			<!-- 聊天记录 -->
+			<div id="liveRoomMsg" class="layui-card" style="margin-top: 1%;display: none;">
+				<div class="layui-card-header">聊天记录</div>
+				<div class="layui-card-body">
+					<table id="liveRoomMsg_table" lay-filter="liveRoomMsg_table">
+							
+					</table>
+					<input id="msg_pageCount" type="" name="" style="display: none">
+						
+					<button onclick="Live.btn_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+				</div>
+			</div>
+			<!-- 人员管理 -->
+			<div id="liveRoomUser" class="layui-card" style="margin-top: 1%;display: none;">
+				<div class="layui-card-header">人员管理</div>
+				<div class="layui-card-body">
+					<table id="liveRoomMember_table" lay-filter="liveRoomMember_table">
+						
+					</table>
+					<input id="member_pageCount" type="" name="" style="display: none">
+					
+					<button onclick="Live.btn_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+				</div>
+			</div>
+			
+		</div>
+		<div id="addLiveRoom" class="layui-col-md10" style="display: none;">
+			<div class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">新增直播</div>
+				<div class="layui-card-body">
+					<table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+						<tr>
+							<td>直播间名称</td>
+							<td><input id="liveRoomName" type="text" name="" class="layui-input"></td>
+						</tr>
+						<tr>
+							<td>房间公告</td>
+							<td><input id="liveRoomNotic" type="text" name="" class="layui-input"></td>
+						</tr>
+					</table>
+					<button onclick="Live.commit_addLiveRoom()" class="layui-btn addLiveRoombtn">提交</button>
+					<button onclick="Live.btn_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--操作-->
+	<script type="text/html" id="liveRoomListBar">
+		{{#  if(d.currentState == 0){ }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs delete" lay-event="disable">锁定直播间</a>
+		{{#  }else{  }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs delete" lay-event="relieveDisable">解锁直播间</a>
+		{{#  } }}
+		<a class="layui-btn layui-btn-primary layui-btn-xs chatMessage" lay-event="chatMessage">聊天记录</a>
+		<a class="layui-btn layui-btn-primary layui-btn-xs member" lay-event="member">人员管理</a> 
+		<!--<a class="layui-btn layui-btn-primary layui-btn-xs giftWater" lay-event="giftWater">礼物流水</a> -->
+	</script>
+
+	<script type="text/html" id="liveRoomMemberListBar">
+		<!--创建直播间的人不能被踢出或禁言-->
+		{{#  if(d.type == 1){ }}
+			<a class="layui-btn layui-btn-disabled layui-btn-xs remove" lay-event="remove">踢出</a>
+		{{#  }else{  }}
+			<a class="layui-btn layui-btn-danger layui-btn-xs remove" lay-event="remove">踢出</a>
+		{{#  } }}
+		<!--<a class="layui-btn layui-btn-danger layui-btn-xs remove" lay-event="remove">踢出</a>-->
+		{{#  if(d.type == 1 && d.state == 0){ }}
+			<a class="layui-btn layui-btn-disabled layui-btn-xs shutup" lay-event="shutup">禁言</a>
+		{{#  }else if(d.type != 1 && d.state == 0){ }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs shutup" lay-event="shutup">禁言</a>
+		{{#  }else if(d.type != 1 && d.state == 1){ }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs cancelShutup" lay-event="cancelShutup">取消禁言</a>
+		{{#  } }}
+
+		<!--<a class="layui-btn layui-btn-primary layui-btn-xs cancelShutup" lay-event="cancelShutup">取消禁言</a>-->
+
+		<!--{{#  if(d.type != 1){ }}
+			<a class="layui-btn layui-btn-danger layui-btn-xs remove" lay-event="remove">踢出</a>
+		{{# } if(d.state == 0 && d.type != 1){    }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs shutup" lay-event="shutup">禁言</a>
+		{{#  }else if(d.state == 1 && d.type != 1){  }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs cancelShutup" lay-event="cancelShutup">取消禁言</a>
+		{{#  } }}-->
+
+	</script>
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/common/jquery/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="/pages/console/js/liveRoom.js"></script>
+</body>
+</html>

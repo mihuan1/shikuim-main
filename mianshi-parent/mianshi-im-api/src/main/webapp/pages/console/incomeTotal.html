@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>主播收入小计</title>
+</head>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+<body>
+	<div class="layui-row">
+		<div id="back" class="layui-col-md1">&nbsp;</div>
+		<input id="pageCount" type="" name="" style="display: none">
+		<div id="gift_list" class="layui-col-md10">
+			<div class="gift_btn_div" style="margin-top: 2%">
+				<input id="incomeName" type="text" name="" class="layui-input" style="width: 15%;display: inline" placeholder="主播昵称">
+				<button class="layui-btn search_live">搜索</button>
+				<div class="layui-form-item timeComponent" style="display: inline">
+					<div class="layui-inline">
+						<label class="layui-form-label" style="padding: 9px 8px;width: 150px">赠送的时间范围：</label>
+						<div class="layui-input-inline">
+							<input class="layui-input" id="giftTotalMsgDate" placeholder="请选择时间范围" type="text">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="incomeList" class="layui-card" style="margin-top: 1%">
+				<div class="layui-card-header">主播列表</div>
+				<div class="layui-card-body">
+					<table id="incomeTotal_table" lay-filter="incomeTotal_table">
+
+					</table>
+				</div>
+			</div>
+			<!-- 直播礼物流水详情 -->
+			<div id="liveRoomGiftWater" class="layui-card" style="margin-top: 1%;display: none;">
+				<div class="layui-card-header">礼物流水</div>
+				<div class="layui-card-body">
+					<table id="liveRoomGiftWater_table" lay-filter="liveRoomGiftWater_table">
+
+					</table>
+					<input id="giftWater_pageCount" type="" name="" style="display: none">
+
+					<button onclick="Live.btn_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
+					<span style="margin-left: 80%">当前总收入：<cite class="current_total"></cite>  元</span>
+				</div>
+			</div>
+			<!--操作-->
+			<script type="text/html" id="incomeListBar">
+				<a class="layui-btn layui-btn-primary layui-btn-xs giftWater" lay-event="giftWater">礼物流水</a>
+			</script>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+	<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+	<script type="text/javascript" src="./js/common.js"></script>
+	<script type="text/javascript" src="./js/console_ui.js"></script>
+	<script type="text/javascript" src="/pages/console/js/gift.js"></script>
+	<script type="text/javascript" src="/pages/console/js/incomeTotal.js"></script>
+</body>
+</html>

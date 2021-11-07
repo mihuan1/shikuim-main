@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>开放平台</title>
+<link href="/pages/common/layui/css/layui.css" rel="stylesheet">
+</head>
+<body>
+<div class="layui-row">
+	<div id="back" class="layui-col-md1">&nbsp;</div>
+	<div id="" class="layui-col-md10">
+		<div class="" style="margin-top: 2%">
+			<input id="pageCount" type="" name="" style="display: none">
+			<input type="text" name="" class="layui-input openApp_keyword" style="width: 15%;display: inline" placeholder="">
+			<button class="layui-btn  search_openDeveloper">搜索</button>
+			<button class="layui-btn applicationList" onclick="Developer.applicationList()">申请列表</button>
+			<button class="layui-btn  btn_openDeveloper layui-btn-primary" style="display: none;" onclick="Developer.back()">&lt;&lt;返回</button>
+			
+		</div>
+		<!-- 开发者列表 -->
+		<div id="openDeveloperList" class="layui-card" style="margin-top: 1%">
+			<div class="layui-card-header">开发者列表</div>
+			<div class="layui-card-body">
+				<table id="openDeveloper_table" lay-filter="openDeveloper_table"></table>
+			</div>
+		</div>
+		<div id="openDeveloper_ApplicationList" class="layui-card" style="margin-top: 1%;display: none;">
+			<div class="layui-card-header">开发者申请列表</div>
+			<div class="layui-card-body">
+				<table  class="layui-table">
+					<thead>
+						<tr>
+							<td>用户Id</td>
+							<td>绑定邮箱账号</td>
+							<td>手机号</td>
+							<td>真实姓名</td>
+							<td>审核认证时间</td>
+							<td>到期时间 ID</td>
+							<td>申请时间</td>
+							<td>操作</td>
+						</tr>
+					</thead>
+					<tbody id="openDeveloper_Applicationtbody">
+						
+					</tbody>
+				</table>
+				<div id="laypage" class="layui-box layui-laypage layui-laypage-default">
+						
+				</div>
+			</div>
+		</div>
+
+		<!-- 开发者详情 -->
+		<div id="developerDetail" class="layui-card" style="margin-top: 1%;display: none;">
+			<div class="layui-card-header">开发者详情</div>
+			<div class="layui-card-body">
+				<table class="layui-table mag0">
+					<colgroup>
+						<col width="25%">
+						<col width="45%">
+						<col>
+				    </colgroup>
+				    <thead>
+				    	<tr>
+				    		<th>参数说明</th>
+				    		<th>参数值</th>
+				    		<!-- <th>变量名</th> -->
+				    		<th>操作</th>
+				    	</tr>
+				    </thead>
+				    <tbody>
+				    	<tr>
+				    		<td>状态</td>
+				    		<td id="status" style="color: red"></td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>用户Id</td>
+				    		<td id="userId"></td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>真实姓名</td>
+				    		<td id="realName"></td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>真实姓名</td>
+				    		<td id="telephone"></td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>邮箱账号</td>
+				    		<td id="mail"></td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>身份证号</td>
+				    		<td id="idCard"></td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>联系地址</td>
+				    		<td id="address"></td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>企业全称</td>
+				    		<td id="companyName"></td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>工商执照</td>
+				    		<td id="businessLicense"></td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>创建时间</td>
+				    		<td id="createTime"></td>
+				    		<td></td>
+				    	</tr>
+				    	<tr>
+				    		<td>到期时间</td>
+				    		<td id="endTime"></td>
+				    		<td></td>
+				    	</tr>
+				    </tbody>
+				</table>
+			</div>
+			<div class="magt0 layui-center">
+				<div class="layui-input-block">
+					<button style="margin-left: 450px"></button>
+					<button id="approvedDeveloper" onclick="Developer.approvedDeveloper(1)" class="layui-btn" >通过审核</button>
+					<button id="reasonFailure" onclick="Developer.approvedDeveloper(2)" class="layui-btn layui-btn-danger" style="">审核失败</button>
+					<button id="disable" onclick="Developer.approvedDeveloper(-1)" class="layui-btn layui-btn-danger" style="">禁用</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--操作-->
+	<script type="text/html" id="openDeveloperListBar">
+	<!-- 	<a class="layui-btn layui-btn-primary layui-btn-xs chatRecord" lay-event="chatRecord">聊天记录</a>
+		<a class="layui-btn layui-btn-primary layui-btn-xs member" lay-event="member">成员管理</a>
+		<a class="layui-btn layui-btn-primary layui-btn-xs randUser" lay-event="randUser">添加随机用户</a> 
+	    <a class="layui-btn layui-btn-primary layui-btn-xs modifyConf" lay-event="modifyConf">修改配置</a>
+        <a class="layui-btn layui-btn-primary  layui-btn-xs msgCount" lay-event="msgCount">消息统计</a> -->
+        <a class="layui-btn layui-btn-primary layui-btn-xs detail" lay-event="detail">详情</a>
+       	<a class="layui-btn layui-btn-xs layui-btn-danger del" lay-event="del">删除</a>
+	</script>
+
+<script type="text/javascript" src="/pages/common/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/pages/common/layui/layui.all.js"></script>
+<script type="text/javascript" src="/pages/assets/js/jquery.md5.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/console_ui.js"></script>
+<script type="text/javascript" src="/pages/console/js/openDeveloper.js"></script>
+</body>
+</html>

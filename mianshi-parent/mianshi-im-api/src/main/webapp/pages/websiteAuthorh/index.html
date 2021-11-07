@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>即时通讯授权</title>
+
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="js/pullupAPP.js"></script>
+	<script type="text/javascript">
+
+        function GetRequest() {
+            // var url = location.search; //获取url中"?"符后的字串
+            var url = decodeURIComponent(location.search);// url urlDncode 解码
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for(var i = 0; i < strs.length; i ++) {
+                    theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+
+		console.log("======== 3 ========")
+        var Request = new Object();
+        Request = GetRequest();
+        console.log("request : "+JSON.stringify(Request));
+        var appId = Request["appId"];
+        var callbackUrl = Request["callbackUrl"];
+        var webAppName = Request["webAppName"];
+        console.log("appId:  "+appId+" ==== "+"callback:  "+callbackUrl+" ==== "+"webappname   "+webAppName);
+        // alert("客户端："+appId);
+        requestData.appId = appId;
+        requestData.callbackUrl = callbackUrl;
+        requestData.webAppName = webAppName;
+
+        localStorage.setItem("webName",requestData.webAppName);
+        console.log(" ====== webName ======"+localStorage.getItem("webName"));
+	</script>
+</head>
+
+<body>
+
+	<div class="limiter">
+		<!-- style="background-image: url('images/bg-01.jpg');" -->
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+				<!--<form class="login100-form validate-form">-->
+					<div id="top" style="text-align: center;margin-top: -25px">
+						<img src="images/favicon.png" width="80px" height="80px">
+					</div>
+					<div id="userName" class="wrap-input100 validate-input m-b-23" data-validate="请输入用户名" style="margin-top: 25px">
+						<span class="label-input100">用户名</span>
+						<input id="telephone" class="input100" type="text" placeholder="请输入手机号" autocomplete="off">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+					<div id="userPwd" class="wrap-input100 validate-input" data-validate="请输入密码">
+						<span class="label-input100">密码</span>
+						<input id="pwd" class="input100" type="password" placeholder="请输入密码">
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+
+					<!--<div class="text-right p-t-8 p-b-31">
+						<a href="javascript:">忘记密码？</a>
+					</div>-->
+
+					<div id="autoLogin" class="container-login100-form-btn" style="margin-top: 20px">
+						<div class="wrap-login100-form-btn" style="background-color: #55BEB7;" onclick="Login.authorLogin()">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn">授权并登录</button>
+						</div>
+					</div>
+					<div class="container-login100-form-btn" style="margin-top: 20px" id="onekeyLogin">
+						<div class="wrap-login100-form-btn" style="background-color: #ebf3f0;">
+							<div class="login100-form-bgbtn"></div>
+							<!--<button class="login100-form-btn" style="color: #55BEB7">一键登录</button>-->
+							<a href="#" onclick="downLoad.versions()" class="login100-form-btn" style="color: #55BEB7;text-decoration: none">一键登录</a>
+							<!--<a href="shikuimapp://www.shikuandroid.com:80/?apiKey=1&appSecret=1&url=http://192.168.0.141:8080/websiteAuthorh/test.html" class="login100-form-btn" style="color: #55BEB7;text-decoration: none">一键登录</a>-->
+						</div>
+					</div>
+					<!-- 嵌入授权页面 -->
+					<div>
+						<iframe id="authframe" style="margin-top:50px;width:100%;" src="authorhMsg.htm" scrolling="no" allowtransparency="yes" height="153" frameborder="no"></iframe>
+					</div>
+
+					<!--<div class="txt1 text-center p-t-54 p-b-20">
+						<span>第三方登录</span>
+					</div>
+
+					<div class="flex-c-m">
+						<a href="#" class="login100-social-item bg1">
+							<i class="fa fa-wechat"></i>
+						</a>
+
+						<a href="#" class="login100-social-item bg2">
+							<i class="fa fa-qq"></i>
+						</a>
+
+						<a href="#" class="login100-social-item bg3">
+							<i class="fa fa-weibo"></i>
+						</a>
+					</div>
+
+					<div class="flex-col-c p-t-25">
+						<a href="javascript:" class="txt2">立即注册</a>
+					</div>-->
+				<!--</form>-->
+			</div>
+		</div>
+	</div>
+
+	<!-- 模态框（Modal） -->
+	<div id="errorMsgByTelephone" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+		<div class="modal-dialog" style="width: 85%;height: 20px;margin-top: 50%;margin-left: 30px">
+			<div class="modal-content">
+				<div class="modal-body">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--<script src="vendor/jquery/jquery.min.js"></script>-->
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<script src="vendor/jquery/jquery.md5.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/login.js"></script>
+	<script src="js/main.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Sep 27 19:21:14 CST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0166-1ac2-ec81-00000461bdd0 
+on database directory D:\Workspace\git\tigase_new\tigase-server\tigase-derbydb with class loader sun.misc.Launcher$ExtClassLoader@327471b5 
+Loaded from file:/D:/Workspace/git/tigase_new/tigase-server/jars/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_144-b01
+user.dir=D:\Workspace\git\tigase_new\tigase-server
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
