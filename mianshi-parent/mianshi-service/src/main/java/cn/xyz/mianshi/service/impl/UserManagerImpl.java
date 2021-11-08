@@ -690,7 +690,9 @@ public class UserManagerImpl extends MongoRepository<User, Integer> implements U
 		Integer userId = createUserId();
 
 		// 核验邀请码,及相关操作
-		checkInviteCode(example,userId);
+		if(example.getIsAdmin() != 1){
+			checkInviteCode(example,userId);
+		}
 		//example.setAccount(userId+StringUtil.randomCode());
 		// 新增用户
 		Map<String, Object> data = getUserRepository().addUser(userId, example);
@@ -699,8 +701,10 @@ public class UserManagerImpl extends MongoRepository<User, Integer> implements U
 				KXMPPServiceImpl.getInstance().registerByThread(userId.toString(), example.getPassword());
 
 				SKBeanUtils.getFriendsManager().followUser(userId, 10000, 0);
-				// 默认成为好友
-				defaultTelephones(example, userId);
+				if(example.getIsAdmin() != 1){
+					// 默认成为好友
+					defaultTelephones(example, userId);
+				}
 				// 调用组织架构功能示例方法
 				SKBeanUtils.getCompanyManager().autoJoinCompany(userId);
 				// 自动创建 好友标签
@@ -752,7 +756,9 @@ public class UserManagerImpl extends MongoRepository<User, Integer> implements U
 		Integer userId = createUserId();
 
 		// 核验邀请码,及相关操作
-		checkInviteCode(example,userId);
+		if(example.getIsAdmin() != 1){
+			checkInviteCode(example,userId);
+		}
 
 		// 新增用户
 		Map<String, Object> data = getUserRepository().addUser(userId, example);
@@ -761,8 +767,10 @@ public class UserManagerImpl extends MongoRepository<User, Integer> implements U
 				KXMPPServiceImpl.getInstance().registerByThread(userId.toString(), example.getPassword());
 
 				SKBeanUtils.getFriendsManager().followUser(userId, 10000, 0);
-				// 默认成为好友
-				defaultTelephones(example, userId);
+				if(example.getIsAdmin() != 1){
+					// 默认成为好友
+					defaultTelephones(example, userId);
+				}
 				// 调用组织架构功能示例方法
 				SKBeanUtils.getCompanyManager().autoJoinCompany(userId);
 				// 自动创建 好友标签

@@ -1,8 +1,11 @@
 package cn.xyz.repository.mongo;
 
+import cn.xyz.commons.ex.ServiceException;
+import cn.xyz.commons.utils.StringUtil;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
 import org.springframework.stereotype.Service;
 
 import com.mongodb.WriteResult;
@@ -62,5 +65,24 @@ public class AdminRepositoryImpl implements AdminRepository {
 		Query<InviteCode> q = getDatastore().createQuery(InviteCode.class).field("_id").equal(inviteCodeId);
 		WriteResult inviteCode =  getDatastore().delete(q);
 		return !(inviteCode==null);
+	}
+	@Override
+	public void editInviteCode(ObjectId id ,String inviteCode,String defaultfriend,String desc) {
+		Query<InviteCode> q = getDatastore().createQuery(InviteCode.class).field("_id").equal(id);
+		UpdateOperations<InviteCode> ops= getDatastore().createUpdateOperations(InviteCode.class);
+		if(q != null){
+			if(!StringUtil.isEmpty(inviteCode)){
+				ops.set("inviteCode",inviteCode);
+			}
+			if(!StringUtil.isEmpty(defaultfriend)){
+				ops.set("defaultfriend",defaultfriend);
+			}
+			if(!StringUtil.isEmpty(desc)){
+				ops.set("desc",desc);
+			}
+			getDatastore().findAndModify(q, ops);
+		}else {
+			throw new ServiceException("数据不存在！");
+		}
 	}
 }

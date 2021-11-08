@@ -92,44 +92,6 @@
 				<button onclick="User.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
 			</div>
 		</div>
-		<!-- 邀请码 -->
-		<div id="myInviteCode" class="layui-card" style="margin-top: 3%; display: none;padding:20px 30px; ">
-
-			<div class="layui-form" >
-				<div class="layui-form-item">
-					<div class="layui-inline">
-						<input  type="text"  class="layui-input invite_code_name"  placeholder="邀请码" style="width:150px;">
-					</div>
-
-					<div class="layui-inline">
-						<div class="layui-input-inline">
-							<select   class="inviteCodeStatus" lay-search="">
-								<option value="-1">全部</option>
-								<option value="0">未使用</option>
-								<option value="1">已使用</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="layui-inline">
-						<button  class="layui-btn search_inviteCode">搜索</button>
-					</div>
-
-					<div class="layui-inline" style="margin-left: 20px; ">
-						<button  class="layui-btn btn_create_register_InviteCode">生成注册型邀请码</button>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="layui-card-header">用户 “<span type="" class="disUserName"></span>” 的邀请码：</div>
-			<div class="layui-card-body">
-				<table id="myInviteCode_table" lay-filter="myInviteCode_table">
-
-				</table>
-				<button onclick="User.button_back()" class="layui-btn layui-btn-primary layui-btn-sm" style="">&lt;&lt;返回</button>
-			</div>
-		</div>
 
 		<!-- 聊天记录 -->
 		<div id="friendsChatRecord" class="layui-card" style="margin-top: 1%;display: none;">
@@ -199,9 +161,6 @@
 			<a class="layui-btn layui-btn-primary layui-btn-xs handCash" lay-event="handCash">手工提现</a>
 			<a class="layui-btn layui-btn-primary layui-btn-xs bill" lay-event="bill">账单</a>
 			<a class="layui-btn layui-btn-primary layui-btn-xs friends" lay-event="friends">好友管理</a>
-			{{# if(localStorage.getItem("registerInviteCode")!="0"){ }}
-			<a class="layui-btn layui-btn-primary layui-btn-xs createInviteCode" lay-event="inviteCode">邀请码</a>
-			{{# } }}
 
 		</script>
 
@@ -225,14 +184,6 @@
 			<a class="layui-btn layui-btn-danger layui-btn-xs deletechatRecord" lay-event="deletechatRecord">删除</a>
 		</script>
 
-		<!--邀请码相关操作-->
-		<script type="text/html" id="inviteCodeBar">
-			{{#  if(d.totalTimes==1){ }}
-			<a class="layui-btn layui-btn-danger layui-btn-xs delete" lay-event="del_inviteCode">删除</a>
-			{{# }else if(d.totalTimes==-1){ }}
-			<a class="layui-btn layui-btn-xs" lay-event="del_inviteCode">禁用</a>
-			{{# } }}
-		</script>
 
 		<script type="text/html" id="billOperation">
 			<a class="layui-btn layui-btn-danger layui-btn-xs billDetails" lay-event="billDetails">账单详情</a>

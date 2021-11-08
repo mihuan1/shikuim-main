@@ -3271,7 +3271,17 @@ public class AdminController extends AbstractController {
         }
 
     }
+    //更新邀请码
+    @RequestMapping(value = "/update/updateInviteCode")
+    public JSONMessage updateInviteCode(@RequestParam String id,@RequestParam String inviteCode, @RequestParam String defaultfriend, @RequestParam String desc) {
+        try {
+            SKBeanUtils.getAdminManager().updateInviteCode(id,inviteCode, defaultfriend,desc);
+            return JSONMessage.success();
+        } catch (Exception e) {
+            return JSONMessage.failure(e.getMessage());
+        }
 
+    }
     // 邀请码列表
     @RequestMapping(value = "/inviteCodeList")
     public JSONMessage inviteCodeList(@RequestParam(defaultValue = "") String keyworld,
@@ -3290,7 +3300,6 @@ public class AdminController extends AbstractController {
     // 删除邀请码
     @RequestMapping(value = "/delInviteCode")
     public JSONMessage delInviteCode(@RequestParam(defaultValue = "") String inviteCodeId) {
-
         try {
             boolean data = SKBeanUtils.getAdminManager().delInviteCode(inviteCodeId);
             return JSONMessage.success(data);

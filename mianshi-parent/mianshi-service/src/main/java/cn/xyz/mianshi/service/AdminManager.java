@@ -89,7 +89,7 @@ public interface AdminManager {
 	PageResult<SkOpenApp> openAppList(int status,int type,int pageIndex,int limit,String keyworld);
 	
 	void createInviteCode(String inviteCode,String defaultfriend,String desc);
-
+	void updateInviteCode (String id ,String inviteCode,String defaultfriend,String desc);
 	PageResult<InviteCode> inviteCodeList(String keyworld, String defaultfriend,int page, int limit);
 
 	boolean delInviteCode( String inviteCodeId);

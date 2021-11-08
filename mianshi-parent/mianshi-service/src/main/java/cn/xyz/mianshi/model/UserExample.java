@@ -79,6 +79,8 @@ public class UserExample extends BaseExample {
     // 个人隐私设置
 //	private int allowGreet=1;// 允许打招呼
     private int friendsVerify = -1;// 加好友需验证 1：开启    0：关闭
+
+    private int isAdmin = 0;// 是否通过管理员添加 0 不是 1是
     //	private int openService=-1;//是否开启客服模式 1：开启    0：关闭
     private int isVibration = -1;// 是否振动   1：开启    0：关闭
     private int isTyping = -1;// 让对方知道我正在输入   1：开启       0：关闭
@@ -103,6 +105,14 @@ public class UserExample extends BaseExample {
     private Integer nameSearch = -1;// 允许昵称搜索  1 允许 0 不允许
 
     private String friendFromList;// 通过什么方式添加我  0:系统添加好友 1:二维码 2：名片 3：群组 4： 手机号搜索 5： 昵称搜索
+
+    public int getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 
 	public Long getBirthday() {
 		return birthday;

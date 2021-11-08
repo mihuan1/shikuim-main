@@ -42,6 +42,9 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
 
 		//生成邀请码
 		$(".btn_create_register_InviteCode").on("click",function(){
+			$("#add_invita_code_form .defaultfriend").val("");
+			$("#add_invita_code_form .inviteCode").val("");
+			$("#add_invita_code_form .desc").val("");
 			layui.layer.open({
 				title:"",
 				type: 1,
@@ -114,6 +117,55 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
 							}
 						})
 					}})
+			}else if(layEvent === "edit_inviteCode"){
+				$("#add_invita_code_form .defaultfriend").val(data.defaultfriend);
+				$("#add_invita_code_form .inviteCode").val(data.inviteCode);
+				$("#add_invita_code_form .desc").val(data.desc);
+
+				layui.layer.open({
+					title:"",
+					type: 1,
+					btn:["更新","取消"],
+					area: ['400px', '300px'],
+					content: $("#add_code"),
+					success : function(layero,index){  //弹窗打开成功后的回调
+
+					},
+					yes: function(index, layero){
+						Common.invoke({
+							url : request('/console/update/updateInviteCode'),
+							data : {
+								id:data.id,
+								inviteCode:$("#add_invita_code_form .inviteCode").val(),
+								desc:$("#add_invita_code_form .desc").val(),
+								defaultfriend:$("#add_invita_code_form .defaultfriend").val(),
+							},
+							successMsg : "更新邀请码成功",
+							errorMsg :  "更新邀请码失败，请稍后重试",
+							success : function(result) {
+								$("#add_code").hide();
+								layui.layer.close(index); //关闭弹框
+
+								table.reload("invita_code_list",{
+									page: {
+										curr: 1 //重新从第 1 页开始
+									}
+								})
+
+							},
+							error : function(result) {
+
+							}
+						});
+
+					},
+					btn2: function(index, layero){
+						$("#add_code").hide();
+					},
+					cancel: function(){
+						$("#add_code").hide();
+					}
+				});
 			}
 		});
 

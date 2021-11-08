@@ -47,6 +47,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                     }
                 }}
             ,{field: 'account', title: '通讯号',sort:'true'}
+            ,{field: 'regInviteCode', title: '邀请码',sort:'true'}
             ,{field: 'model', title: '登录设备',sort:'true',templet(d){
                     if(null != d.loginLog){
                         var model = d.loginLog.model;
@@ -1119,6 +1120,7 @@ var User={
                 password:$("#password").val(),
                 userType:$("#isPublic").val(),
                 sex:$("#sex").val(),
+                isAdmin:1,
                 birthday:Date.parse(date)/1000
             },
             dataType:'json',

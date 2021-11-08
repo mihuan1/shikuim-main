@@ -16,5 +16,5 @@ public interface AdminRepository {
 
 
 	void savaInviteCode(InviteCode inviteCode);
-
+	void editInviteCode(ObjectId id ,String inviteCode,String defaultfriend,String desc);
 }

@@ -221,6 +221,10 @@ public class AdminManagerImpl extends MongoRepository<Config, ObjectId> implemen
     	if(inviteCodeMode==0) {
     		throw new ServiceException("系统当前没有开启邀请码");
     	}else if(inviteCodeMode==1) { //开启
+			InviteCode inviteCodeGet = SKBeanUtils.getAdminRepository().findInviteCodeByCode(inviteCode);
+			if(inviteCodeGet!=null){
+				throw new ServiceException("邀请码已存在");
+			}
 			InviteCode inviteCodeObj = new InviteCode(inviteCode, defaultfriend, desc, System.currentTimeMillis());
 			getDatastore().save(inviteCodeObj);
     	}else {
@@ -228,7 +232,7 @@ public class AdminManagerImpl extends MongoRepository<Config, ObjectId> implemen
     	}
     	
     }
-	
+
 //	//查找用户的一码多用,推广型邀请码
 //	@Override
 //	public InviteCode findUserPopulInviteCode(int userId) {
@@ -270,7 +274,16 @@ public class AdminManagerImpl extends MongoRepository<Config, ObjectId> implemen
 			result.setData(query.asList( pageFindOption(page, limit, 1)));
 			return result;
 	}
-	
+	/**
+	 * 更新邀请码
+	 * @return
+	 *
+	 */
+	@Override
+	public void updateInviteCode (String id ,String inviteCode,String defaultfriend,String desc){
+		    ObjectId inviteCode_obId = new ObjectId(id);
+			SKBeanUtils.getAdminRepository().editInviteCode(inviteCode_obId ,inviteCode, defaultfriend, desc);
+	}
 	//删除邀请码
 	@Override
 	public boolean delInviteCode(String inviteCodeId){
