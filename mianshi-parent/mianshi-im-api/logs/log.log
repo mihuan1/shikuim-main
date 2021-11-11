@@ -543,3 +543,413 @@
 11-09 00:04 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【tradeMonitor】方法
 11-09 00:04 - com.shiku.mianshi.SysApiLogAspect  207   接口【tradeMonitor】总耗时(毫秒)：0
 11-09 00:04 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:04 - com.shiku.mianshi.Application  50    Starting Application on WIN-NJ1LFOUACEI with PID 28052 (E:\javaProject\shikuim-main\shikuim-main\mianshi-parent\mianshi-im-api\target\classes started by Administrator in E:\javaProject\shikuim-main\shikuim-main\mianshi-parent\mianshi-im-api)
+11-09 00:04 - com.shiku.mianshi.Application  662   No active profile set, falling back to default profiles: default
+11-09 00:04 - org.apache.coyote.http11.Http11NioProtocol  179   Initializing ProtocolHandler ["http-nio-8092"]
+11-09 00:04 - org.apache.catalina.core.StandardService  179   Starting service Tomcat
+11-09 00:04 - org.apache.catalina.core.StandardEngine  179   Starting Servlet Engine: Apache Tomcat/8.5.13
+11-09 00:04 - org.apache.catalina.core.AprLifecycleListener  179   The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Java\jdk1.8.0_71\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\BellSoft\LibericaJDK-8\bin\;C:\Program Files (x86)\VMware\VMware Workstation\bin\;D:\py2.7\;D:\py2.7\Scripts;C:\Python38\Scripts\;C:\Python38\;C:\Program Files (x86)\NetSarang\Xshell 6\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;F:\OpenCV\opencv\build\x64\vc15\lib;E:\QTSystem\;F:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\Scripts;F:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64;D:\ProgramData\Anaconda3;D:\ProgramData\Anaconda3\Scripts;D:\ProgramData\Anaconda3\Library\bin;D:\Program Files\CMake\bin;E:\Matlab\bin\win32;C:\Java\jdk1.8.0_71\bin;C:\Java\jdk1.8.0_71\jre\bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Yarn\bin\;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;F:\Qt\Qt5.12.1\5.12.1\msvc2017_64\bin;C:\Program Files\dotnet\;F:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;E:\Program Files\Git\cmd;C:\Program Files (x86)\NetSarang\Xshell 7\;C:\Program Files (x86)\NetSarang\Xmanager 7\;C:\Program Files (x86)\NetSarang\Xftp 7\;C:\Program Files (x86)\NetSarang\Xlpd 7\;G:\Program Files (x86)\WinSCP\;D:\apache-maven-3.8.1\bin;C:\Program Files (x86)\ZeroTier\One\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;F:\Cocos\Cocos2d-x\cocos2d-x-3.9\templates;F:\Cocos\Cocos2d-x\cocos2d-x-3.9\tools\cocos2d-console\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\softs\PyCharm 2020.1.1\bin;C:\Users\Administrator\AppData\Local\GitHubDesktop\bin;C:\Users\Administrator\AppData\Local\Yarn\bin;C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Administrator\.dotnet\tools;C:\Users\Administrator\AppData\Roaming\npm;C:\softs\GoLand 2020.1\bin;C:\softs\PhpStorm 2020.3.3\bin;C:\softs\IntelliJ IDEA 2020.3.3\bin;C:\softs\CLion 2020.3.3\bin;;C:\Users\Administrator\AppData\Local\Programs\Fiddler;C:\Program Files\JetBrains\WebStorm 2021.2.1\bin;;.
+11-09 00:04 - org.apache.jasper.servlet.TldScanner  179   At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+11-09 00:04 - o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]  179   Initializing Spring embedded WebApplicationContext
+11-09 00:04 - cn.xyz.rocketmq.UserStatusConsumer  46     MQ config nameAddr ===> 23.99.122.5:9876
+11-09 00:04 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:04 - cn.xyz.mianshi.scheduleds.CommTask  105   ====定时任务开启中=======》
+11-09 00:04 - org.apache.coyote.http11.Http11NioProtocol  179   Starting ProtocolHandler ["http-nio-8092"]
+11-09 00:04 - org.apache.tomcat.util.net.NioSelectorPool  179   Using a shared selector for servlet write/read
+11-09 00:04 - com.shiku.mianshi.Application  59    Started Application in 22.803 seconds (JVM running for 25.488)
+11-09 00:04 - cn.xyz.mianshi.utils.InitializationData  91    >>>>>>>>>>>>>>> 异常信息数据初始化完成  <<<<<<<<<<<<<
+11-09 00:04 - com.shiku.mianshi.Application  71    启动成功  当前版本编译时间  =====》 null
+11-09 00:05 - cn.xyz.mianshi.scheduleds.CommTask  178   刷新用户状态统计======》 0
+11-09 00:05 - o.a.c.core.ContainerBase.[Tomcat].[localhost].[/]  179   Initializing Spring FrameworkServlet 'dispatcherServlet'
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/trade/monitor?secret=1c55c3725b4def94f5e075979e4c108e&time=1636387500&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【tradeMonitor】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【tradeMonitor】总耗时(毫秒)：11
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/trade/monitor?secret=acfd0bc818c76cf32117e4a72b7abfab&time=1636387505&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【tradeMonitor】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【tradeMonitor】总耗时(毫秒)：1
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/console/index.html
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/css/layui.css
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/console/css/index.css
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/jquery/jquery.min.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/assets/js/jquery.md5.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/console/js/index.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/console/js/common.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/images/logo.png
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/layui.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/console/system_report.html
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/font/iconfont.woff
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/console/js/bodyTab.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/audio/new-msg.mp3
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/jquery/jquery.md5.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/css/layui.css
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/layui.all.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/jquery/jquery.min.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/console/css/public.css
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/console/js/count.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/echarts/shine.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/echarts/echarts.min.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/console/js/common.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/lay/modules/element.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/css/modules/laydate/default/laydate.css
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/css/modules/layer/default/layer.css
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/css/modules/code.css
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/css/modules/layer/default/loading-1.gif
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/countNum
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/getUserStatusCount
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/getUserRegisterCount
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/countNum?secret=31bac09509f083855f0741a4da864fb7&time=1636387506&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【countNum】方法
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/chatMsgCount
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/addRoomsCount
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/getUserRegisterCount?secret=31bac09509f083855f0741a4da864fb7&time=1636387506&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【getUserRegisterCount】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/chatMsgCount?secret=31bac09509f083855f0741a4da864fb7&time=1636387506&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【chatMsgCount】方法
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/addFriendsCount
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/addRoomsCount?secret=31bac09509f083855f0741a4da864fb7&time=1636387506&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【addRoomsCount】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/getUserStatusCount?secret=31bac09509f083855f0741a4da864fb7&time=1636387506&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【getUserStatusCount】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/addFriendsCount?secret=31bac09509f083855f0741a4da864fb7&time=1636387506&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【addFriendsCount】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【chatMsgCount】总耗时(毫秒)：29
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/lay/modules/form.js
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【countNum】总耗时(毫秒)：56
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/lay/modules/layer.js
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/css/modules/layer/default/layer.css
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/console/json/navs.json
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/images/favicon.ico
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【getUserRegisterCount】总耗时(毫秒)：182
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【addRoomsCount】总耗时(毫秒)：175
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【getUserStatusCount】总耗时(毫秒)：173
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【addFriendsCount】总耗时(毫秒)：175
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/console/userList
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/userList?secret=dfb1a5531a068286674993fa5ed8298d&time=1636387510&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&page=1&limit=15&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【userList】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【userList】总耗时(毫秒)：19
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/config
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：0，请求参数：/config
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.BasicController】类的【getConfig】方法
+11-09 00:05 - controller  49    ==Client-IP===>  127.0.0.1  ===Address==>  CN 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【getConfig】总耗时(毫秒)：7
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/config
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/config?secret=79421ee23852230661598296fbfe7043&time=1636387511&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【getConfig】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【getConfig】总耗时(毫秒)：0
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/trade/monitor?secret=79421ee23852230661598296fbfe7043&time=1636387511&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【tradeMonitor】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【tradeMonitor】总耗时(毫秒)：2
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/trade/monitor?secret=8d724e357efcb1b6194c120a87def9ff&time=1636387516&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【tradeMonitor】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【tradeMonitor】总耗时(毫秒)：1
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/config
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/config?secret=8d724e357efcb1b6194c120a87def9ff&time=1636387516&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【getConfig】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【getConfig】总耗时(毫秒)：1
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/trade/monitor?secret=0decfe7331b14211b98ad008f40a88a2&time=1636387521&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【tradeMonitor】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【tradeMonitor】总耗时(毫秒)：1
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/console/updateUser
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/updateUser?secret=4b2931c8cf635b6bc620bdf666bf6f73&time=1636387523&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&userId=0&nickname=SouthWind&telephone=10086111&password=qweq&userType=0&sex=0&isAdmin=1&birthday=1636387522&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【saveUserMsg】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【saveUserMsg】总耗时(毫秒)：6
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/pages/common/layui/css/modules/layer/default/icon.png
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    GET 请求：/console/userList
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/userList?secret=dfb1a5531a068286674993fa5ed8298d&time=1636387510&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&page=1&limit=15&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【userList】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【userList】总耗时(毫秒)：14
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/trade/monitor?secret=9563124cf30364b0e0e33771e278ddd9&time=1636387526&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【tradeMonitor】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【tradeMonitor】总耗时(毫秒)：1
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/trade/monitor?secret=c806dbcdf7aec42fa2e2e4df7a818333&time=1636387532&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【tradeMonitor】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【tradeMonitor】总耗时(毫秒)：1
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/trade/monitor?secret=2cdea3368f46ed3e2dc9a6fd4e9bc94e&time=1636387537&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【tradeMonitor】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【tradeMonitor】总耗时(毫秒)：1
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/trade/monitor?secret=ca25a5a5a479aa86427e9cf5dd65c1d6&time=1636387541&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【tradeMonitor】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【tradeMonitor】总耗时(毫秒)：1
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/trade/monitor?secret=1ee261ec67e27342f833f1f478f601c2&time=1636387547&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【tradeMonitor】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【tradeMonitor】总耗时(毫秒)：0
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = 1000
+11-09 00:05 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = 1000
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  183   uid：1000，请求参数：/console/trade/monitor?secret=ddb7c0c797cb805cbd2102ca9498c9ac&time=1636387552&access_token=b4c2a5151a2e4d2eb1e64cc1124a9b4f&
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  184   客户端ip [127.0.0.1]  User-Agent Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  185   【com.shiku.mianshi.controller.AdminController】类的【tradeMonitor】方法
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  207   接口【tradeMonitor】总耗时(毫秒)：1
+11-09 00:05 - com.shiku.mianshi.SysApiLogAspect  209   ********************************************   
+11-09 00:05 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:05 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:05 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:06 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:06 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:06 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:06 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:06 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:06 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:06 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:06 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:07 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:07 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:07 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:07 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:07 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:07 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:08 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  167   ------->  userId-1 = null; requestUri = /console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  180   请求令牌无效或已过期...
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  167   ------->  userId-1 = null; requestUri = /console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  180   请求令牌无效或已过期...
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  167   ------->  userId-1 = null; requestUri = /console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  180   请求令牌无效或已过期...
+11-09 00:08 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:08 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  167   ------->  userId-1 = null; requestUri = /console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  180   请求令牌无效或已过期...
+11-09 00:08 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:08 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  167   ------->  userId-1 = null; requestUri = /console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  180   请求令牌无效或已过期...
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  167   ------->  userId-1 = null; requestUri = /console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  180   请求令牌无效或已过期...
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  167   ------->  userId-1 = null; requestUri = /console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  180   请求令牌无效或已过期...
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  167   ------->  userId-1 = null; requestUri = /console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  180   请求令牌无效或已过期...
+11-09 00:08 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  167   ------->  userId-1 = null; requestUri = /console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  180   请求令牌无效或已过期...
+11-09 00:08 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  84    POST 请求：/console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  93    &&&&&&&&&&&&&&&&&&&&&&&&&&
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  154   =====> accessToken= b4c2a5151a2e4d2eb1e64cc1124a9b4f
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  127   =====>> KSessionUtil.getAdminUserIdByToken(_AccessToken) = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  165   ------->  userId = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  167   ------->  userId-1 = null; requestUri = /console/trade/monitor
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  178   ------->  userId-3 = null
+11-09 00:08 - com.shiku.mianshi.filter.AuthorizationFilter  180   请求令牌无效或已过期...
+11-09 00:08 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
+11-09 00:09 - RocketmqRemoting  95    closeChannel: close the connection to remote address[] result: true
