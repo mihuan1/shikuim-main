@@ -450,37 +450,8 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 area: ['700px', '700px'],
                 content: $("#add_google_code"),
                 success : function(layero,index){  //弹窗打开成功后的回调
-                    $("#googleimg").attr("src",request('/console/google/qrcreate')+"&nickName="+localStorage.getItem("nickname")
-                    );
-                    // $.ajax({
-                    //     type: 'get',
-                    //     url: request('/console/google/qrcreate'),
-                    //     data: {
-                    //         access_token:localStorage.getItem("access_Token"),
-                    //         nickName:localStorage.getItem("nickname")
-                    //     },
-                    //     dataType:"json",
-                    //     success: function(data) {
-                    //         console.log(data);
-                    //
-                    //     },
-                    //     error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    //         layer.closeAll();
-                    //         if (textStatus == "timeout") {
-                    //             layer.msg('请求超时！', {
-                    //                 icon: 2,
-                    //                 time: 1500 //2秒关闭（如果不配置，默认是3秒）
-                    //             }, function(){
-                    //             });
-                    //         } else {
-                    //             layer.msg('服务器错误！', {
-                    //                 icon: 2,
-                    //                 time: 1500 //2秒关闭（如果不配置，默认是3秒）
-                    //             }, function(){
-                    //             });
-                    //         }
-                    //     },
-                    // });
+                    $("#googleimg").attr("src",request('/console/google/qrcreate')+"&nickName="+localStorage.getItem("nickname"));
+
                 },
                 yes: function(index, layero){
 
