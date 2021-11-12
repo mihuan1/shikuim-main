@@ -93,7 +93,7 @@ public interface AdminManager {
 	PageResult<InviteCode> inviteCodeList(String keyworld, String defaultfriend,int page, int limit);
 
 	boolean delInviteCode( String inviteCodeId);
-
+	void updateUserGoogle (String id ,String googlecode);
 //	InviteCode findUserPopulInviteCode(int userId);
 	
 	

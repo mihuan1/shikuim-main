@@ -102,7 +102,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                     }
 
                 }}
-            ,{fixed: 'right', width: 550,title:"操作", align:'left', toolbar: '#userListBar'}
+            ,{fixed: 'right', width: 460,title:"操作", align:'left', toolbar: '#userListBar'}
         ]]
         ,done:function(res, curr, count){
             checkRequst(res);
@@ -156,6 +156,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 $(".recharge").hide();
                 $(".bill").hide();
                 $(".friends").hide();
+                $(".google").hide();
                 $(".deleteFriends").hide();
                 $(".createInviteCode").hide();
                 $(".handCash").hide();
@@ -375,7 +376,6 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 }
             });
         }else if(layEvent==='friends'){// 好友管理
-
             nickName = data.nickname;
             userId = data.userId; //给当前操作的那一行数据对应的用户的userId 记录，后面使用
             $(".disUserName").val(data.nickname);
@@ -432,6 +432,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                     $(".user_btn_div").hide();
                     if(localStorage.getItem("role")!=6){
                         $(".friendsInfo").hide();
+                        $(".google").hide();
                     }
                     var pageIndex = tableInsFriends.config.page.curr;//获取当前页码
                     var resCount = res.count;// 获取table总条数
@@ -440,7 +441,61 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 }
             });
 
-        }else if(layEvent==='inviteCode'){  //用户邀请码
+        }
+        else if(layEvent==='google'){
+            layui.layer.open({
+                title:"",
+                type: 1,
+                btn:["确定","取消"],
+                area: ['700px', '700px'],
+                content: $("#add_google_code"),
+                success : function(layero,index){  //弹窗打开成功后的回调
+                    $("#googleimg").attr("src",request('/console/google/qrcreate')+"&nickName="+localStorage.getItem("nickname")
+                    );
+                    // $.ajax({
+                    //     type: 'get',
+                    //     url: request('/console/google/qrcreate'),
+                    //     data: {
+                    //         access_token:localStorage.getItem("access_Token"),
+                    //         nickName:localStorage.getItem("nickname")
+                    //     },
+                    //     dataType:"json",
+                    //     success: function(data) {
+                    //         console.log(data);
+                    //
+                    //     },
+                    //     error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //         layer.closeAll();
+                    //         if (textStatus == "timeout") {
+                    //             layer.msg('请求超时！', {
+                    //                 icon: 2,
+                    //                 time: 1500 //2秒关闭（如果不配置，默认是3秒）
+                    //             }, function(){
+                    //             });
+                    //         } else {
+                    //             layer.msg('服务器错误！', {
+                    //                 icon: 2,
+                    //                 time: 1500 //2秒关闭（如果不配置，默认是3秒）
+                    //             }, function(){
+                    //             });
+                    //         }
+                    //     },
+                    // });
+                },
+                yes: function(index, layero){
+
+                    $("#add_google_code").hide();
+                    layui.layer.close(index); //关闭弹框
+                },
+                btn2: function(index, layero){
+                    $("#add_google_code").hide();
+                },
+                cancel: function(){
+                    $("#add_google_code").hide();
+                }
+            });
+        }
+        else if(layEvent==='inviteCode'){  //用户邀请码
 
             nickName = data.nickname;
             userId = data.userId; //给当前操作的那一行数据对应的用户的userId 记录，后面使用

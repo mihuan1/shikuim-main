@@ -201,8 +201,17 @@ public class User {
 
 	// 用户的地理位置
 	private String area;
-
+	//谷歌验证字段
+	private String google;
 	// ********************引用字段********************
+
+	public String getGoogle() {
+		return google;
+	}
+
+	public void setGoogle(String google) {
+		this.google = google;
+	}
 
 	public Integer getUserId() {
 		return userId;

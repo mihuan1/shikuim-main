@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import cn.xyz.mianshi.vo.User;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Key;
 import org.mongodb.morphia.Morphia;
@@ -445,7 +446,7 @@ public abstract class MongoRepository<T,ID extends Serializable> {
 	public Query<T> createQuery() {
 		return getDatastore().createQuery(getEntityClass());
 	}
-	
+
 	/**
 	 * 分页查询参数
 	 * @param page   页码

@@ -675,10 +675,6 @@ public class UserManagerImpl extends MongoRepository<User, Integer> implements U
 		throw new ServiceException("用户注册失败");
 	}
 
-
-
-
-
 	@Override
 	public Map<String, Object> registerIMUser(UserExample example) throws Exception{
 

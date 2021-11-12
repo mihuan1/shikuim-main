@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.xyz.mianshi.vo.*;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.client.producer.SendStatus;
@@ -30,19 +31,6 @@ import cn.xyz.mianshi.opensdk.entity.SkOpenApp;
 import cn.xyz.mianshi.service.AdminManager;
 import cn.xyz.mianshi.utils.KSessionUtil;
 import cn.xyz.mianshi.utils.SKBeanUtils;
-import cn.xyz.mianshi.vo.Admin;
-import cn.xyz.mianshi.vo.AreaConfig;
-import cn.xyz.mianshi.vo.CenterConfig;
-import cn.xyz.mianshi.vo.ClientConfig;
-import cn.xyz.mianshi.vo.Config;
-import cn.xyz.mianshi.vo.InviteCode;
-import cn.xyz.mianshi.vo.MusicInfo;
-import cn.xyz.mianshi.vo.SdkLoginInfo;
-import cn.xyz.mianshi.vo.ServerListConfig;
-import cn.xyz.mianshi.vo.SysApiLog;
-import cn.xyz.mianshi.vo.TotalConfig;
-import cn.xyz.mianshi.vo.Transfer;
-import cn.xyz.mianshi.vo.UrlConfig;
 import cn.xyz.repository.mongo.AdminRepositoryImpl;
 
 @Service
@@ -233,30 +221,6 @@ public class AdminManagerImpl extends MongoRepository<Config, ObjectId> implemen
     	
     }
 
-//	//查找用户的一码多用,推广型邀请码
-//	@Override
-//	public InviteCode findUserPopulInviteCode(int userId) {
-//
-//		//获取系统当前的邀请码模式 0:关闭   1:开启一对一邀请(一码一用)    2:开启一对多邀请(一码多用,推广型)
-//    	int inviteCodeMode = SKBeanUtils.getAdminManager().getConfig().getRegisterInviteCode();
-//    	if(inviteCodeMode!=2) { //如果当前系统不是推广型邀请码模式,则不返回数据
-//    		return null;
-//    	}
-//
-//    	InviteCode inviteCode = SKBeanUtils.getAdminRepository().findUserInviteCode(userId);
-//    	if(inviteCode==null) { //如果用户没有一对多，推广型邀请码则生成一个
-//    		//当前邀请码标识号
-//        	long curInviteCodeNo = getUserManager().createInviteCodeNo(1);
-//    		String inviteCodeStr = RandomUtil.idToSerialCode(DateUtil.currentTimeSeconds()+curInviteCodeNo+1+RandomUtil.getRandomNum(100,1000)); //生成邀请码
-//    		inviteCode = new InviteCode(userId, inviteCodeStr, System.currentTimeMillis(), -1);
-//    		SKBeanUtils.getAdminRepository().savaInviteCode(inviteCode);
-//    	}
-//		return inviteCode;
-//
-//	}
-	
-	
-	
 	//查询邀请码列表
 	@Override
 	public PageResult<InviteCode> inviteCodeList(String keyworld,String defaultfriend,int page,int limit){
@@ -273,6 +237,25 @@ public class AdminManagerImpl extends MongoRepository<Config, ObjectId> implemen
 			result.setCount(query.count());
 			result.setData(query.asList( pageFindOption(page, limit, 1)));
 			return result;
+	}
+	/**
+	 * 更新用户谷歌代码
+	 * @return
+	 *
+	 */
+	@Override
+	public void updateUserGoogle (String key ,String googlecode){
+		Query<User> q = getDatastore().createQuery(User.class).field("userKey").equal(key);
+		UpdateOperations<User> ops= getDatastore().createUpdateOperations(User.class);
+		if(q != null){
+			if(!StringUtil.isEmpty(googlecode)){
+				ops.set("google",googlecode);
+			}
+			getDatastore().findAndModify(q, ops);
+			logger.info("google验证码更新成功");
+		}else {
+			throw new ServiceException("数据不存在！");
+		}
 	}
 	/**
 	 * 更新邀请码

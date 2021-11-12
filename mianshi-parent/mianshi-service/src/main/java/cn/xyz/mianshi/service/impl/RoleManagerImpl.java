@@ -3,6 +3,7 @@ package cn.xyz.mianshi.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.xyz.commons.vo.JSONMessage;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.Query;
@@ -40,7 +41,7 @@ public class RoleManagerImpl extends MongoRepository<Role, ObjectId>{
 	public int getUserRoleByUserId(Integer userId){
 		return (int) queryOneField("role", new BasicDBObject("userId", userId));
 	}
-	
+
 	public Role getUserRole(Integer userId,String phone,Integer type){
 		Query<Role> query = getDatastore().createQuery(getEntityClass());
 		if(0 != userId)

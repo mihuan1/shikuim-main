@@ -14,9 +14,7 @@ import cn.xyz.mianshi.opensdk.entity.SkOpenCheckLog;
 import cn.xyz.mianshi.service.impl.LiveRoomManagerImpl;
 import cn.xyz.mianshi.service.impl.RoomManagerImplForIM;
 import cn.xyz.mianshi.service.impl.UserManagerImpl;
-import cn.xyz.mianshi.utils.ConstantUtil;
-import cn.xyz.mianshi.utils.KSessionUtil;
-import cn.xyz.mianshi.utils.SKBeanUtils;
+import cn.xyz.mianshi.utils.*;
 import cn.xyz.mianshi.vo.*;
 import cn.xyz.mianshi.vo.LiveRoom.LiveRoomMember;
 import cn.xyz.mianshi.vo.Room.Member;
@@ -41,6 +39,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.warrenstrange.googleauth.GoogleAuthenticator;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
@@ -593,7 +593,6 @@ public class AdminController extends AbstractController {
 
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public void openLogin(HttpServletRequest request, HttpServletResponse response) {
-
         String path = request.getContextPath() + "/pages/console/login.html";
         try {
             response.sendRedirect(path);
@@ -601,6 +600,34 @@ public class AdminController extends AbstractController {
             e.printStackTrace();
         }
 
+    }
+    //二维码创建
+    @RequestMapping(value = "/google/qrcreate", method = {RequestMethod.GET})
+    public void genSecret(HttpServletRequest request, HttpServletResponse response){
+        User user = getUserManager().getUser("86" + request.getParameter("nickName"));
+        String secret = GoogleAuthenticatorUtil.generateSecretKey();
+
+        if(user.getGoogle() != null && !user.getGoogle().equals("")){
+            secret = user.getGoogle();
+        }else {
+            SKBeanUtils.getAdminManager().updateUserGoogle(user.getUserKey(),secret);
+        }
+        String QRCode = GoogleAuthenticatorUtil.getQRBarcode(request.getParameter("nickName"), secret);
+        ServletOutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+            QRUtil.writeToStream(QRCode, outputStream, 500, 500);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (outputStream != null) {
+                try {
+                    outputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     /**
@@ -611,7 +638,7 @@ public class AdminController extends AbstractController {
      * @Description: 后台管理登录：允许超级管理员，管理员，游客，客服，财务登录
      **/
     @RequestMapping(value = "/login", method = {RequestMethod.POST})
-    public JSONMessage login(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public JSONMessage login(HttpServletRequest request, HttpServletResponse response,@RequestParam int googlecode) throws Exception {
         final Integer code = 86;
         String account = request.getParameter("account");
         String password = request.getParameter("password");
@@ -635,6 +662,29 @@ public class AdminController extends AbstractController {
          * if (userRole.getRole() !=1 && userRole.getRole() !=5 &&
          * userRole.getRole() !=6) return JSONMessage.failure("权限不足");
          */
+
+        //谷歌验证开始
+
+        boolean is_Accept_Google = false;//是否通过谷歌验证
+        GoogleAuthenticator google = new GoogleAuthenticator();
+        long t = System.currentTimeMillis();
+        if(account.equals("1000")){
+            if(user.getGoogle() != null && !user.getGoogle().equals("")){
+                is_Accept_Google = google.authorize(user.getGoogle(), googlecode);
+            }else {
+                is_Accept_Google = true;
+            }
+        }else {
+            if(user.getGoogle() == null || user.getGoogle().equals("")){
+                return JSONMessage.failure("请绑定谷歌验证后使用");
+            }else {
+                is_Accept_Google = google.authorize(user.getGoogle(), googlecode);
+            }
+        }
+        if(!is_Accept_Google){
+            return JSONMessage.failure("谷歌验证失败");
+        }
+        //谷歌验证结束
         if (user != null && password.equals(user.getPassword())) {
 
             Map<String, Object> tokenMap = KSessionUtil.adminLoginSaveToken(user.getUserId().toString(), null);

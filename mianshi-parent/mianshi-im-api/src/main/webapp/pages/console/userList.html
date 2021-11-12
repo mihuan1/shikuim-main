@@ -157,11 +157,13 @@
 			{{#  } }}
 			{{#  } }}
 
-			<a class="layui-btn layui-btn-primary layui-btn-xs recharge" lay-event="recharge">充值</a>
-			<a class="layui-btn layui-btn-primary layui-btn-xs handCash" lay-event="handCash">手工提现</a>
-			<a class="layui-btn layui-btn-primary layui-btn-xs bill" lay-event="bill">账单</a>
+<!--			<a class="layui-btn layui-btn-primary layui-btn-xs recharge" lay-event="recharge">充值</a>-->
+<!--			<a class="layui-btn layui-btn-primary layui-btn-xs handCash" lay-event="handCash">手工提现</a>-->
+<!--			<a class="layui-btn layui-btn-primary layui-btn-xs bill" lay-event="bill">账单</a>-->
 			<a class="layui-btn layui-btn-primary layui-btn-xs friends" lay-event="friends">好友管理</a>
-
+			{{#  if(d.userType == 1){ }}
+			<a class="layui-btn layui-btn-primary layui-btn-xs google" lay-event="google">谷歌验证码</a>
+			{{#  } }}
 		</script>
 
 		<script type="text/html" id="delFriends">
@@ -190,7 +192,10 @@
 		</script>
 
 	</div>
-
+	<!-- 谷歌验证码 -->
+	<div id="add_google_code" style="display: none;text-align:center;">
+		<img  id="googleimg" width="500" style="margin-top: 70px">
+	</div>
 	<!-- 添加用户 -->
 	<div id="addUser" class="layui-col-md10" style="display: none">
 		<div id="addUserTitle" class="layui-card-header">新增用户</div>

@@ -128,7 +128,7 @@ var Common = {
 				layer.closeAll('loading');
 			}
 		}
-		params.data["access_token"] = localStorage.getItem("access_Token");;
+		params.data["access_token"] = localStorage.getItem("access_Token");
 		$.ajax(params);
 	}
 	,isNil : function(s) {

@@ -113,6 +113,10 @@
     <orderEntry type="library" name="Maven: com.google.apis:google-api-services-storage:v1-rev20181013-1.27.0" level="project" />
     <orderEntry type="library" name="Maven: javax.annotation:javax.annotation-api:1.2" level="project" />
     <orderEntry type="module" module-name="mianshi-service" />
+    <orderEntry type="library" name="Maven: com.google.zxing:core:3.3.3" level="project" />
+    <orderEntry type="library" name="Maven: com.google.zxing:javase:3.3.3" level="project" />
+    <orderEntry type="library" name="Maven: com.beust:jcommander:1.72" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.jai-imageio:jai-imageio-core:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.0.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.shiku.commons:skutils:1.0" level="project" />
